@@ -1,6 +1,6 @@
 <?php
 
-namespace League\Skeleton;
+namespace SDIS62\Core\Skeleton;
 
 class SkeletonClass
 {

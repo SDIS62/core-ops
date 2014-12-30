@@ -35,7 +35,7 @@ $ phpunit
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/SDIS62/core-:package_name/blob/master/CONTRIBUTING.md) for details.
+Please see [Contributing file](CONTRIBUTING.md) for details.
 
 ## Credits
 

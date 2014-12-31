@@ -1,5 +1,5 @@
 {
-    "name": "SDIS62/core-:package_name",
+    "name": "SDIS62/:package_name",
 
     "description": ":package_description",
 
@@ -8,7 +8,7 @@
         ":package_name"
     ],
 
-    "homepage": "https://github.com/SDIS62/core-:package_name",
+    "homepage": "https://github.com/SDIS62/:package_name",
 
     "license": "CeCILL-B",
 
@@ -32,13 +32,13 @@
 
     "autoload": {
         "psr-4": {
-            "SDIS62\\Core\\Skeleton\\": "src/"
+            "SDIS62\\Skeleton\\": "src/"
         }
     },
 
     "autoload-dev": {
         "psr-4": {
-            "SDIS62\\Core\\Skeleton\\Test\\": "tests/"
+            "SDIS62\\Skeleton\\Test\\": "tests/"
         }
     }
 }

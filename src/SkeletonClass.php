@@ -1,6 +1,6 @@
 <?php
 
-namespace SDIS62\Core\Skeleton;
+namespace SDIS62\Skeleton;
 
 class SkeletonClass
 {

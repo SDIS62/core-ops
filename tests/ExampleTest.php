@@ -1,6 +1,6 @@
 <?php
 
-namespace SDIS62\Core\Skeleton\Test;
+namespace SDIS62\Skeleton\Test;
 
 class ExampleTest extends \PHPUnit_Framework_TestCase
 {

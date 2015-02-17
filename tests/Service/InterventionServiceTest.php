@@ -22,7 +22,7 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($service->find(1));
     }
 
-    public function test_if_it_find_all_by_etat()
+    public function test_if_it_get_all()
     {
         // Init ..
         $repository_intervention = Mockery::mock('SDIS62\Core\Ops\Repository\InterventionRepositoryInterface')->makePartial();
@@ -30,10 +30,10 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         $service = new Core\Service\InterventionService($repository_intervention, $repository_sinistre);
 
         // Prepare ..
-        $repository_intervention->shouldReceive('findAllByEtat')->with('test', 20, 1)->andReturn(true)->once();
+        $repository_intervention->shouldReceive('getAll')->with(20, 1)->andReturn(true)->once();
 
         // Test!
-        $this->assertTrue($service->findAllByEtat('test'));
+        $this->assertTrue($service->getAll());
     }
 
     public function test_if_it_delete()

@@ -22,6 +22,18 @@ class InterventionService
     }
 
     /**
+     * Retourne les interventions
+     *
+     * @param  int                                   $count Par défaut: 20
+     * @param  int                                   $page  Par défaut: 1
+     * @return SDIS62\Core\Ops\Entity\Intervention[]
+     */
+    public function getAll($count = 20, $page = 1)
+    {
+        return $this->intervention_repository->getAll($count, $page);
+    }
+
+    /**
      * Retourne une intervention correspondant à l'id spécifié
      *
      * @param  mixed                               $id_intervention
@@ -30,19 +42,6 @@ class InterventionService
     public function find($id_intervention)
     {
         return $this->intervention_repository->find($id_intervention);
-    }
-
-    /**
-     * Retourne une intervention correspondant à l'état spécifié
-     *
-     * @param  string                                $etat
-     * @param  int                                   $count Par défaut: 20
-     * @param  int                                   $page  Par défaut: 1
-     * @return SDIS62\Core\Ops\Entity\Intervention[]
-     */
-    public function findAllByEtat($etat, $count = 20, $page = 1)
-    {
-        return $this->intervention_repository->findAllByEtat($etat, $count, $page);
     }
 
     /**

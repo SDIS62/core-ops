@@ -2,24 +2,22 @@
 
 namespace SDIS62\Core\Ops\Entity\Pompier;
 
-use SDIS62\Core\Ops\Entity\Garde;
-use SDIS62\Core\Ops\Entity\Centre;
 use SDIS62\Core\Ops\Entity\Pompier;
 
 class SpecialistePompier extends Pompier
 {
     /**
-    * Type
-    *
-    * @var string
-    */
+     * Type
+     *
+     * @var string
+     */
     protected $type = 'specialiste';
 
     /**
-    * Spécialités
-    *
-    * @var array
-    */
+     * Spécialités
+     *
+     * @var array
+     */
     protected $specialites;
 
     /**

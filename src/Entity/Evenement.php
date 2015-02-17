@@ -3,7 +3,6 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use Datetime;
-use SDIS62\Core\Ops\Entity\Intervention;
 use SDIS62\Core\Common\Entity\IdentityTrait;
 
 class Evenement
@@ -11,32 +10,32 @@ class Evenement
     use IdentityTrait;
 
     /**
-    * Date de l'évenement
-    *
-    * @var Datetime|null
-    */
+     * Date de l'évenement
+     *
+     * @var Datetime|null
+     */
     protected $date;
 
     /**
-    * Description de l'évenement
-    *
-    * @var string
-    */
+     * Description de l'évenement
+     *
+     * @var string
+     */
     protected $description;
 
     /**
-    * Intervention concernée
-    *
-    * @var SDIS62\Core\Ops\Entity\Intervention
-    */
+     * Intervention concernée
+     *
+     * @var SDIS62\Core\Ops\Entity\Intervention
+     */
     protected $intervention;
 
     /**
      * Ajout d'un evenement à une intervention
      *
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
-     * @param string $description
-     * @param Datetime|string|null $date Optionnel
+     * @param string                              $description
+     * @param Datetime|string|null                $date         Optionnel
      */
     public function __construct(Intervention $intervention, $description, $date = null)
     {
@@ -83,5 +82,4 @@ class Evenement
     {
         return $this->intervention;
     }
-
 }

@@ -2,8 +2,6 @@
 
 namespace SDIS62\Core\Ops\Entity;
 
-use SDIS62\Core\Ops\Entity\Garde;
-use SDIS62\Core\Ops\Entity\Centre;
 use SDIS62\Core\Common\Entity\IdentityTrait;
 
 class Pompier
@@ -11,45 +9,45 @@ class Pompier
     use IdentityTrait;
 
     /**
-    * Type
-    *
-    * @var string
-    */
+     * Type
+     *
+     * @var string
+     */
     protected $type = 'pompier';
 
     /**
-    * Gardes du pompier
-    *
-    * @var SDIS62\Core\Ops\Entity\Garde[]
-    */
+     * Gardes du pompier
+     *
+     * @var SDIS62\Core\Ops\Entity\Garde[]
+     */
     protected $gardes;
 
     /**
-    * Centre dans lequel le pompier est affecté
-    *
-    * @var SDIS62\Core\Ops\Entity\Centre
-    */
+     * Centre dans lequel le pompier est affecté
+     *
+     * @var SDIS62\Core\Ops\Entity\Centre
+     */
     protected $centre;
 
     /**
-    * Matricule du pompier
-    *
-    * @var string
-    */
+     * Matricule du pompier
+     *
+     * @var string
+     */
     protected $matricule;
 
     /**
-    * Nom du pompier
-    *
-    * @var string
-    */
+     * Nom du pompier
+     *
+     * @var string
+     */
     protected $name;
 
     /**
      * Ajout d'un pompier
      *
-     * @param string $name
-     * @param string $matricule
+     * @param string                        $name
+     * @param string                        $matricule
      * @param SDIS62\Core\Ops\Entity\Centre $centre
      */
     public function __construct($name, $matricule, Centre $centre)
@@ -101,7 +99,7 @@ class Pompier
      */
     public function setCentre(Centre $centre)
     {
-        if(!empty($this->centre)) {
+        if (!empty($this->centre)) {
             $this->centre->getPompiers()->removeElement($this);
         }
 
@@ -111,7 +109,6 @@ class Pompier
 
         return $this;
     }
-
 
     /**
      * Get the value of Matricule du pompier
@@ -170,5 +167,4 @@ class Pompier
     {
         return $this->type;
     }
-
 }

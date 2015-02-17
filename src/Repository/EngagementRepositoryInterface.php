@@ -9,7 +9,7 @@ interface EngagementRepositoryInterface
     /**
      * Retourne un engagement correspondant à l'id spécifié
      *
-     * @param  mixed                          $id_engagement
+     * @param  mixed                             $id_engagement
      * @return SDIS62\Core\Ops\Entity\Engagement
      */
     public function find($id_engagement);

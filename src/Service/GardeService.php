@@ -11,13 +11,12 @@ class GardeService
     /**
      * Initialisation du service avec les repository utilisés
      *
-     * @param SDIS62\Core\Ops\Repository\GardeRepositoryInterface $garde_repository
+     * @param SDIS62\Core\Ops\Repository\GardeRepositoryInterface   $garde_repository
      * @param SDIS62\Core\Ops\Repository\PompierRepositoryInterface $pompier_repository
      */
     public function __construct(GardeRepositoryInterface $garde_repository,
                                 PompierRepositoryInterface $pompier_repository
-    )
-    {
+    ) {
         $this->garde_repository = $garde_repository;
         $this->pompier_repository = $pompier_repository;
     }
@@ -25,7 +24,7 @@ class GardeService
     /**
      * Retourne un ensemble de gardes sur un mois
      *
-     * @param  int                          $month
+     * @param  int                             $month
      * @return SDIS62\Core\User\Entity\Garde[]
      */
     public function findAllByMonth($month)
@@ -36,7 +35,7 @@ class GardeService
     /**
      * Retourne une garde correspondant à l'id spécifié
      *
-     * @param  mixed                          $id_garde
+     * @param  mixed                        $id_garde
      * @return SDIS62\Core\Ops\Entity\Garde
      */
     public function find($id_garde)
@@ -47,15 +46,15 @@ class GardeService
     /**
      * AJout d'une garde pour un pompier
      *
-     * @param  array $data
-     * @param  array $id_pompier
+     * @param  array                         $data
+     * @param  array                         $id_pompier
      * @return SDIS62\Core\Ops\Entity\Centre
      */
     public function create($data, $id_pompier)
     {
         $pompier = $this->pompier_repository->find($id_pompier);
 
-        if(empty($pompier)) {
+        if (empty($pompier)) {
             return;
         }
 
@@ -69,7 +68,7 @@ class GardeService
     /**
      * Suppression d'une garde
      *
-     * @param  mixed $id_garde
+     * @param  mixed                        $id_garde
      * @return SDIS62\Core\Ops\Entity\Garde
      */
     public function delete($id_garde)

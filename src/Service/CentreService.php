@@ -20,8 +20,8 @@ class CentreService
     /**
      * Retourne un ensemble de CIS
      *
-     * @param  int                               $count Par défaut: 20
-     * @param  int                               $page  Par défaut: 1
+     * @param  int                              $count Par défaut: 20
+     * @param  int                              $page  Par défaut: 1
      * @return SDIS62\Core\User\Entity\Centre[]
      */
     public function getAll($count = 20, $page = 1)
@@ -32,7 +32,7 @@ class CentreService
     /**
      * Retourne un CIS correspondant à l'id spécifié
      *
-     * @param  mixed                          $id_centre
+     * @param  mixed                         $id_centre
      * @return SDIS62\Core\Ops\Entity\Centre
      */
     public function find($id_centre)
@@ -43,9 +43,9 @@ class CentreService
     /**
      * Retourne des CIS correspondant au nom spécifié
      *
-     * @param  string                       $name
-     * @param  int                               $count Par défaut: 20
-     * @param  int                               $page  Par défaut: 1
+     * @param  string                          $name
+     * @param  int                             $count Par défaut: 20
+     * @param  int                             $page  Par défaut: 1
      * @return SDIS62\Core\Ops\Entity\Centre[]
      */
     public function findAllByName($name, $count = 20, $page = 1)
@@ -56,8 +56,8 @@ class CentreService
     /**
      * Sauvegarde d'un centre
      *
-     * @param  array $data
-     * @param  mixed $id_centre Optionnel
+     * @param  array                         $data
+     * @param  mixed                         $id_centre Optionnel
      * @return SDIS62\Core\Ops\Entity\Centre
      */
     public function save($data, $id_centre = null)
@@ -76,7 +76,7 @@ class CentreService
     /**
      * Suppression d'un centre
      *
-     * @param  mixed $id_centre
+     * @param  mixed                         $id_centre
      * @return SDIS62\Core\Ops\Entity\Centre
      */
     public function delete($id_centre)

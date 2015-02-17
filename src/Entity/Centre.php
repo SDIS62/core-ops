@@ -2,8 +2,6 @@
 
 namespace SDIS62\Core\Ops\Entity;
 
-use SDIS62\Core\Ops\Entity\Materiel;
-use SDIS62\Core\Ops\Entity\Pompier;
 use SDIS62\Core\Common\Entity\IdentityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -12,24 +10,24 @@ class Centre
     use IdentityTrait;
 
     /**
-    * Nom du centre
-    *
-    * @var string
-    */
+     * Nom du centre
+     *
+     * @var string
+     */
     protected $name;
 
     /**
-    * Matériels du centre
-    *
-    * @var SDIS62\Core\Ops\Entity\Materiel[]
-    */
+     * Matériels du centre
+     *
+     * @var SDIS62\Core\Ops\Entity\Materiel[]
+     */
     protected $materiels;
 
     /**
-    * Nom du centre
-    *
-    * @var SDIS62\Core\Ops\Entity\Pompier[]
-    */
+     * Nom du centre
+     *
+     * @var SDIS62\Core\Ops\Entity\Pompier[]
+     */
     protected $pompiers;
 
     /**
@@ -113,5 +111,4 @@ class Centre
 
         return $this;
     }
-
 }

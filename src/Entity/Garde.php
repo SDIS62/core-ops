@@ -3,7 +3,6 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use Datetime;
-use SDIS62\Core\Ops\Entity\Pompier;
 use SDIS62\Core\Common\Entity\IdentityTrait;
 
 class Garde
@@ -11,32 +10,32 @@ class Garde
     use IdentityTrait;
 
     /**
-    * Pompier concerné
-    *
-    * @var SDIS62\Core\Ops\Entity\Pompier
-    */
+     * Pompier concerné
+     *
+     * @var SDIS62\Core\Ops\Entity\Pompier
+     */
     protected $pompier;
 
     /**
-    * Début de la garde
-    *
-    * @var Datetime
-    */
+     * Début de la garde
+     *
+     * @var Datetime
+     */
     protected $debut;
 
     /**
-    * Fin de la garde
-    *
-    * @var Datetime
-    */
+     * Fin de la garde
+     *
+     * @var Datetime
+     */
     protected $fin;
 
     /**
      * Ajout d'une garde à un spécialiste
      *
      * @param SDIS62\Core\Ops\Entity\Pompier $pompier
-     * @param Datetime $debut Le format peut être d-m-Y H:i
-     * @param Datetime $fin Le format peut être d-m-Y H:i
+     * @param Datetime                       $debut   Le format peut être d-m-Y H:i
+     * @param Datetime                       $fin     Le format peut être d-m-Y H:i
      */
     public function __construct(Pompier $pompier, $debut, $fin)
     {

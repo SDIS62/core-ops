@@ -2,7 +2,6 @@
 
 namespace SDIS62\Core\Ops\Entity;
 
-use SDIS62\Core\Ops\Entity\Centre;
 use SDIS62\Core\Common\Entity\IdentityTrait;
 
 class Materiel
@@ -10,31 +9,31 @@ class Materiel
     use IdentityTrait;
 
     /**
-    * Nom du materiel
-    *
-    * @var string
-    */
+     * Nom du materiel
+     *
+     * @var string
+     */
     protected $name;
 
     /**
-    * Etat du materiel
-    *
-    * @var string
-    */
+     * Etat du materiel
+     *
+     * @var string
+     */
     protected $etat;
 
     /**
-    * Centre dans lequel le matériel est affecté
-    *
-    * @var SDIS62\Core\Ops\Entity\Centre
-    */
+     * Centre dans lequel le matériel est affecté
+     *
+     * @var SDIS62\Core\Ops\Entity\Centre
+     */
     protected $centre;
 
     /**
      * Ajout d'un materiel à un centre
      *
      * @param SDIS62\Core\Ops\Entity\Centre $centre
-     * @param string $name
+     * @param string                        $name
      */
     public function __construct(Centre $centre, $name)
     {
@@ -114,5 +113,4 @@ class Materiel
 
         return $this;
     }
-
 }

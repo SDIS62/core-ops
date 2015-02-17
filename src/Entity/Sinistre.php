@@ -9,10 +9,10 @@ class Sinistre
     use IdentityTrait;
 
     /**
-    * Nom du sinistre
-    *
-    * @var string
-    */
+     * Nom du sinistre
+     *
+     * @var string
+     */
     protected $name;
 
     /**
@@ -48,5 +48,4 @@ class Sinistre
 
         return $this;
     }
-
 }

@@ -3,9 +3,6 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use Datetime;
-use SDIS62\Core\Ops\Entity\Sinistre;
-use SDIS62\Core\Ops\Entity\Evenement;
-use SDIS62\Core\Ops\Entity\Engagement;
 use SDIS62\Core\Common\Entity\IdentityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -14,87 +11,87 @@ class Intervention
     use IdentityTrait;
 
     /**
-    * Etat de l'intervention
-    *
-    * @var string
-    */
+     * Etat de l'intervention
+     *
+     * @var string
+     */
     protected $etat;
 
     /**
-    * Précision sur le sinistre de l'intervention
-    *
-    * @var string
-    */
+     * Précision sur le sinistre de l'intervention
+     *
+     * @var string
+     */
     protected $precision;
 
     /**
-    * Observations
-    *
-    * @var string
-    */
+     * Observations
+     *
+     * @var string
+     */
     protected $observations;
 
     /**
-    * L'intervention est elle importante ?
-    *
-    * @var bool
-    */
+     * L'intervention est elle importante ?
+     *
+     * @var bool
+     */
     protected $important;
 
     /**
-    * Date de création
-    *
-    * @var Datetime
-    */
+     * Date de création
+     *
+     * @var Datetime
+     */
     protected $created;
 
     /**
-    * Date de mise à jour
-    *
-    * @var Datetime
-    */
+     * Date de mise à jour
+     *
+     * @var Datetime
+     */
     protected $updated;
 
     /**
-    * Sinistre de l'intervention
-    *
-    * @var SDIS62\Core\Ops\Entity\Sinistre
-    */
+     * Sinistre de l'intervention
+     *
+     * @var SDIS62\Core\Ops\Entity\Sinistre
+     */
     protected $sinistre;
 
     /**
-    * Engagements sur l'intervention
-    *
-    * @var SDIS62\Core\Ops\Entity\Engagement[]
-    */
+     * Engagements sur l'intervention
+     *
+     * @var SDIS62\Core\Ops\Entity\Engagement[]
+     */
     protected $engagements;
 
     /**
-    * Evenements particuliers de l'intervention
-    *
-    * @var SDIS62\Core\Ops\Entity\Evenement[]
-    */
+     * Evenements particuliers de l'intervention
+     *
+     * @var SDIS62\Core\Ops\Entity\Evenement[]
+     */
     protected $evenements;
 
     /**
-    * Coordonnées de l'intervention ([x,y])
-    *
-    * @var array
-    */
+     * Coordonnées de l'intervention ([x,y])
+     *
+     * @var array
+     */
     protected $coordinates;
 
     /**
-    * Adresse de l'intervention
-    *
-    * @var string
-    */
+     * Adresse de l'intervention
+     *
+     * @var string
+     */
     protected $address;
 
     /**
-    * Numéro INSEE de la commune ou se trouve l'intervention
-    *
-    * @var string
-    */
+     * Numéro INSEE de la commune ou se trouve l'intervention
+     *
+     * @var string
+     */
     protected $numinsee;
 
     /**
@@ -236,7 +233,7 @@ class Intervention
     {
         $updated = $updated instanceof Datetime ? $updated : DateTime::createFromFormat('d-m-Y H:i:s', (string) $updated);
 
-        if($updated > $this->created) {
+        if ($updated > $this->created) {
             $this->updated = $updated;
         }
 
@@ -342,7 +339,7 @@ class Intervention
      */
     public function setCoordinates(array $coordinates)
     {
-        if(count($coordinates) != 2) {
+        if (count($coordinates) != 2) {
             return;
         }
 
@@ -350,7 +347,6 @@ class Intervention
 
         return $this;
     }
-
 
     /**
      * Get the value of Adresse de l'intervention
@@ -399,5 +395,4 @@ class Intervention
 
         return $this;
     }
-
 }

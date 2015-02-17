@@ -12,12 +12,11 @@ class InterventionService
      * Initialisation du service avec les repository utilisés
      *
      * @param SDIS62\Core\Ops\Repository\InterventionRepositoryInterface $intervention_repository
-     * @param SDIS62\Core\Ops\Repository\SinistreRepositoryInterface $sinistre_repository
+     * @param SDIS62\Core\Ops\Repository\SinistreRepositoryInterface     $sinistre_repository
      */
     public function __construct(InterventionRepositoryInterface $intervention_repository,
                                 SinistreRepositoryInterface $sinistre_repository
-    )
-    {
+    ) {
         $this->intervention_repository = $intervention_repository;
         $this->sinistre_repository = $sinistre_repository;
     }
@@ -25,7 +24,7 @@ class InterventionService
     /**
      * Retourne une intervention correspondant à l'id spécifié
      *
-     * @param  mixed                          $id_intervention
+     * @param  mixed                               $id_intervention
      * @return SDIS62\Core\Ops\Entity\Intervention
      */
     public function find($id_intervention)
@@ -36,9 +35,9 @@ class InterventionService
     /**
      * Retourne une intervention correspondant à l'état spécifié
      *
-     * @param  string                       $etat
-     * @param  int                               $count Par défaut: 20
-     * @param  int                               $page  Par défaut: 1
+     * @param  string                                $etat
+     * @param  int                                   $count Par défaut: 20
+     * @param  int                                   $page  Par défaut: 1
      * @return SDIS62\Core\Ops\Entity\Intervention[]
      */
     public function findAllByEtat($etat, $count = 20, $page = 1)
@@ -49,15 +48,15 @@ class InterventionService
     /**
      * Sauvegarde d'une intervention
      *
-     * @param  array $data
-     * @param  array $id_intervention Optionnel
+     * @param  array                               $data
+     * @param  array                               $id_intervention Optionnel
      * @return SDIS62\Core\Ops\Entity\Intervention
      */
     public function save($data, $id_intervention = null)
     {
         $sinistre = $this->sinistre_repository->find($data['sinistre']);
 
-        if(empty($sinistre)) {
+        if (empty($sinistre)) {
             return;
         }
 
@@ -107,7 +106,7 @@ class InterventionService
     /**
      * Suppression d'une intervention
      *
-     * @param  mixed $id_intervention
+     * @param  mixed                               $id_intervention
      * @return SDIS62\Core\Ops\Entity\Intervention
      */
     public function delete($id_intervention)

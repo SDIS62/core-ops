@@ -9,7 +9,7 @@ interface MaterielRepositoryInterface
     /**
      * Retourne un matériel correspondant à l'id spécifié
      *
-     * @param  mixed                          $id_materiel
+     * @param  mixed                           $id_materiel
      * @return SDIS62\Core\Ops\Entity\Materiel
      */
     public function find($id_materiel);

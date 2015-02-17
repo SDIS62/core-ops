@@ -14,17 +14,16 @@ class EngagementService
     /**
      * Initialisation du service avec les repository utilisés
      *
-     * @param SDIS62\Core\Ops\Repository\EngagementRepositoryInterface $engagement_repository
-     * @param SDIS62\Core\Ops\Repository\MaterielRepositoryInterface $intervention_repository
+     * @param SDIS62\Core\Ops\Repository\EngagementRepositoryInterface   $engagement_repository
+     * @param SDIS62\Core\Ops\Repository\MaterielRepositoryInterface     $intervention_repository
      * @param SDIS62\Core\Ops\Repository\InterventionRepositoryInterface $intervention_repository
-     * @param SDIS62\Core\Ops\Repository\PompierRepositoryInterface $pompier_repository
+     * @param SDIS62\Core\Ops\Repository\PompierRepositoryInterface      $pompier_repository
      */
     public function __construct(EngagementRepositoryInterface $engagement_repository,
                                 MaterielRepositoryInterface $materiel_repository,
                                 InterventionRepositoryInterface $intervention_repository,
                                 PompierRepositoryInterface $pompier_repository
-    )
-    {
+    ) {
         $this->engagement_repository = $engagement_repository;
         $this->materiel_repository = $materiel_repository;
         $this->intervention_repository = $intervention_repository;
@@ -34,7 +33,7 @@ class EngagementService
     /**
      * Retourne un engagement correspondant à l'id spécifié
      *
-     * @param  mixed                          $id_engagement
+     * @param  mixed                             $id_engagement
      * @return SDIS62\Core\Ops\Entity\Engagement
      */
     public function find($id_engagement)
@@ -45,8 +44,8 @@ class EngagementService
     /**
      * Sauvegarde d'un engagement
      *
-     * @param  array $data
-     * @param  array $id_engagement Optionnel
+     * @param  array                             $data
+     * @param  array                             $id_engagement Optionnel
      * @return SDIS62\Core\Ops\Entity\Engagement
      */
     public function save($data, $id_engagement = null)
@@ -63,8 +62,7 @@ class EngagementService
                 default:
                     throw new InvalidEngagementException();
             }
-        }
-        else {
+        } else {
             $engagement = $this->engagement_repository->find($data['id']);
         }
 
@@ -80,7 +78,7 @@ class EngagementService
     /**
      * Suppression d'un engagement
      *
-     * @param  mixed $id_engagement
+     * @param  mixed                             $id_engagement
      * @return SDIS62\Core\Ops\Entity\Engagement
      */
     public function delete($id_engagement)

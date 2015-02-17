@@ -71,7 +71,7 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
             'coordinates' => array('X', 'Y'),
             'address' => '11 rue des acacias 62000 Arras',
             'numinsee' => '62000',
-            'important' => true
+            'important' => true,
         );
         $sinistre = new Core\Entity\Sinistre('TA');
         $intervention_expected = new Core\Entity\Intervention($sinistre);
@@ -107,7 +107,7 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
             'coordinates' => array('X2', 'Y2'),
             'address' => '85 rue des acacias 62000 Arras',
             'numinsee' => '62001',
-            'important' => false
+            'important' => false,
         );
         $sinistre1 = new Core\Entity\Sinistre('TA');
         $intervention_updated = new Core\Entity\Intervention($sinistre1);

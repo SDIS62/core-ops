@@ -2,7 +2,6 @@
 
 namespace SDIS62\Core\Ops\Test\Entity\Pompier;
 
-use Datetime;
 use SDIS62\Core\Ops as Core;
 use PHPUnit_Framework_TestCase;
 

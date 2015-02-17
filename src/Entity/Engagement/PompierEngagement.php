@@ -10,24 +10,24 @@ use SDIS62\Core\Ops\Entity\Intervention;
 class PompierEngagement extends Engagement
 {
     /**
-    * Type
-    *
-    * @var string
-    */
+     * Type
+     *
+     * @var string
+     */
     protected $type = 'pompier';
 
     /**
-    * Pompier associé
-    *
-    * @var SDIS62\Core\Ops\Entity\Pompier
-    */
+     * Pompier associé
+     *
+     * @var SDIS62\Core\Ops\Entity\Pompier
+     */
     protected $pompier;
 
     /**
      * Ajout d'un engagement de type pompier à une intervention
      *
-     * @param SDIS62\Core\Ops\Entity\Pompier $pompier
-     * @param SDIS62\Core\Ops\Entity\Materiel $materiel
+     * @param SDIS62\Core\Ops\Entity\Pompier      $pompier
+     * @param SDIS62\Core\Ops\Entity\Materiel     $materiel
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
      */
     public function __construct(Intervention $intervention, Materiel $materiel, Pompier $pompier)
@@ -46,5 +46,4 @@ class PompierEngagement extends Engagement
     {
         return $this->pompier;
     }
-
 }

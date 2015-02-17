@@ -3,8 +3,6 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use Datetime;
-use SDIS62\Core\Ops\Entity\Materiel;
-use SDIS62\Core\Ops\Entity\Intervention;
 use SDIS62\Core\Common\Entity\IdentityTrait;
 use SDIS62\Core\Ops\Exception\InvalidEngagementException;
 
@@ -13,37 +11,37 @@ abstract class Engagement
     use IdentityTrait;
 
     /**
-    * Date de l'engagement
-    *
-    * @var Datetime
-    */
+     * Date de l'engagement
+     *
+     * @var Datetime
+     */
     protected $date;
 
     /**
-    * Etat de l'engagement
-    *
-    * @var string
-    */
+     * Etat de l'engagement
+     *
+     * @var string
+     */
     protected $etat;
 
     /**
-    * Matériel engagé
-    *
-    * @var SDIS62\Core\Ops\Entity\Materiel
-    */
+     * Matériel engagé
+     *
+     * @var SDIS62\Core\Ops\Entity\Materiel
+     */
     protected $materiel;
 
     /**
-    * Intervention concernée
-    *
-    * @var SDIS62\Core\Ops\Entity\Intervention
-    */
+     * Intervention concernée
+     *
+     * @var SDIS62\Core\Ops\Entity\Intervention
+     */
     protected $intervention;
 
     /**
      * Ajout d'un engagement à une intervention
      *
-     * @param SDIS62\Core\Ops\Entity\Materiel $materiel
+     * @param SDIS62\Core\Ops\Entity\Materiel     $materiel
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
      */
     public function __construct(Intervention $intervention, Materiel $materiel)
@@ -66,6 +64,7 @@ abstract class Engagement
         if (empty($this->type)) {
             throw new InvalidEngagementException(get_class($this).' doit avoir un $type');
         }
+
         return $this->type;
     }
 
@@ -122,5 +121,4 @@ abstract class Engagement
     {
         return $this->intervention;
     }
-
 }

@@ -9,7 +9,7 @@ interface EvenementRepositoryInterface
     /**
      * Retourne un évenement
      *
-     * @param  mixed                          $id_evenement
+     * @param  mixed                            $id_evenement
      * @return SDIS62\Core\Ops\Entity\Evenement
      */
     public function find($id_evenement);

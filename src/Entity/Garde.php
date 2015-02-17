@@ -21,37 +21,37 @@ class Garde
      *
      * @var Datetime
      */
-    protected $debut;
+    protected $start;
 
     /**
      * Fin de la garde
      *
      * @var Datetime
      */
-    protected $fin;
+    protected $end;
 
     /**
      * Ajout d'une garde à un spécialiste
      *
      * @param SDIS62\Core\Ops\Entity\Pompier $pompier
-     * @param Datetime                       $debut   Le format peut être d-m-Y H:i
-     * @param Datetime                       $fin     Le format peut être d-m-Y H:i
+     * @param Datetime                       $start   Le format peut être d-m-Y H:i
+     * @param Datetime                       $end     Le format peut être d-m-Y H:i
      */
-    public function __construct(Pompier $pompier, $debut, $fin)
+    public function __construct(Pompier $pompier, $start, $end)
     {
         $this->pompier = $pompier;
         $this->pompier->addGarde($this);
 
-        if ($debut instanceof Datetime) {
-            $this->debut = $debut;
+        if ($start instanceof Datetime) {
+            $this->start = $start;
         } else {
-            $this->debut = DateTime::createFromFormat('d-m-Y H:i', (string) $debut);
+            $this->start = DateTime::createFromFormat('d-m-Y H:i', (string) $start);
         }
 
-        if ($fin instanceof Datetime) {
-            $this->fin = $fin;
+        if ($end instanceof Datetime) {
+            $this->end = $end;
         } else {
-            $this->fin = DateTime::createFromFormat('d-m-Y H:i', (string) $fin);
+            $this->end = DateTime::createFromFormat('d-m-Y H:i', (string) $end);
         }
     }
 
@@ -60,9 +60,9 @@ class Garde
      *
      * @return Datetime
      */
-    public function getDebut()
+    public function getStart()
     {
-        return $this->debut;
+        return $this->start;
     }
 
     /**
@@ -70,9 +70,9 @@ class Garde
      *
      * @return Datetime
      */
-    public function getFin()
+    public function getEnd()
     {
-        return $this->fin;
+        return $this->end;
     }
 
     /**

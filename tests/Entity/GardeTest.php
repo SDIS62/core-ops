@@ -34,17 +34,17 @@ class GardeTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Pompier', self::$object->getPompier());
     }
 
-    public function test_if_it_have_a_dates()
+    public function test_if_it_have_dates()
     {
         $centre = new Core\Entity\Centre("CIS");
         $pompier = new Core\Entity\Pompier("Kevin", "0001", $centre);
 
         $garde = new Core\Entity\Garde($pompier, '14-02-2015 15:00', '14-02-2015 18:00');
-        $this->assertEquals(new DateInterval('PT3H'), date_diff($garde->getDebut(), $garde->getFin()));
+        $this->assertEquals(new DateInterval('PT3H'), date_diff($garde->getStart(), $garde->getEnd()));
 
-        $debut = new Datetime('14-02-2015 15:00');
-        $fin = new Datetime('NOW');
-        $garde = new Core\Entity\Garde($pompier, $debut, $fin);
-        $this->assertEquals(date_diff($debut, $fin), date_diff($garde->getDebut(), $garde->getFin()));
+        $start = new Datetime('14-02-2015 15:00');
+        $end = new Datetime('NOW');
+        $garde = new Core\Entity\Garde($pompier, $start, $end);
+        $this->assertEquals(date_diff($start, $end), date_diff($garde->getStart(), $garde->getEnd()));
     }
 }

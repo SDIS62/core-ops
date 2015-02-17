@@ -62,10 +62,6 @@ class InterventionService
 
         $intervention = empty($id_intervention) ? new Intervention($sinistre) : $this->intervention_repository->find($id_intervention);
 
-        if (!empty($data['etat'])) {
-            $intervention->setEtat($data['etat']);
-        }
-
         if (!empty($data['precision'])) {
             $intervention->setPrecision($data['precision']);
         }
@@ -76,6 +72,10 @@ class InterventionService
 
         if (!empty($data['updated'])) {
             $intervention->setUpdated($data['updated']);
+        }
+
+        if (!empty($data['ended'])) {
+            $intervention->setEnded($data['ended']);
         }
 
         if (!empty($data['sinistre'])) {

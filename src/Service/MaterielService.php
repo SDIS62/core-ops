@@ -53,8 +53,8 @@ class MaterielService
             $materiel->setName($data['name']);
         }
 
-        if (!empty($data['etat'])) {
-            $materiel->setEtat($data['etat']);
+        if (array_key_exists('actif', $data)) {
+            $materiel->setActif($data['actif'] === true);
         }
 
         if (!empty($data['centre'])) {

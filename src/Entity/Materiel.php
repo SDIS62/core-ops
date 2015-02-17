@@ -3,6 +3,7 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use SDIS62\Core\Common\Entity\IdentityTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class Materiel
 {
@@ -16,11 +17,11 @@ class Materiel
     protected $name;
 
     /**
-     * Etat du materiel
+     * Le matériel est il actif ?
      *
-     * @var string
+     * @var boolean
      */
-    protected $etat;
+    protected $actif;
 
     /**
      * Centre dans lequel le matériel est affecté
@@ -28,6 +29,13 @@ class Materiel
      * @var SDIS62\Core\Ops\Entity\Centre
      */
     protected $centre;
+
+    /**
+     * Liste des engagements du matériel
+     *
+     * @var SDIS62\Core\Ops\Entity\Engagement[]
+     */
+    protected $engagements;
 
     /**
      * Ajout d'un materiel à un centre
@@ -40,6 +48,7 @@ class Materiel
         $this->name = $name;
         $this->centre = $centre;
         $this->centre->addMateriel($this);
+        $this->engagements = new ArrayCollection();
     }
 
     /**
@@ -67,25 +76,25 @@ class Materiel
     }
 
     /**
-     * Get the value of Etat du materiel
+     * Get the value of Actif
      *
      * @return string
      */
-    public function getEtat()
+    public function isActif()
     {
-        return $this->etat;
+        return $this->actif === true;
     }
 
     /**
-     * Set the value of Etat du materiel
+     * Set the value of Actif
      *
-     * @param string etat
+     * @param boolean actif
      *
      * @return self
      */
-    public function setEtat($etat)
+    public function setActif($value = true)
     {
-        $this->etat = $etat;
+        $this->actif = $value === true;
 
         return $this;
     }
@@ -112,5 +121,44 @@ class Materiel
         $this->centre = $centre;
 
         return $this;
+    }
+
+    /**
+     * Get the value of Liste des engagements du matériel
+     *
+     * @return SDIS62\Core\Ops\Entity\Engagement[]
+     */
+    public function getEngagements()
+    {
+        return $this->engagements;
+    }
+
+    /**
+     * Ajoute un engagement au matériel
+     *
+     * @param  SDIS62\Core\Ops\Entity\Engagement $engagement
+     * @return self
+     */
+    public function addEngagement(Engagement $engagement)
+    {
+        $this->engagements[] = $engagement;
+
+        return $this;
+    }
+
+    /**
+     * Le matériel est il actuellement engagé ?
+     *
+     * @return boolean
+     */
+    public function isEngage()
+    {
+        foreach ($this->engagements as $engagement) {
+            if (!$engagement->isEnded()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

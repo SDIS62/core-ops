@@ -24,15 +24,26 @@ class PompierEngagement extends Engagement
     protected $pompier;
 
     /**
+     * Matériel engagé
+     *
+     * @var SDIS62\Core\Ops\Entity\Materiel
+     */
+    protected $materiel;
+
+    /**
      * Ajout d'un engagement de type pompier à une intervention
      *
-     * @param SDIS62\Core\Ops\Entity\Pompier      $pompier
-     * @param SDIS62\Core\Ops\Entity\Materiel     $materiel
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
+     * @param SDIS62\Core\Ops\Entity\Materiel     $materiel
+     * @param SDIS62\Core\Ops\Entity\Pompier      $pompier
      */
     public function __construct(Intervention $intervention, Materiel $materiel, Pompier $pompier)
     {
         $this->pompier = $pompier;
+        $this->pompier->addEngagement($this);
+
+        $this->materiel = $materiel;
+        $this->materiel->addEngagement($this);
 
         parent::__construct($intervention, $materiel);
     }
@@ -45,5 +56,15 @@ class PompierEngagement extends Engagement
     public function getPompier()
     {
         return $this->pompier;
+    }
+
+    /**
+     * Get the value of Matériel engagé
+     *
+     * @return SDIS62\Core\Ops\Entity\Materiel
+     */
+    public function getMateriel()
+    {
+        return $this->materiel;
     }
 }

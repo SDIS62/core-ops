@@ -64,7 +64,6 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         // Prepare ..
         $data = array(
             'sinistre' => 1,
-            'etat' => 'en cours',
             'precision' => 'medicamenteuse',
             'observations' => 'TAMED sur Arras',
             'updated' => '15-01-2050 15:00',
@@ -75,7 +74,6 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         );
         $sinistre = new Core\Entity\Sinistre('TA');
         $intervention_expected = new Core\Entity\Intervention($sinistre);
-        $intervention_expected->setEtat('en cours');
         $intervention_expected->setPrecision('medicamenteuse');
         $intervention_expected->setObservations('TAMED sur Arras');
         $intervention_expected->setUpdated('15-01-2050 15:00');
@@ -100,10 +98,10 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         // Prepare ..
         $data = array(
             'sinistre' => 2,
-            'etat' => 'terminee',
             'precision' => 'medic',
             'observations' => 'TAMED sur 62000',
             'updated' => '15-01-2060 15:00',
+            'ended' => '15-01-2061 15:00',
             'coordinates' => array('X2', 'Y2'),
             'address' => '85 rue des acacias 62000 Arras',
             'numinsee' => '62001',
@@ -111,7 +109,6 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         );
         $sinistre1 = new Core\Entity\Sinistre('TA');
         $intervention_updated = new Core\Entity\Intervention($sinistre1);
-        $intervention_updated->setEtat('en cours');
         $intervention_updated->setPrecision('medicamenteuse');
         $intervention_updated->setObservations('TAMED sur Arras');
         $intervention_updated->setUpdated('15-01-2050 15:00');
@@ -121,10 +118,10 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         $intervention_updated->setImportant();
         $sinistre2 = new Core\Entity\Sinistre('Feu de');
         $intervention_expected = new Core\Entity\Intervention($sinistre2);
-        $intervention_expected->setEtat('terminee');
         $intervention_expected->setPrecision('medic');
         $intervention_expected->setObservations('TAMED sur 62000');
         $intervention_expected->setUpdated('15-01-2060 15:00');
+        $intervention_expected->setEnded('15-01-2061 15:00');
         $intervention_expected->setCoordinates(array('X2', 'Y2'));
         $intervention_expected->setAddress('85 rue des acacias 62000 Arras');
         $intervention_expected->setNumInsee('62001');

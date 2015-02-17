@@ -11,9 +11,7 @@ class EvenementTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $sinistre = new Core\Entity\Sinistre("Feu de");
-        $intervention = new Core\Entity\Intervention($sinistre);
-        self::$object = new Core\Entity\Evenement($intervention, 'Description');
+        self::$object = new Core\Entity\Evenement('Description');
     }
 
     public function test_if_it_have_an_id()
@@ -30,11 +28,6 @@ class EvenementTest extends PHPUnit_Framework_TestCase
     public function test_if_it_have_a_date()
     {
         $this->assertInstanceOf('Datetime', self::$object->getDate());
-    }
-
-    public function test_if_it_have_a_intervention()
-    {
-        $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Intervention', self::$object->getIntervention());
     }
 
     public function test_if_it_have_a_description()

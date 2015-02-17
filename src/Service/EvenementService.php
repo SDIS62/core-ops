@@ -4,6 +4,7 @@ namespace SDIS62\Core\Ops\Service;
 
 use SDIS62\Core\Ops\Entity\Evenement;
 use SDIS62\Core\Ops\Repository\EvenementRepositoryInterface;
+use SDIS62\Core\Ops\Repository\EngagementRepositoryInterface;
 use SDIS62\Core\Ops\Repository\InterventionRepositoryInterface;
 
 class EvenementService
@@ -15,10 +16,12 @@ class EvenementService
      * @param SDIS62\Core\Ops\Repository\InterventionRepositoryInterface $intervention_repository
      */
     public function __construct(EvenementRepositoryInterface $evenement_repository,
-                                InterventionRepositoryInterface $intervention_repository
+                                InterventionRepositoryInterface $intervention_repository,
+                                EngagementRepositoryInterface $engagement_repository
     ) {
         $this->evenement_repository = $evenement_repository;
         $this->intervention_repository = $intervention_repository;
+        $this->engagement_repository = $engagement_repository;
     }
 
     /**
@@ -35,19 +38,28 @@ class EvenementService
     /**
      * Création d'un evenement sur une intervention
      *
+     * @param  string                           $type
      * @param  array                            $data
-     * @param  mixed                            $id_intervention
      * @return SDIS62\Core\Ops\Entity\Evenement
      */
-    public function create($data, $id_intervention)
+    public function create($type, $data)
     {
-        $intervention = $this->intervention_repository->find($id_intervention);
+        $evenement = new Evenement($data['description'], array_key_exists('date', $data) ? $data['date'] : null);
 
-        if (empty($intervention)) {
+        switch ($type) {
+            case 'intervention':
+                $object = $this->intervention_repository->find($data['intervention']);
+                break;
+            case 'engagement':
+                $object = $this->engagement_repository->find($data['engagement']);
+                break;
+        }
+
+        if (empty($object)) {
             return;
         }
 
-        $evenement = new Evenement($intervention, $data['description'], array_key_exists('date', $data) ? $data['date'] : null);
+        $object->addEvenement($evenement);
 
         $this->evenement_repository->save($evenement);
 

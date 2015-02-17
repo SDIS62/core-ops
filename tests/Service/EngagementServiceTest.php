@@ -59,9 +59,9 @@ class EngagementServiceTest extends PHPUnit_Framework_TestCase
         $materiel = Mockery::mock('SDIS62\Core\Ops\Entity\Materiel')->makePartial();
         $pompier = Mockery::mock('SDIS62\Core\Ops\Entity\Pompier')->makePartial();
         $engagement_expected = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, $pompier);
-        $engagement_expected->setEtat('En cours');
+
         $repository_intervention->shouldReceive('find')->with(2015)->andReturn($intervention)->twice();
-        $repository_materiel->shouldReceive('find')->with(1)->andReturn($materiel)->twice();
+        $repository_materiel->shouldReceive('find')->with(1)->andReturn($materiel)->once();
         $repository_pompier->shouldReceive('find')->with(2)->andReturn($pompier)->once();
         $repository_engagement->shouldReceive('save')->once();
 
@@ -90,7 +90,7 @@ class EngagementServiceTest extends PHPUnit_Framework_TestCase
         $pompier = Mockery::mock('SDIS62\Core\Ops\Entity\Pompier')->makePartial();
         $engagement_updated = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, $pompier);
         $engagement_expected = $engagement_updated;
-        $engagement_expected->setEtat('Termine');
+
         $repository_engagement->shouldReceive('find')->with(1)->andReturn($engagement_updated)->once();
         $repository_engagement->shouldReceive('save')->once();
 

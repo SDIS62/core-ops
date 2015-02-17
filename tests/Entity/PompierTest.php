@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Test\Entity;
 
+use Datetime;
 use SDIS62\Core\Ops as Core;
 use PHPUnit_Framework_TestCase;
 
@@ -59,6 +60,26 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $garde2 = new Core\Entity\Garde(self::$object, '15-02-2015 15:00', '15-02-2015 18:00');
 
         $this->assertCount(2, self::$object->getGardes());
+    }
+
+    public function test_if_it_have_engagements()
+    {
+        $this->assertCount(0, self::$object->getEngagements());
+        $this->assertFalse(self::$object->isEngage());
+
+        $intervention = new Core\Entity\Intervention(new Core\Entity\Sinistre('Feu de'));
+        $centre = new Core\Entity\Centre('CIS Arras');
+        $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
+
+        $engagement1 = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, self::$object);
+        $engagement2 = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, self::$object);
+
+        $this->assertCount(2, self::$object->getEngagements());
+        $this->assertTrue(self::$object->isEngage());
+
+        $intervention->setEnded(new Datetime('tomorrow'));
+
+        $this->assertFalse(self::$object->isEngage());
     }
 
     public function test_if_it_have_a_type_pompier()

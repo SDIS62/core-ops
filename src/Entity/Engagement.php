@@ -4,6 +4,7 @@ namespace SDIS62\Core\Ops\Entity;
 
 use Datetime;
 use SDIS62\Core\Common\Entity\IdentityTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use SDIS62\Core\Ops\Exception\InvalidEngagementException;
 
 abstract class Engagement
@@ -11,25 +12,25 @@ abstract class Engagement
     use IdentityTrait;
 
     /**
-     * Date de l'engagement
+     * Création de l'engagement
      *
      * @var Datetime
      */
-    protected $date;
+    protected $created;
 
     /**
-     * Etat de l'engagement
+     * Fin de l'engagement
      *
-     * @var string
+     * @var Datetime
      */
-    protected $etat;
+    protected $ended;
 
     /**
-     * Matériel engagé
+     * Evenements particuliers de l'engagement
      *
-     * @var SDIS62\Core\Ops\Entity\Materiel
+     * @var SDIS62\Core\Ops\Entity\Evenement[]
      */
-    protected $materiel;
+    protected $evenements;
 
     /**
      * Intervention concernée
@@ -41,17 +42,16 @@ abstract class Engagement
     /**
      * Ajout d'un engagement à une intervention
      *
-     * @param SDIS62\Core\Ops\Entity\Materiel     $materiel
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
      */
-    public function __construct(Intervention $intervention, Materiel $materiel)
+    public function __construct(Intervention $intervention)
     {
         $this->intervention = $intervention;
         $this->intervention->addEngagement($this);
 
-        $this->materiel = $materiel;
+        $this->evenements = new ArrayCollection();
 
-        $this->date = new Datetime('NOW');
+        $this->created = new Datetime('NOW');
     }
 
     /**
@@ -69,47 +69,84 @@ abstract class Engagement
     }
 
     /**
-     * Get the value of Date de l'engagement
+     * Get the value of Création de l'engagement
      *
      * @return Datetime
      */
-    public function getDate()
+    public function getCreated()
     {
-        return $this->date;
+        return $this->created;
     }
 
     /**
-     * Get the value of Etat de l'engagement
+     * Get the value of Date de fin
      *
-     * @return string
+     * @return Datetime|null
      */
-    public function getEtat()
+    public function getEnded()
     {
-        return $this->etat;
+        return $this->ended;
     }
 
     /**
-     * Set the value of Etat de l'engagement
+     * Set the value of Date de fin (la date doit être supérieure à la date de création)
      *
-     * @param string etat
+     * @param Datetime|string ended Format d-m-Y H:i:s
      *
      * @return self
      */
-    public function setEtat($etat)
+    public function setEnded($ended)
     {
-        $this->etat = $etat;
+        $ended = $ended instanceof Datetime ? $ended : DateTime::createFromFormat('d-m-Y H:i:s', (string) $ended);
+
+        if ($ended > $this->created) {
+            $this->ended = $ended;
+        }
 
         return $this;
     }
 
     /**
-     * Get the value of Matériel engagé
+     * Retourne vrai si l'engagement est terminée
      *
-     * @return SDIS62\Core\Ops\Entity\Materiel
+     * @return boolean
      */
-    public function getMateriel()
+    public function isEnded()
     {
-        return $this->materiel;
+        return !empty($this->ended);
+    }
+
+    /**
+     * Get the value of Evenements particuliers de l'engagement
+     *
+     * @return SDIS62\Core\Ops\Entity\Evenement[]
+     */
+    public function getEvenements()
+    {
+        if (count($this->evenements) == 0) {
+            return array();
+        }
+
+        $evenements = $this->evenements->toArray();
+
+        @usort($evenements, function ($a, $b) {
+            return $a->getDate()->format('U') < $b->getDate()->format('U') ? -1 : 1;
+        });
+
+        return $evenements;
+    }
+
+    /**
+     * Ajoute un evenement à l'engagement
+     *
+     * @param  SDIS62\Core\Ops\Entity\Evenement $evenement
+     * @return self
+     */
+    public function addEvenement(Evenement $evenement)
+    {
+        $this->evenements[] = $evenement;
+
+        return $this;
     }
 
     /**

@@ -51,11 +51,11 @@ class EngagementService
     public function save($data, $id_engagement = null)
     {
         if (empty($id_engagement)) {
-            $materiel = $this->materiel_repository->find($data['materiel']);
             $intervention = $this->intervention_repository->find($data['intervention']);
 
             switch ($data['type']) {
                 case 'pompier' :
+                    $materiel = $this->materiel_repository->find($data['materiel']);
                     $pompier = $this->pompier_repository->find($data['pompier']);
                     $engagement = new Engagement\PompierEngagement($intervention, $materiel, $pompier);
                     break;
@@ -66,9 +66,7 @@ class EngagementService
             $engagement = $this->engagement_repository->find($data['id']);
         }
 
-        if (!empty($data['etat'])) {
-            $engagement->setEtat($data['etat']);
-        }
+// evenements
 
         $this->engagement_repository->save($engagement);
 

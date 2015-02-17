@@ -28,13 +28,6 @@ class InterventionTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Intervention', self::$object);
     }
 
-    public function test_if_it_have_a_etat()
-    {
-        self::$object->setEtat('En cours');
-        $this->assertEquals('En cours', self::$object->getEtat());
-        $this->assertInternalType('string', self::$object->getEtat());
-    }
-
     public function test_if_it_have_a_precision()
     {
         self::$object->setPrecision('Precision intervention');
@@ -92,12 +85,44 @@ class InterventionTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Datetime', self::$object->getUpdated());
     }
 
+    public function test_if_it_have_a_end_date()
+    {
+        $this->assertFalse(self::$object->isEnded());
+
+        $centre = new Core\Entity\Centre('CIS Arras');
+        $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
+        $pompier = new Core\Entity\Pompier('Kevin', '0001', $centre);
+
+        $engagement1 = new Core\Entity\Engagement\PompierEngagement(self::$object, $materiel, $pompier);
+        $engagement2 = new Core\Entity\Engagement\PompierEngagement(self::$object, $materiel, $pompier);
+
+        $created = self::$object->getCreated();
+        self::$object->setEnded($created);
+        $this->assertNull(self::$object->getEnded());
+
+        $old = $created->sub(new DateInterval('PT1H'));
+        self::$object->setEnded($old);
+        $this->assertNull(self::$object->getEnded());
+
+        $updated = new Datetime('tomorrow');
+        self::$object->setEnded($updated);
+        $this->assertEquals($updated, self::$object->getEnded());
+
+        self::$object->setEnded('01-01-2050 15:00:00');
+        $this->assertEquals('01-01-2050 15:00:00', self::$object->getEnded()->format('d-m-Y H:i:s'));
+
+        $this->assertInstanceOf('\Datetime', self::$object->getEnded());
+
+        $this->assertTrue($engagement1->isEnded());
+        $this->assertTrue($engagement2->isEnded());
+    }
+
     public function test_if_it_have_a_sinistre()
     {
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Sinistre', self::$object->getSinistre());
     }
 
-    public function test_if_it_have_a_engagements()
+    public function test_if_it_have_engagements()
     {
         $this->assertCount(0, self::$object->getEngagements());
 
@@ -111,13 +136,13 @@ class InterventionTest extends PHPUnit_Framework_TestCase
         $this->assertCount(2, self::$object->getEngagements());
     }
 
-    public function test_if_it_have_a_evenements()
+    public function test_if_it_have_evenements()
     {
         $this->assertCount(0, self::$object->getEvenements());
 
-        $evenement1 = new Core\Entity\Evenement(self::$object, 'Arrive sur les lieux');
-        $evenement2 = new Core\Entity\Evenement(self::$object, 'Intervention terminee', '01-01-2050 15:00:00');
-        $evenement3 = new Core\Entity\Evenement(self::$object, 'Secours', new Datetime('tomorrow'));
+        self::$object->addEvenement(new Core\Entity\Evenement('Arrive sur les lieux'));
+        self::$object->addEvenement(new Core\Entity\Evenement('Intervention terminee', '01-01-2050 15:00:00'));
+        self::$object->addEvenement(new Core\Entity\Evenement('Secours', new Datetime('tomorrow')));
 
         $this->assertCount(3, self::$object->getEvenements());
         $this->assertEquals('Arrive sur les lieux', self::$object->getEvenements()[0]->getDescription());

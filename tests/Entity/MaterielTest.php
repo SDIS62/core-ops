@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Test\Entity;
 
+use Datetime;
 use SDIS62\Core\Ops as Core;
 use PHPUnit_Framework_TestCase;
 
@@ -46,11 +47,37 @@ class MaterielTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
     }
 
-    public function test_if_it_have_a_etat()
+    public function test_if_it_have_a_active_status()
     {
-        self::$object->setEtat('Disponible');
+        $this->assertFalse(self::$object->isActif());
 
-        $this->assertEquals('Disponible', self::$object->getEtat());
-        $this->assertInternalType('string', self::$object->getEtat());
+        self::$object->setActif(false);
+
+        $this->assertFalse(self::$object->isActif());
+
+        self::$object->setActif();
+
+        $this->assertTrue(self::$object->isActif());
+        $this->assertInternalType('bool', self::$object->isActif());
+    }
+
+    public function test_if_it_have_engagements()
+    {
+        $this->assertCount(0, self::$object->getEngagements());
+        $this->assertFalse(self::$object->isEngage());
+
+        $intervention = new Core\Entity\Intervention(new Core\Entity\Sinistre('Feu de'));
+        $centre = new Core\Entity\Centre('CIS Arras');
+        $pompier = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
+
+        $engagement1 = new Core\Entity\Engagement\PompierEngagement($intervention, self::$object, $pompier);
+        $engagement2 = new Core\Entity\Engagement\PompierEngagement($intervention, self::$object, $pompier);
+
+        $this->assertCount(2, self::$object->getEngagements());
+        $this->assertTrue(self::$object->isEngage());
+
+        $intervention->setEnded(new Datetime('tomorrow'));
+
+        $this->assertFalse(self::$object->isEngage());
     }
 }

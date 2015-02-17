@@ -48,10 +48,10 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $service = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data = array('name' => 'VSAV1', 'etat' => 'disponible', 'centre' => 1);
+        $data = array('name' => 'VSAV1', 'actif' => true, 'centre' => 1);
         $centre = new Core\Entity\Centre('CIS Arras');
         $materiel_expected = new Core\Entity\Materiel($centre, 'VSAV1');
-        $materiel_expected->setEtat('disponible');
+        $materiel_expected->setActif();
         $repository_centre->shouldReceive('find')->with(1)->andReturn($centre)->once();
         $repository_materiel->shouldReceive('save')->once();
 
@@ -67,13 +67,13 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $service = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data = array('name' => 'VSAV2', 'etat' => 'non dispo', 'centre' => 2);
+        $data = array('name' => 'VSAV2', 'actif' => false, 'centre' => 2);
         $centre1 = new Core\Entity\Centre('CIS Arras');
         $materiel_updated = new Core\Entity\Materiel($centre1, 'VSAV1');
-        $materiel_updated->setEtat('disponible');
+        $materiel_updated->setActif();
         $centre2 = new Core\Entity\Centre('CIS Bethune');
         $materiel_expected = new Core\Entity\Materiel($centre2, 'VSAV2');
-        $materiel_expected->setEtat('non dispo');
+        $materiel_expected->setActif(false);
         $repository_centre->shouldReceive('find')->with(2)->andReturn($centre2)->once();
         $repository_centre->shouldReceive('find')->with(3)->andReturn(null)->once();
         $repository_materiel->shouldReceive('find')->with(15)->andReturn($materiel_updated)->once();

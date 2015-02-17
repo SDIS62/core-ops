@@ -11,13 +11,6 @@ class Intervention
     use IdentityTrait;
 
     /**
-     * Etat de l'intervention
-     *
-     * @var string
-     */
-    protected $etat;
-
-    /**
      * Précision sur le sinistre de l'intervention
      *
      * @var string
@@ -51,6 +44,13 @@ class Intervention
      * @var Datetime
      */
     protected $updated;
+
+    /**
+     * Date de fin
+     *
+     * @var Datetime
+     */
+    protected $ended;
 
     /**
      * Sinistre de l'intervention
@@ -104,30 +104,6 @@ class Intervention
         $this->created = new Datetime('NOW');
         $this->evenements = new ArrayCollection();
         $this->engagements = new ArrayCollection();
-    }
-
-    /**
-     * Get the value of Etat de l'intervention
-     *
-     * @return string
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
-    /**
-     * Set the value of Etat de l'intervention
-     *
-     * @param string etat
-     *
-     * @return self
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-
-        return $this;
     }
 
     /**
@@ -197,7 +173,7 @@ class Intervention
      */
     public function setImportant($important = true)
     {
-        $this->important = $important;
+        $this->important = $important === true;
 
         return $this;
     }
@@ -238,6 +214,49 @@ class Intervention
         }
 
         return $this;
+    }
+
+    /**
+     * Get the value of Date de fin
+     *
+     * @return Datetime|null
+     */
+    public function getEnded()
+    {
+        return $this->ended;
+    }
+
+    /**
+     * Set the value of Date de fin (la date doit être supérieure à la date de création et de mise à jour)
+     * Met fin à tous les engagements
+     *
+     * @param Datetime|string ended Format d-m-Y H:i:s
+     *
+     * @return self
+     */
+    public function setEnded($ended)
+    {
+        $ended = $ended instanceof Datetime ? $ended : DateTime::createFromFormat('d-m-Y H:i:s', (string) $ended);
+
+        if ($ended > $this->created && (empty($this->updated) || $ended >= $this->updated)) {
+            $this->ended = $ended;
+
+            foreach ($this->engagements as $engagement) {
+                $engagement->setEnded($ended);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Retourne vrai si l'intervention est terminée
+     *
+     * @return boolean
+     */
+    public function isEnded()
+    {
+        return !empty($this->ended);
     }
 
     /**

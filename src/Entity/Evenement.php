@@ -24,20 +24,13 @@ class Evenement
     protected $description;
 
     /**
-     * Intervention concernée
-     *
-     * @var SDIS62\Core\Ops\Entity\Intervention
-     */
-    protected $intervention;
-
-    /**
      * Ajout d'un evenement à une intervention
      *
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
      * @param string                              $description
      * @param Datetime|string|null                $date         Optionnel
      */
-    public function __construct(Intervention $intervention, $description, $date = null)
+    public function __construct($description, $date = null)
     {
         if ($date instanceof Datetime) {
             $this->date = $date;
@@ -48,9 +41,6 @@ class Evenement
         }
 
         $this->description = $description;
-
-        $this->intervention = $intervention;
-        $this->intervention->addEvenement($this);
     }
 
     /**
@@ -71,15 +61,5 @@ class Evenement
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Get the value of Intervention
-     *
-     * @return SDIS62\Core\Ops\Entity\Intervention
-     */
-    public function getIntervention()
-    {
-        return $this->intervention;
     }
 }

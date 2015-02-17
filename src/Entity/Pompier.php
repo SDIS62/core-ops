@@ -3,6 +3,8 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use SDIS62\Core\Common\Entity\IdentityTrait;
+use Doctrine\Common\Collections\ArrayCollection;
+use SDIS62\Core\Ops\Entity\Engagement\PompierEngagement;
 
 class Pompier
 {
@@ -37,6 +39,13 @@ class Pompier
     protected $matricule;
 
     /**
+     * Engagement du pompier
+     *
+     * @var SDIS62\Core\Ops\Entity\Engagement\PompierEngagement[]
+     */
+    protected $engagements;
+
+    /**
      * Nom du pompier
      *
      * @var string
@@ -55,6 +64,7 @@ class Pompier
         $this->setName($name);
         $this->setMatricule($matricule);
         $this->setCentre($centre);
+        $this->engagements = new ArrayCollection();
     }
 
     /**
@@ -156,6 +166,45 @@ class Pompier
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * Get the value of Liste des engagements du pompier
+     *
+     * @return SDIS62\Core\Ops\Entity\Engagement\PompierEngagement[]
+     */
+    public function getEngagements()
+    {
+        return $this->engagements;
+    }
+
+    /**
+     * Ajoute un engagement au pompier
+     *
+     * @param  SDIS62\Core\Ops\Entity\Engagement\PompierEngagement $engagement
+     * @return self
+     */
+    public function addEngagement(PompierEngagement $engagement)
+    {
+        $this->engagements[] = $engagement;
+
+        return $this;
+    }
+
+    /**
+     * Le matériel est il actuellement engagé ?
+     *
+     * @return boolean
+     */
+    public function isEngage()
+    {
+        foreach ($this->engagements as $engagement) {
+            if (!$engagement->isEnded()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

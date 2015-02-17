@@ -30,6 +30,11 @@ class PompierEngagementTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Pompier', self::$object->getPompier());
     }
 
+    public function test_if_it_have_a_materiel()
+    {
+        $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Materiel', self::$object->getMateriel());
+    }
+
     public function test_if_it_have_a_type_pompier()
     {
         $this->assertEquals('pompier', self::$object->getType());

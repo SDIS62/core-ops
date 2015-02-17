@@ -18,9 +18,11 @@ interface InterventionRepositoryInterface
      * Retourne une intervention correspondant à l'état spécifié
      *
      * @param  string                       $etat
+     * @param  int                               $count Par défaut: 20
+     * @param  int                               $page  Par défaut: 1
      * @return SDIS62\Core\Ops\Entity\Intervention[]
      */
-    public function findAllByEtat($etat);
+    public function findAllByEtat($etat, $count = 20, $page = 1);
 
     /**
      * Sauvegarde d'une intervention

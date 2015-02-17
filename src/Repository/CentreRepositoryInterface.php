@@ -9,9 +9,11 @@ interface CentreRepositoryInterface
     /**
      * Retourne un ensemble de CIS
      *
+     * @param  int                               $count Par défaut: 20
+     * @param  int                               $page  Par défaut: 1
      * @return SDIS62\Core\User\Entity\Centre[]
      */
-    public function getAll();
+    public function getAll($count = 20, $page = 1);
 
     /**
      * Retourne un CIS correspondant à l'id spécifié
@@ -25,9 +27,11 @@ interface CentreRepositoryInterface
      * Retourne des CIS correspondant au nom spécifié
      *
      * @param  string                       $name
+     * @param  int                               $count Par défaut: 20
+     * @param  int                               $page  Par défaut: 1
      * @return SDIS62\Core\Ops\Entity\Centre[]
      */
-    public function findAllByName($name);
+    public function findAllByName($name, $count = 20, $page = 1);
 
     /**
      * Sauvegarde d'un centre

@@ -15,7 +15,7 @@ class SinistreServiceTest extends PHPUnit_Framework_TestCase
         $service = new Core\Service\SinistreService($repository_sinistre);
 
         // Prepare ..
-        $repository_sinistre->shouldReceive('getAll')->andReturn(true)->once();
+        $repository_sinistre->shouldReceive('getAll')->with(20, 1)->andReturn(true)->once();
 
         // Test!
         $this->assertTrue($service->getAll());

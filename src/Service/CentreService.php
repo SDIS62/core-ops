@@ -20,11 +20,13 @@ class CentreService
     /**
      * Retourne un ensemble de CIS
      *
+     * @param  int                               $count Par défaut: 20
+     * @param  int                               $page  Par défaut: 1
      * @return SDIS62\Core\User\Entity\Centre[]
      */
-    public function getAll()
+    public function getAll($count = 20, $page = 1)
     {
-        return $this->centre_repository->getAll();
+        return $this->centre_repository->getAll($count, $page);
     }
 
     /**
@@ -42,11 +44,13 @@ class CentreService
      * Retourne des CIS correspondant au nom spécifié
      *
      * @param  string                       $name
+     * @param  int                               $count Par défaut: 20
+     * @param  int                               $page  Par défaut: 1
      * @return SDIS62\Core\Ops\Entity\Centre[]
      */
-    public function findAllByName($name)
+    public function findAllByName($name, $count = 20, $page = 1)
     {
-        return $this->centre_repository->findAllByName($name);
+        return $this->centre_repository->findAllByName($name, $count, $page);
     }
 
     /**

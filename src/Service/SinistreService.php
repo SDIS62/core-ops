@@ -20,11 +20,13 @@ class SinistreService
     /**
      * Retourne un ensemble de sinistre
      *
+     * @param  int                               $count Par défaut: 20
+     * @param  int                               $page  Par défaut: 1
      * @return SDIS62\Core\User\Entity\Sinistre[]
      */
-    public function getAll()
+    public function getAll($count = 20, $page = 1)
     {
-        return $this->sinistre_repository->getAll();
+        return $this->sinistre_repository->getAll($count, $page);
     }
 
     /**

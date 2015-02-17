@@ -30,7 +30,7 @@ class PompierServiceTest extends PHPUnit_Framework_TestCase
         $service = new Core\Service\PompierService($repository_pompier, $repository_centre);
 
         // Prepare ..
-        $repository_pompier->shouldReceive('findAllByName')->with('test')->andReturn(true)->once();
+        $repository_pompier->shouldReceive('findAllByName')->with('test', 20, 1)->andReturn(true)->once();
 
         // Test!
         $this->assertTrue($service->findAllByName('test'));

@@ -15,7 +15,7 @@ class CentreServiceTest extends PHPUnit_Framework_TestCase
         $service = new Core\Service\CentreService($repository_centre);
 
         // Prepare ..
-        $repository_centre->shouldReceive('getAll')->andReturn(true)->once();
+        $repository_centre->shouldReceive('getAll')->with(20, 1)->andReturn(true)->once();
 
         // Test!
         $this->assertTrue($service->getAll());
@@ -41,7 +41,7 @@ class CentreServiceTest extends PHPUnit_Framework_TestCase
         $service = new Core\Service\CentreService($repository_centre);
 
         // Prepare ..
-        $repository_centre->shouldReceive('findAllByName')->with('test')->andReturn(true)->once();
+        $repository_centre->shouldReceive('findAllByName')->with('test', 20, 1)->andReturn(true)->once();
 
         // Test!
         $this->assertTrue($service->findAllByName('test'));

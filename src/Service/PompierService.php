@@ -38,11 +38,13 @@ class PompierService
      * Retourne un pompier correspondant au nom spécifié
      *
      * @param  string                       $name
+     * @param  int                               $count Par défaut: 20
+     * @param  int                               $page  Par défaut: 1
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
-    public function findAllByName($name)
+    public function findAllByName($name, $count = 20, $page = 1)
     {
-        return $this->pompier_repository->findAllByName($name);
+        return $this->pompier_repository->findAllByName($name, $count, $page);
     }
 
     /**

@@ -30,7 +30,7 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         $service = new Core\Service\InterventionService($repository_intervention, $repository_sinistre);
 
         // Prepare ..
-        $repository_intervention->shouldReceive('findAllByEtat')->with('test')->andReturn(true)->once();
+        $repository_intervention->shouldReceive('findAllByEtat')->with('test', 20, 1)->andReturn(true)->once();
 
         // Test!
         $this->assertTrue($service->findAllByEtat('test'));

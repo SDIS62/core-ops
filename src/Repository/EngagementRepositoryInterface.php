@@ -3,8 +3,6 @@
 namespace SDIS62\Core\Ops\Repository;
 
 use SDIS62\Core\Ops\Entity\Engagement;
-use SDIS62\Core\Ops\Entity\Engagement\SapeurEngagement;
-use SDIS62\Core\Ops\Entity\Engagement\SpecialisteEngagement;
 
 interface EngagementRepositoryInterface
 {

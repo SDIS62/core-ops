@@ -8,7 +8,7 @@ use SDIS62\Core\Ops\Repository\SinistreRepositoryInterface;
 class SinistreService
 {
     /**
-     * Initialisation du service avec les repository utilisés
+     * Initialisation du service avec les repository utilisés.
      *
      * @param SDIS62\Core\Ops\Repository\SinistreRepositoryInterface $sinistre_repository
      */
@@ -18,10 +18,11 @@ class SinistreService
     }
 
     /**
-     * Retourne un ensemble de sinistre
+     * Retourne un ensemble de sinistre.
      *
-     * @param  int                                $count Par défaut: 20
-     * @param  int                                $page  Par défaut: 1
+     * @param int $count Par défaut: 20
+     * @param int $page  Par défaut: 1
+     *
      * @return SDIS62\Core\User\Entity\Sinistre[]
      */
     public function getAll($count = 20, $page = 1)
@@ -30,9 +31,10 @@ class SinistreService
     }
 
     /**
-     * Retourne un sinistre correspondant à l'id spécifié
+     * Retourne un sinistre correspondant à l'id spécifié.
      *
-     * @param  mixed                           $id_sinistre
+     * @param mixed $id_sinistre
+     *
      * @return SDIS62\Core\Ops\Entity\Sinistre
      */
     public function find($id_sinistre)
@@ -41,10 +43,11 @@ class SinistreService
     }
 
     /**
-     * Sauvegarde d'un sinistre
+     * Sauvegarde d'un sinistre.
      *
-     * @param  array                           $data
-     * @param  array                           $id_sinistre Optionnel
+     * @param array $data
+     * @param array $id_sinistre Optionnel
+     *
      * @return SDIS62\Core\Ops\Entity\Sinistre
      */
     public function save($data, $id_sinistre = null)
@@ -61,9 +64,10 @@ class SinistreService
     }
 
     /**
-     * Suppression d'un sinistre
+     * Suppression d'un sinistre.
      *
-     * @param  mixed                           $id_sinistre
+     * @param mixed $id_sinistre
+     *
      * @return SDIS62\Core\Ops\Entity\Sinistre
      */
     public function delete($id_sinistre)

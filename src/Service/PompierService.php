@@ -10,7 +10,7 @@ use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
 class PompierService
 {
     /**
-     * Initialisation du service avec les repository utilisés
+     * Initialisation du service avec les repository utilisés.
      *
      * @param SDIS62\Core\Ops\Repository\PompierRepositoryInterface $pompier_repository
      * @param SDIS62\Core\Ops\Repository\CentreRepositoryInterface  $centre_repository
@@ -23,9 +23,10 @@ class PompierService
     }
 
     /**
-     * Retourne un pompier correspondant à l'id spécifié
+     * Retourne un pompier correspondant à l'id spécifié.
      *
-     * @param  mixed                          $id_pompier
+     * @param mixed $id_pompier
+     *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
     public function find($id_pompier)
@@ -34,11 +35,12 @@ class PompierService
     }
 
     /**
-     * Retourne un pompier correspondant au nom spécifié
+     * Retourne un pompier correspondant au nom spécifié.
      *
-     * @param  string                         $name
-     * @param  int                            $count Par défaut: 20
-     * @param  int                            $page  Par défaut: 1
+     * @param string $name
+     * @param int    $count Par défaut: 20
+     * @param int    $page  Par défaut: 1
+     *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
     public function findAllByName($name, $count = 20, $page = 1)
@@ -47,10 +49,11 @@ class PompierService
     }
 
     /**
-     * Sauvegarde d'un pompier
+     * Sauvegarde d'un pompier.
      *
-     * @param  array                          $data
-     * @param  array                          $id_pompier Optionnel
+     * @param array $data
+     * @param array $id_pompier Optionnel
+     *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
     public function save($data, $id_pompier = null)
@@ -97,9 +100,10 @@ class PompierService
     }
 
     /**
-     * Suppression d'un pompier
+     * Suppression d'un pompier.
      *
-     * @param  mixed                          $id_pompier
+     * @param mixed $id_pompier
+     *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
     public function delete($id_pompier)

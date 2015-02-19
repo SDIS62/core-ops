@@ -12,35 +12,35 @@ abstract class Engagement
     use IdentityTrait;
 
     /**
-     * Création de l'engagement
+     * Création de l'engagement.
      *
      * @var Datetime
      */
     protected $created;
 
     /**
-     * Fin de l'engagement
+     * Fin de l'engagement.
      *
      * @var Datetime
      */
     protected $ended;
 
     /**
-     * Evenements particuliers de l'engagement
+     * Evenements particuliers de l'engagement.
      *
      * @var SDIS62\Core\Ops\Entity\Evenement[]
      */
     protected $evenements;
 
     /**
-     * Intervention concernée
+     * Intervention concernée.
      *
      * @var SDIS62\Core\Ops\Entity\Intervention
      */
     protected $intervention;
 
     /**
-     * Ajout d'un engagement à une intervention
+     * Ajout d'un engagement à une intervention.
      *
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
      */
@@ -55,7 +55,7 @@ abstract class Engagement
     }
 
     /**
-     * Get the value of Type de l'engagement
+     * Get the value of Type de l'engagement.
      *
      * @return string
      */
@@ -69,7 +69,7 @@ abstract class Engagement
     }
 
     /**
-     * Get the value of Création de l'engagement
+     * Get the value of Création de l'engagement.
      *
      * @return Datetime
      */
@@ -79,7 +79,7 @@ abstract class Engagement
     }
 
     /**
-     * Get the value of Date de fin
+     * Get the value of Date de fin.
      *
      * @return Datetime|null
      */
@@ -89,7 +89,7 @@ abstract class Engagement
     }
 
     /**
-     * Set the value of Date de fin (la date doit être supérieure à la date de création)
+     * Set the value of Date de fin (la date doit être supérieure à la date de création).
      *
      * @param Datetime|string ended Format d-m-Y H:i:s
      *
@@ -107,7 +107,7 @@ abstract class Engagement
     }
 
     /**
-     * Retourne vrai si l'engagement est terminée
+     * Retourne vrai si l'engagement est terminée.
      *
      * @return boolean
      */
@@ -117,7 +117,7 @@ abstract class Engagement
     }
 
     /**
-     * Get the value of Evenements particuliers de l'engagement
+     * Get the value of Evenements particuliers de l'engagement.
      *
      * @return SDIS62\Core\Ops\Entity\Evenement[]
      */
@@ -137,9 +137,10 @@ abstract class Engagement
     }
 
     /**
-     * Ajoute un evenement à l'engagement
+     * Ajoute un evenement à l'engagement.
      *
-     * @param  SDIS62\Core\Ops\Entity\Evenement $evenement
+     * @param SDIS62\Core\Ops\Entity\Evenement $evenement
+     *
      * @return self
      */
     public function addEvenement(Evenement $evenement)
@@ -150,7 +151,7 @@ abstract class Engagement
     }
 
     /**
-     * Get the value of Intervention
+     * Get the value of Intervention.
      *
      * @return SDIS62\Core\Ops\Entity\Intervention
      */

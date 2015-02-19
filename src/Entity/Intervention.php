@@ -11,14 +11,14 @@ class Intervention
     use IdentityTrait;
 
     /**
-     * Précision sur le sinistre de l'intervention
+     * Précision sur le sinistre de l'intervention.
      *
      * @var string
      */
     protected $precision;
 
     /**
-     * Observations
+     * Observations.
      *
      * @var string
      */
@@ -32,71 +32,70 @@ class Intervention
     protected $important;
 
     /**
-     * Date de création
+     * Date de création.
      *
      * @var Datetime
      */
     protected $created;
 
     /**
-     * Date de mise à jour
+     * Date de mise à jour.
      *
      * @var Datetime
      */
     protected $updated;
 
     /**
-     * Date de fin
+     * Date de fin.
      *
      * @var Datetime
      */
     protected $ended;
 
     /**
-     * Sinistre de l'intervention
+     * Sinistre de l'intervention.
      *
      * @var SDIS62\Core\Ops\Entity\Sinistre
      */
     protected $sinistre;
 
     /**
-     * Engagements sur l'intervention
+     * Engagements sur l'intervention.
      *
      * @var SDIS62\Core\Ops\Entity\Engagement[]
      */
     protected $engagements;
 
     /**
-     * Evenements particuliers de l'intervention
+     * Evenements particuliers de l'intervention.
      *
      * @var SDIS62\Core\Ops\Entity\Evenement[]
      */
     protected $evenements;
 
     /**
-     * Coordonnées de l'intervention ([x,y])
+     * Coordonnées de l'intervention ([x,y]).
      *
      * @var array
      */
     protected $coordinates;
 
     /**
-     * Adresse de l'intervention
+     * Adresse de l'intervention.
      *
      * @var string
      */
     protected $address;
 
     /**
-     * Commune ou se place l'intervention
+     * Commune ou se place l'intervention.
      *
      * @var SDIS62\Core\Ops\Entity\Commune
      */
     protected $commune;
 
     /**
-     * Création d'une intervention
-     *
+     * Création d'une intervention.
      */
     public function __construct(Sinistre $sinistre)
     {
@@ -107,7 +106,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Précision sur le sinistre de l'intervention
+     * Get the value of Précision sur le sinistre de l'intervention.
      *
      * @return string
      */
@@ -117,7 +116,7 @@ class Intervention
     }
 
     /**
-     * Set the value of Précision sur le sinistre de l'intervention
+     * Set the value of Précision sur le sinistre de l'intervention.
      *
      * @param string precision
      *
@@ -131,7 +130,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Observations
+     * Get the value of Observations.
      *
      * @return string
      */
@@ -141,7 +140,7 @@ class Intervention
     }
 
     /**
-     * Set the value of Observations
+     * Set the value of Observations.
      *
      * @param string observations
      *
@@ -179,7 +178,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Date de création
+     * Get the value of Date de création.
      *
      * @return Datetime
      */
@@ -189,7 +188,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Date de mise à jour
+     * Get the value of Date de mise à jour.
      *
      * @return Datetime|null
      */
@@ -199,7 +198,7 @@ class Intervention
     }
 
     /**
-     * Set the value of Date de mise à jour (la date doit être supérieure à la date de création)
+     * Set the value of Date de mise à jour (la date doit être supérieure à la date de création).
      *
      * @param Datetime|string updated Format d-m-Y H:i:s
      *
@@ -217,7 +216,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Date de fin
+     * Get the value of Date de fin.
      *
      * @return Datetime|null
      */
@@ -228,7 +227,7 @@ class Intervention
 
     /**
      * Set the value of Date de fin (la date doit être supérieure à la date de création et de mise à jour)
-     * Met fin à tous les engagements
+     * Met fin à tous les engagements.
      *
      * @param Datetime|string ended Format d-m-Y H:i:s
      *
@@ -250,7 +249,7 @@ class Intervention
     }
 
     /**
-     * Retourne vrai si l'intervention est terminée
+     * Retourne vrai si l'intervention est terminée.
      *
      * @return boolean
      */
@@ -260,7 +259,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Sinistre de l'intervention
+     * Get the value of Sinistre de l'intervention.
      *
      * @return SDIS62\Core\Ops\Entity\Sinistre
      */
@@ -270,7 +269,7 @@ class Intervention
     }
 
     /**
-     * Set the value of Sinistre de l'intervention
+     * Set the value of Sinistre de l'intervention.
      *
      * @param SDIS62\Core\Ops\Entity\Sinistre sinistre
      *
@@ -284,7 +283,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Engagements sur l'intervention
+     * Get the value of Engagements sur l'intervention.
      *
      * @return SDIS62\Core\Ops\Entity\Engagement[]
      */
@@ -294,9 +293,10 @@ class Intervention
     }
 
     /**
-     * Ajoute un engagement à l'intervention
+     * Ajoute un engagement à l'intervention.
      *
-     * @param  SDIS62\Core\Ops\Entity\Engagement $engagement
+     * @param SDIS62\Core\Ops\Entity\Engagement $engagement
+     *
      * @return self
      */
     public function addEngagement(Engagement $engagement)
@@ -307,7 +307,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Evenements particuliers de l'intervention
+     * Get the value of Evenements particuliers de l'intervention.
      *
      * @return SDIS62\Core\Ops\Entity\Evenement[]
      */
@@ -327,9 +327,10 @@ class Intervention
     }
 
     /**
-     * Ajoute un evenement à l'intervention
+     * Ajoute un evenement à l'intervention.
      *
-     * @param  SDIS62\Core\Ops\Entity\Evenement $evenement
+     * @param SDIS62\Core\Ops\Entity\Evenement $evenement
+     *
      * @return self
      */
     public function addEvenement(Evenement $evenement)
@@ -340,7 +341,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Coordonnées de l'intervention ([x,y])
+     * Get the value of Coordonnées de l'intervention ([x,y]).
      *
      * @return array
      */
@@ -350,7 +351,7 @@ class Intervention
     }
 
     /**
-     * Set the value of Coordonnées de l'intervention ([x,y])
+     * Set the value of Coordonnées de l'intervention ([x,y]).
      *
      * @param array coordinates
      *
@@ -368,7 +369,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Adresse de l'intervention
+     * Get the value of Adresse de l'intervention.
      *
      * @return string
      */
@@ -378,7 +379,7 @@ class Intervention
     }
 
     /**
-     * Set the value of Adresse de l'intervention
+     * Set the value of Adresse de l'intervention.
      *
      * @param string address
      *
@@ -392,7 +393,7 @@ class Intervention
     }
 
     /**
-     * Get the value of Commune ou se place l'intervention
+     * Get the value of Commune ou se place l'intervention.
      *
      * @return SDIS62\Core\Ops\Entity\Commune
      */
@@ -402,7 +403,7 @@ class Intervention
     }
 
     /**
-     * Set the value of Commune ou se place l'intervention
+     * Set the value of Commune ou se place l'intervention.
      *
      * @param SDIS62\Core\Ops\Entity\Commune commune
      *
@@ -414,5 +415,4 @@ class Intervention
 
         return $this;
     }
-
 }

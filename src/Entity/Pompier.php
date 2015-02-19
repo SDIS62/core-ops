@@ -11,49 +11,49 @@ class Pompier
     use IdentityTrait;
 
     /**
-     * Type
+     * Type.
      *
      * @var string
      */
     protected $type = 'pompier';
 
     /**
-     * Gardes du pompier
+     * Gardes du pompier.
      *
      * @var SDIS62\Core\Ops\Entity\Garde[]
      */
     protected $gardes;
 
     /**
-     * Centre dans lequel le pompier est affecté
+     * Centre dans lequel le pompier est affecté.
      *
      * @var SDIS62\Core\Ops\Entity\Centre
      */
     protected $centre;
 
     /**
-     * Matricule du pompier
+     * Matricule du pompier.
      *
      * @var string
      */
     protected $matricule;
 
     /**
-     * Engagement du pompier
+     * Engagement du pompier.
      *
      * @var SDIS62\Core\Ops\Entity\Engagement\PompierEngagement[]
      */
     protected $engagements;
 
     /**
-     * Nom du pompier
+     * Nom du pompier.
      *
      * @var string
      */
     protected $name;
 
     /**
-     * Ajout d'un pompier
+     * Ajout d'un pompier.
      *
      * @param string                        $name
      * @param string                        $matricule
@@ -68,7 +68,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Gardes du pompier
+     * Get the value of Gardes du pompier.
      *
      * @return SDIS62\Core\Ops\Entity\Garde[]
      */
@@ -78,9 +78,10 @@ class Pompier
     }
 
     /**
-     * Ajoute une garde au pompier
+     * Ajoute une garde au pompier.
      *
-     * @param  SDIS62\Core\Ops\Entity\Garde $garde
+     * @param SDIS62\Core\Ops\Entity\Garde $garde
+     *
      * @return self
      */
     public function addGarde(Garde $garde)
@@ -91,7 +92,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Centre dans lequel le pompier est affecté
+     * Get the value of Centre dans lequel le pompier est affecté.
      *
      * @return SDIS62\Core\Ops\Entity\Centre
      */
@@ -101,7 +102,7 @@ class Pompier
     }
 
     /**
-     * Set the value of Centre dans lequel le pompier est affecté
+     * Set the value of Centre dans lequel le pompier est affecté.
      *
      * @param SDIS62\Core\Ops\Entity\Centre centre
      *
@@ -121,7 +122,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Matricule du pompier
+     * Get the value of Matricule du pompier.
      *
      * @return string
      */
@@ -131,7 +132,7 @@ class Pompier
     }
 
     /**
-     * Set the value of Matricule du pompier
+     * Set the value of Matricule du pompier.
      *
      * @param string matricule
      *
@@ -145,7 +146,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Nom du pompier
+     * Get the value of Nom du pompier.
      *
      * @return string
      */
@@ -155,7 +156,7 @@ class Pompier
     }
 
     /**
-     * Set the value of Nom du pompier
+     * Set the value of Nom du pompier.
      *
      * @param string name
      *
@@ -169,7 +170,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Liste des engagements du pompier
+     * Get the value of Liste des engagements du pompier.
      *
      * @return SDIS62\Core\Ops\Entity\Engagement\PompierEngagement[]
      */
@@ -179,9 +180,10 @@ class Pompier
     }
 
     /**
-     * Ajoute un engagement au pompier
+     * Ajoute un engagement au pompier.
      *
-     * @param  SDIS62\Core\Ops\Entity\Engagement\PompierEngagement $engagement
+     * @param SDIS62\Core\Ops\Entity\Engagement\PompierEngagement $engagement
+     *
      * @return self
      */
     public function addEngagement(PompierEngagement $engagement)
@@ -208,7 +210,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Type de pompier
+     * Get the value of Type de pompier.
      *
      * @return string
      */

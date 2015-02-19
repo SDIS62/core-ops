@@ -7,21 +7,21 @@ use SDIS62\Core\Ops\Entity\Pompier;
 class SpecialistePompier extends Pompier
 {
     /**
-     * Type
+     * Type.
      *
      * @var string
      */
     protected $type = 'specialiste';
 
     /**
-     * Spécialités
+     * Spécialités.
      *
      * @var array
      */
     protected $specialites;
 
     /**
-     * Get the value of Spécialités
+     * Get the value of Spécialités.
      *
      * @return array
      */
@@ -31,7 +31,7 @@ class SpecialistePompier extends Pompier
     }
 
     /**
-     * Set the value of Spécialités
+     * Set the value of Spécialités.
      *
      * @param array specialites
      *

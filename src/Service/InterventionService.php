@@ -10,11 +10,11 @@ use SDIS62\Core\Ops\Repository\InterventionRepositoryInterface;
 class InterventionService
 {
     /**
-     * Initialisation du service avec les repository utilisés
+     * Initialisation du service avec les repository utilisés.
      *
      * @param SDIS62\Core\Ops\Repository\InterventionRepositoryInterface $intervention_repository
      * @param SDIS62\Core\Ops\Repository\SinistreRepositoryInterface     $sinistre_repository
-     * @param SDIS62\Core\Ops\Repository\CommuneRepositoryInterface     $commune_repository
+     * @param SDIS62\Core\Ops\Repository\CommuneRepositoryInterface      $commune_repository
      */
     public function __construct(InterventionRepositoryInterface $intervention_repository,
                                 SinistreRepositoryInterface $sinistre_repository,
@@ -26,10 +26,11 @@ class InterventionService
     }
 
     /**
-     * Retourne les interventions
+     * Retourne les interventions.
      *
-     * @param  int                                   $count Par défaut: 20
-     * @param  int                                   $page  Par défaut: 1
+     * @param int $count Par défaut: 20
+     * @param int $page  Par défaut: 1
+     *
      * @return SDIS62\Core\Ops\Entity\Intervention[]
      */
     public function getAll($count = 20, $page = 1)
@@ -38,9 +39,10 @@ class InterventionService
     }
 
     /**
-     * Retourne une intervention correspondant à l'id spécifié
+     * Retourne une intervention correspondant à l'id spécifié.
      *
-     * @param  mixed                               $id_intervention
+     * @param mixed $id_intervention
+     *
      * @return SDIS62\Core\Ops\Entity\Intervention
      */
     public function find($id_intervention)
@@ -49,10 +51,11 @@ class InterventionService
     }
 
     /**
-     * Sauvegarde d'une intervention
+     * Sauvegarde d'une intervention.
      *
-     * @param  array                               $data
-     * @param  array                               $id_intervention Optionnel
+     * @param array $data
+     * @param array $id_intervention Optionnel
+     *
      * @return SDIS62\Core\Ops\Entity\Intervention
      */
     public function save($data, $id_intervention = null)
@@ -107,9 +110,10 @@ class InterventionService
     }
 
     /**
-     * Suppression d'une intervention
+     * Suppression d'une intervention.
      *
-     * @param  mixed                               $id_intervention
+     * @param mixed $id_intervention
+     *
      * @return SDIS62\Core\Ops\Entity\Intervention
      */
     public function delete($id_intervention)

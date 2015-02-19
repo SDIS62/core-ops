@@ -10,35 +10,35 @@ class Centre
     use IdentityTrait;
 
     /**
-     * Nom du centre
+     * Nom du centre.
      *
      * @var string
      */
     protected $name;
 
     /**
-     * Matériels du centre
+     * Matériels du centre.
      *
      * @var SDIS62\Core\Ops\Entity\Materiel[]
      */
     protected $materiels;
 
     /**
-     * Pompiers du centre
+     * Pompiers du centre.
      *
      * @var SDIS62\Core\Ops\Entity\Pompier[]
      */
     protected $pompiers;
 
     /**
-     * Commune du centre
+     * Commune du centre.
      *
      * @var SDIS62\Core\Ops\Entity\Commune
      */
     protected $commune;
 
     /**
-     * Création d'un centre
+     * Création d'un centre.
      *
      * @param string name
      */
@@ -52,7 +52,7 @@ class Centre
     }
 
     /**
-     * Get the value of Nom du centre
+     * Get the value of Nom du centre.
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class Centre
     }
 
     /**
-     * Set the value of Nom du centre
+     * Set the value of Nom du centre.
      *
      * @param string name
      *
@@ -76,7 +76,7 @@ class Centre
     }
 
     /**
-     * Get the value of Matériels du centre
+     * Get the value of Matériels du centre.
      *
      * @return SDIS62\Core\Ops\Entity\Materiel[]
      */
@@ -86,9 +86,10 @@ class Centre
     }
 
     /**
-     * Ajoute un matériel au centre
+     * Ajoute un matériel au centre.
      *
-     * @param  SDIS62\Core\Ops\Entity\Materiel $materiel
+     * @param SDIS62\Core\Ops\Entity\Materiel $materiel
+     *
      * @return self
      */
     public function addMateriel(Materiel $materiel)
@@ -99,7 +100,7 @@ class Centre
     }
 
     /**
-     * Retourne les pompiers
+     * Retourne les pompiers.
      *
      * @return SDIS62\Core\Ops\Entity\Pompier[]
      */
@@ -109,9 +110,10 @@ class Centre
     }
 
     /**
-     * Ajoute un pompier au centre
+     * Ajoute un pompier au centre.
      *
-     * @param  SDIS62\Core\Ops\Entity\Pompier $pompier
+     * @param SDIS62\Core\Ops\Entity\Pompier $pompier
+     *
      * @return self
      */
     public function addPompier(Pompier $pompier)
@@ -122,7 +124,7 @@ class Centre
     }
 
     /**
-     * Get the value of commune du centre
+     * Get the value of commune du centre.
      *
      * @return SDIS62\Core\Ops\Entity\Commune
      */

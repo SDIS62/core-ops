@@ -7,41 +7,44 @@ use SDIS62\Core\Ops\Entity\Centre;
 interface CentreRepositoryInterface
 {
     /**
-     * Retourne un ensemble de CIS
+     * Retourne un ensemble de CIS.
      *
-     * @param  int                              $count Par défaut: 20
-     * @param  int                              $page  Par défaut: 1
+     * @param int $count Par défaut: 20
+     * @param int $page  Par défaut: 1
+     *
      * @return SDIS62\Core\User\Entity\Centre[]
      */
     public function getAll($count = 20, $page = 1);
 
     /**
-     * Retourne un CIS correspondant à l'id spécifié
+     * Retourne un CIS correspondant à l'id spécifié.
      *
-     * @param  mixed                         $id_centre
+     * @param mixed $id_centre
+     *
      * @return SDIS62\Core\Ops\Entity\Centre
      */
     public function find($id_centre);
 
     /**
-     * Retourne des CIS correspondant au nom spécifié
+     * Retourne des CIS correspondant au nom spécifié.
      *
-     * @param  string                          $name
-     * @param  int                             $count Par défaut: 20
-     * @param  int                             $page  Par défaut: 1
+     * @param string $name
+     * @param int    $count Par défaut: 20
+     * @param int    $page  Par défaut: 1
+     *
      * @return SDIS62\Core\Ops\Entity\Centre[]
      */
     public function findAllByName($name, $count = 20, $page = 1);
 
     /**
-     * Sauvegarde d'un centre
+     * Sauvegarde d'un centre.
      *
      * @param  SDIS62\Core\Ops\Entity\Centre
      */
     public function save(Centre & $centre);
 
     /**
-     * Suppression d'un centre
+     * Suppression d'un centre.
      *
      * @param  SDIS62\Core\Ops\Entity\Centre
      */

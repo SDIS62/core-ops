@@ -12,7 +12,7 @@ use SDIS62\Core\Ops\Repository\InterventionRepositoryInterface;
 class EngagementService
 {
     /**
-     * Initialisation du service avec les repository utilisés
+     * Initialisation du service avec les repository utilisés.
      *
      * @param SDIS62\Core\Ops\Repository\EngagementRepositoryInterface   $engagement_repository
      * @param SDIS62\Core\Ops\Repository\MaterielRepositoryInterface     $intervention_repository
@@ -31,9 +31,10 @@ class EngagementService
     }
 
     /**
-     * Retourne un engagement correspondant à l'id spécifié
+     * Retourne un engagement correspondant à l'id spécifié.
      *
-     * @param  mixed                             $id_engagement
+     * @param mixed $id_engagement
+     *
      * @return SDIS62\Core\Ops\Entity\Engagement
      */
     public function find($id_engagement)
@@ -42,10 +43,11 @@ class EngagementService
     }
 
     /**
-     * Sauvegarde d'un engagement
+     * Sauvegarde d'un engagement.
      *
-     * @param  array                             $data
-     * @param  array                             $id_engagement Optionnel
+     * @param array $data
+     * @param array $id_engagement Optionnel
+     *
      * @return SDIS62\Core\Ops\Entity\Engagement
      */
     public function save($data, $id_engagement = null)
@@ -74,9 +76,10 @@ class EngagementService
     }
 
     /**
-     * Suppression d'un engagement
+     * Suppression d'un engagement.
      *
-     * @param  mixed                             $id_engagement
+     * @param mixed $id_engagement
+     *
      * @return SDIS62\Core\Ops\Entity\Engagement
      */
     public function delete($id_engagement)

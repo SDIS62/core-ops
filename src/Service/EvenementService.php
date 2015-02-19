@@ -10,7 +10,7 @@ use SDIS62\Core\Ops\Repository\InterventionRepositoryInterface;
 class EvenementService
 {
     /**
-     * Initialisation du service avec les repository utilisés
+     * Initialisation du service avec les repository utilisés.
      *
      * @param SDIS62\Core\Ops\Repository\EvenementRepositoryInterface    $evenement_repository
      * @param SDIS62\Core\Ops\Repository\InterventionRepositoryInterface $intervention_repository
@@ -25,9 +25,10 @@ class EvenementService
     }
 
     /**
-     * Retourne un évenement
+     * Retourne un évenement.
      *
-     * @param  mixed                            $id_evenement
+     * @param mixed $id_evenement
+     *
      * @return SDIS62\Core\Ops\Entity\Evenement
      */
     public function find($id_evenement)
@@ -36,10 +37,11 @@ class EvenementService
     }
 
     /**
-     * Création d'un evenement sur une intervention
+     * Création d'un evenement sur une intervention.
      *
-     * @param  string                           $type
-     * @param  array                            $data
+     * @param string $type
+     * @param array  $data
+     *
      * @return SDIS62\Core\Ops\Entity\Evenement
      */
     public function create($type, $data)
@@ -67,9 +69,10 @@ class EvenementService
     }
 
     /**
-     * Suppression d'un evenement
+     * Suppression d'un evenement.
      *
-     * @param  mixed                            $id_evenement
+     * @param mixed $id_evenement
+     *
      * @return SDIS62\Core\Ops\Entity\Evenement
      */
     public function delete($id_evenement)

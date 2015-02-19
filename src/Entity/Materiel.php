@@ -10,7 +10,7 @@ class Materiel
     use IdentityTrait;
 
     /**
-     * Nom du materiel
+     * Nom du materiel.
      *
      * @var string
      */
@@ -24,21 +24,21 @@ class Materiel
     protected $actif;
 
     /**
-     * Centre dans lequel le matériel est affecté
+     * Centre dans lequel le matériel est affecté.
      *
      * @var SDIS62\Core\Ops\Entity\Centre
      */
     protected $centre;
 
     /**
-     * Liste des engagements du matériel
+     * Liste des engagements du matériel.
      *
      * @var SDIS62\Core\Ops\Entity\Engagement[]
      */
     protected $engagements;
 
     /**
-     * Ajout d'un materiel à un centre
+     * Ajout d'un materiel à un centre.
      *
      * @param SDIS62\Core\Ops\Entity\Centre $centre
      * @param string                        $name
@@ -52,7 +52,7 @@ class Materiel
     }
 
     /**
-     * Get the value of Nom du materiel
+     * Get the value of Nom du materiel.
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class Materiel
     }
 
     /**
-     * Set the value of Nom du materiel
+     * Set the value of Nom du materiel.
      *
      * @param string name
      *
@@ -76,7 +76,7 @@ class Materiel
     }
 
     /**
-     * Get the value of Actif
+     * Get the value of Actif.
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class Materiel
     }
 
     /**
-     * Set the value of Actif
+     * Set the value of Actif.
      *
      * @param boolean actif
      *
@@ -100,7 +100,7 @@ class Materiel
     }
 
     /**
-     * Get the value of Centre dans lequel le materiel est affecté
+     * Get the value of Centre dans lequel le materiel est affecté.
      *
      * @return SDIS62\Core\Ops\Entity\Centre
      */
@@ -110,7 +110,7 @@ class Materiel
     }
 
     /**
-     * Set the value of Centre dans lequel le materiel est affecté
+     * Set the value of Centre dans lequel le materiel est affecté.
      *
      * @param SDIS62\Core\Ops\Entity\Centre centre
      *
@@ -124,7 +124,7 @@ class Materiel
     }
 
     /**
-     * Get the value of Liste des engagements du matériel
+     * Get the value of Liste des engagements du matériel.
      *
      * @return SDIS62\Core\Ops\Entity\Engagement[]
      */
@@ -134,9 +134,10 @@ class Materiel
     }
 
     /**
-     * Ajoute un engagement au matériel
+     * Ajoute un engagement au matériel.
      *
-     * @param  SDIS62\Core\Ops\Entity\Engagement $engagement
+     * @param SDIS62\Core\Ops\Entity\Engagement $engagement
+     *
      * @return self
      */
     public function addEngagement(Engagement $engagement)

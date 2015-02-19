@@ -10,28 +10,28 @@ class Garde
     use IdentityTrait;
 
     /**
-     * Pompier concerné
+     * Pompier concerné.
      *
      * @var SDIS62\Core\Ops\Entity\Pompier
      */
     protected $pompier;
 
     /**
-     * Début de la garde
+     * Début de la garde.
      *
      * @var Datetime
      */
     protected $start;
 
     /**
-     * Fin de la garde
+     * Fin de la garde.
      *
      * @var Datetime
      */
     protected $end;
 
     /**
-     * Ajout d'une garde à un spécialiste
+     * Ajout d'une garde à un spécialiste.
      *
      * @param SDIS62\Core\Ops\Entity\Pompier $pompier
      * @param Datetime                       $start   Le format peut être d-m-Y H:i
@@ -56,7 +56,7 @@ class Garde
     }
 
     /**
-     * Get the value of Début de la garde
+     * Get the value of Début de la garde.
      *
      * @return Datetime
      */
@@ -66,7 +66,7 @@ class Garde
     }
 
     /**
-     * Get the value of Fin de la garde
+     * Get the value of Fin de la garde.
      *
      * @return Datetime
      */
@@ -76,7 +76,7 @@ class Garde
     }
 
     /**
-     * Get the value of Pompier concerné
+     * Get the value of Pompier concerné.
      *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */

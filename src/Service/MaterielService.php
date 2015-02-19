@@ -9,7 +9,7 @@ use SDIS62\Core\Ops\Repository\MaterielRepositoryInterface;
 class MaterielService
 {
     /**
-     * Initialisation du service avec les repository utilisés
+     * Initialisation du service avec les repository utilisés.
      *
      * @param SDIS62\Core\Ops\Repository\MaterielRepositoryInterface $materiel_repository
      * @param SDIS62\Core\Ops\Repository\CentreRepositoryInterface   $centre_repository
@@ -22,9 +22,10 @@ class MaterielService
     }
 
     /**
-     * Retourne un matériel correspondant à l'id spécifié
+     * Retourne un matériel correspondant à l'id spécifié.
      *
-     * @param  mixed                           $id_materiel
+     * @param mixed $id_materiel
+     *
      * @return SDIS62\Core\Ops\Entity\Materiel
      */
     public function find($id_materiel)
@@ -33,10 +34,11 @@ class MaterielService
     }
 
     /**
-     * Sauvegarde d'un matériel
+     * Sauvegarde d'un matériel.
      *
-     * @param  array                         $data
-     * @param  array                         $id_materiel Optionnel
+     * @param array $data
+     * @param array $id_materiel Optionnel
+     *
      * @return SDIS62\Core\Ops\Entity\Centre
      */
     public function save($data, $id_materiel = null)
@@ -67,9 +69,10 @@ class MaterielService
     }
 
     /**
-     * Suppression d'un matériel
+     * Suppression d'un matériel.
      *
-     * @param  mixed                           $id_materiel
+     * @param mixed $id_materiel
+     *
      * @return SDIS62\Core\Ops\Entity\Materiel
      */
     public function delete($id_materiel)

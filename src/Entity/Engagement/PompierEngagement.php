@@ -10,28 +10,28 @@ use SDIS62\Core\Ops\Entity\Intervention;
 class PompierEngagement extends Engagement
 {
     /**
-     * Type
+     * Type.
      *
      * @var string
      */
     protected $type = 'pompier';
 
     /**
-     * Pompier associé
+     * Pompier associé.
      *
      * @var SDIS62\Core\Ops\Entity\Pompier
      */
     protected $pompier;
 
     /**
-     * Matériel engagé
+     * Matériel engagé.
      *
      * @var SDIS62\Core\Ops\Entity\Materiel
      */
     protected $materiel;
 
     /**
-     * Ajout d'un engagement de type pompier à une intervention
+     * Ajout d'un engagement de type pompier à une intervention.
      *
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
      * @param SDIS62\Core\Ops\Entity\Materiel     $materiel
@@ -49,7 +49,7 @@ class PompierEngagement extends Engagement
     }
 
     /**
-     * Get the value of Pompier associé
+     * Get the value of Pompier associé.
      *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
@@ -59,7 +59,7 @@ class PompierEngagement extends Engagement
     }
 
     /**
-     * Get the value of Matériel engagé
+     * Get the value of Matériel engagé.
      *
      * @return SDIS62\Core\Ops\Entity\Materiel
      */

@@ -9,14 +9,14 @@ class Sinistre
     use IdentityTrait;
 
     /**
-     * Nom du sinistre
+     * Nom du sinistre.
      *
      * @var string
      */
     protected $name;
 
     /**
-     * Ajout d'un sinistre
+     * Ajout d'un sinistre.
      *
      * @param string $name
      */
@@ -26,7 +26,7 @@ class Sinistre
     }
 
     /**
-     * Get the value of Nom du sinistre
+     * Get the value of Nom du sinistre.
      *
      * @return string
      */
@@ -36,7 +36,7 @@ class Sinistre
     }
 
     /**
-     * Set the value of Nom du sinistre
+     * Set the value of Nom du sinistre.
      *
      * @param string name
      *

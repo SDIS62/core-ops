@@ -2,34 +2,33 @@
 
 namespace SDIS62\Core\Ops\Entity;
 
-use SDIS62\Core\Common\Entity\IdentityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Commune
 {
     /**
-     * Code insee de la commune
+     * Code insee de la commune.
      *
      * @var string
      */
     protected $numinsee;
 
     /**
-     * Nom de la commune
+     * Nom de la commune.
      *
      * @var string
      */
     protected $name;
 
     /**
-     * Centres sur la commune
+     * Centres sur la commune.
      *
      * @var SDIS62\Core\Ops\Entity\Centre[]
      */
     protected $centres;
 
     /**
-     * Création d'une commune
+     * Création d'une commune.
      *
      * @param string name
      * @param string numinsee
@@ -42,7 +41,7 @@ class Commune
     }
 
     /**
-     * Get the value of Code insee de la commune
+     * Get the value of Code insee de la commune.
      *
      * @return string
      */
@@ -52,7 +51,7 @@ class Commune
     }
 
     /**
-     * Get the value of Nom de la commune
+     * Get the value of Nom de la commune.
      *
      * @return string
      */
@@ -62,7 +61,7 @@ class Commune
     }
 
     /**
-     * Set the value of Nom de la commune
+     * Set the value of Nom de la commune.
      *
      * @param string name
      *
@@ -76,7 +75,7 @@ class Commune
     }
 
     /**
-     * Retourne les centres sur la commune
+     * Retourne les centres sur la commune.
      *
      * @return SDIS62\Core\Ops\Entity\Centre[]
      */
@@ -86,9 +85,10 @@ class Commune
     }
 
     /**
-     * Ajoute un centre sur la commune
+     * Ajoute un centre sur la commune.
      *
-     * @param  SDIS62\Core\Ops\Entity\Centre $centre
+     * @param SDIS62\Core\Ops\Entity\Centre $centre
+     *
      * @return self
      */
     public function addCentre(Centre $centre)

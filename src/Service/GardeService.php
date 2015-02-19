@@ -9,7 +9,7 @@ use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
 class GardeService
 {
     /**
-     * Initialisation du service avec les repository utilisés
+     * Initialisation du service avec les repository utilisés.
      *
      * @param SDIS62\Core\Ops\Repository\GardeRepositoryInterface   $garde_repository
      * @param SDIS62\Core\Ops\Repository\PompierRepositoryInterface $pompier_repository
@@ -22,9 +22,10 @@ class GardeService
     }
 
     /**
-     * Retourne un ensemble de gardes sur un mois
+     * Retourne un ensemble de gardes sur un mois.
      *
-     * @param  int                             $month
+     * @param int $month
+     *
      * @return SDIS62\Core\User\Entity\Garde[]
      */
     public function findAllByMonth($month)
@@ -33,9 +34,10 @@ class GardeService
     }
 
     /**
-     * Retourne une garde correspondant à l'id spécifié
+     * Retourne une garde correspondant à l'id spécifié.
      *
-     * @param  mixed                        $id_garde
+     * @param mixed $id_garde
+     *
      * @return SDIS62\Core\Ops\Entity\Garde
      */
     public function find($id_garde)
@@ -44,10 +46,11 @@ class GardeService
     }
 
     /**
-     * AJout d'une garde pour un pompier
+     * AJout d'une garde pour un pompier.
      *
-     * @param  array                         $data
-     * @param  array                         $id_pompier
+     * @param array $data
+     * @param array $id_pompier
+     *
      * @return SDIS62\Core\Ops\Entity\Centre
      */
     public function create($data, $id_pompier)
@@ -66,9 +69,10 @@ class GardeService
     }
 
     /**
-     * Suppression d'une garde
+     * Suppression d'une garde.
      *
-     * @param  mixed                        $id_garde
+     * @param mixed $id_garde
+     *
      * @return SDIS62\Core\Ops\Entity\Garde
      */
     public function delete($id_garde)

@@ -23,15 +23,15 @@ class PompierService
     }
 
     /**
-     * Retourne un pompier correspondant à l'id spécifié.
+     * Retourne un pompier correspondant au matricule spécifié.
      *
-     * @param mixed $id_pompier
+     * @param string $matricule
      *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
-    public function find($id_pompier)
+    public function find($matricule)
     {
-        return $this->pompier_repository->find($id_pompier);
+        return $this->pompier_repository->find($matricule);
     }
 
     /**
@@ -56,15 +56,19 @@ class PompierService
      *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
-    public function save($data, $id_pompier = null)
+    public function save($data)
     {
-        $centre = $this->centre_repository->find($data['centre']);
-
-        if (empty($centre)) {
-            return;
+        if(!empty($data['matricule'])) {
+            $pompier = $this->pompier_repository->find($data['matricule']);
         }
 
-        if (empty($id_pompier)) {
+        if (empty($pompier)) {
+            $centre = $this->centre_repository->find($data['centre']);
+
+            if (empty($centre)) {
+                return;
+            }
+
             switch ($data['type']) {
                 case 'pompier' :
                     $pompier = new Pompier($data['name'], $data['matricule'], $centre);
@@ -75,17 +79,12 @@ class PompierService
                 default:
                     throw new InvalidPompierException();
             }
-        } else {
-            $pompier = $this->pompier_repository->find($id_pompier);
         }
 
         if (!empty($data['centre'])) {
-            $pompier->setCentre($centre);
+            $pompier->setCentre($this->centre_repository->find($data['centre']));
         }
 
-        if (!empty($data['matricule'])) {
-            $pompier->setMatricule($data['matricule']);
-        }
         if (!empty($data['name'])) {
             $pompier->setName($data['name']);
         }
@@ -102,13 +101,13 @@ class PompierService
     /**
      * Suppression d'un pompier.
      *
-     * @param mixed $id_pompier
+     * @param string $matricule
      *
      * @return SDIS62\Core\Ops\Entity\Pompier
      */
-    public function delete($id_pompier)
+    public function delete($matricule)
     {
-        $pompier = $this->find($id_pompier);
+        $pompier = $this->find($matricule);
 
         if (empty($pompier)) {
             return;

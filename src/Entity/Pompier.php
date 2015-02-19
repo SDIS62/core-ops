@@ -2,14 +2,11 @@
 
 namespace SDIS62\Core\Ops\Entity;
 
-use SDIS62\Core\Common\Entity\IdentityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use SDIS62\Core\Ops\Entity\Engagement\PompierEngagement;
 
 class Pompier
 {
-    use IdentityTrait;
-
     /**
      * Type.
      *
@@ -61,8 +58,8 @@ class Pompier
      */
     public function __construct($name, $matricule, Centre $centre)
     {
+        $this->matricule = $matricule;
         $this->setName($name);
-        $this->setMatricule($matricule);
         $this->setCentre($centre);
         $this->engagements = new ArrayCollection();
     }
@@ -129,20 +126,6 @@ class Pompier
     public function getMatricule()
     {
         return $this->matricule;
-    }
-
-    /**
-     * Set the value of Matricule du pompier.
-     *
-     * @param string matricule
-     *
-     * @return self
-     */
-    public function setMatricule($matricule)
-    {
-        $this->matricule = $matricule;
-
-        return $this;
     }
 
     /**

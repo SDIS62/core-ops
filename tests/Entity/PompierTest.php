@@ -16,13 +16,6 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $centre = new Core\Entity\Centre($commune, "CIS Arras");
         self::$object = new Core\Entity\Pompier("DUBUC Kevin", "mat001", $centre);
     }
-
-    public function test_if_it_have_an_id()
-    {
-        self::$object->setId(10);
-        $this->assertEquals(10, self::$object->getId());
-    }
-
     public function test_if_it_is_initializable()
     {
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Pompier', self::$object);

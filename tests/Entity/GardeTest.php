@@ -13,7 +13,8 @@ class GardeTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $centre = new Core\Entity\Centre("CIS");
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, "CIS");
         $pompier = new Core\Entity\Pompier("Kevin", "0001", $centre);
         self::$object = new Core\Entity\Garde($pompier, '15-02-2015 15:00', '15-02-2015 18:00');
     }
@@ -36,7 +37,8 @@ class GardeTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_have_dates()
     {
-        $centre = new Core\Entity\Centre("CIS");
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, "CIS");
         $pompier = new Core\Entity\Pompier("Kevin", "0001", $centre);
 
         $garde = new Core\Entity\Garde($pompier, '14-02-2015 15:00', '14-02-2015 18:00');

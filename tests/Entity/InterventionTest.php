@@ -89,7 +89,8 @@ class InterventionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertFalse(self::$object->isEnded());
 
-        $centre = new Core\Entity\Centre('CIS Arras');
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
         $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
         $pompier = new Core\Entity\Pompier('Kevin', '0001', $centre);
 
@@ -126,7 +127,8 @@ class InterventionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertCount(0, self::$object->getEngagements());
 
-        $centre = new Core\Entity\Centre('CIS Arras');
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
         $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
         $pompier = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
 
@@ -150,11 +152,10 @@ class InterventionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Intervention terminee', self::$object->getEvenements()[2]->getDescription());
     }
 
-    public function test_if_it_have_a_numinsee()
+    public function test_if_it_have_a_commune()
     {
-        self::$object->setNumInsee('62000');
-        $this->assertEquals('62000', self::$object->getNumInsee());
-        $this->assertInternalType('string', self::$object->getNumInsee());
+        self::$object->setCommune(new Core\Entity\Commune('Arras', '62001'));
+        $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Commune', self::$object->getCommune());
     }
 
     public function test_if_it_have_a_address()

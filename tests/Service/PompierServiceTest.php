@@ -63,7 +63,8 @@ class PompierServiceTest extends PHPUnit_Framework_TestCase
 
         // Prepare ..
         $data = array('centre' => 1, 'type' => 'pompier', 'name' => 'Kevin', 'matricule' => '00001');
-        $centre = new Core\Entity\Centre('CIS Arras');
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
         $pompier_expected = new Core\Entity\Pompier('Kevin', '00001', $centre);
         $repository_centre->shouldReceive('find')->with(1)->andReturn($centre)->once();
         $repository_pompier->shouldReceive('save')->once();
@@ -81,7 +82,8 @@ class PompierServiceTest extends PHPUnit_Framework_TestCase
 
         // Prepare ..
         $data = array('centre' => 1, 'type' => 'specialiste', 'specialites' => array('A', 'B'), 'name' => 'Kevin', 'matricule' => '00001');
-        $centre = new Core\Entity\Centre('CIS Arras');
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
         $pompier_expected = new Core\Entity\Pompier\SpecialistePompier('Kevin', '00001', $centre);
         $pompier_expected->setSpecialites(array('A', 'B'));
         $repository_centre->shouldReceive('find')->with(1)->andReturn($centre)->once();
@@ -100,7 +102,8 @@ class PompierServiceTest extends PHPUnit_Framework_TestCase
 
         // Prepare ..
         $data = array('type' => 'alo',  'centre' => 1);
-        $centre = new Core\Entity\Centre('CIS Arras');
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
         $repository_centre->shouldReceive('find')->with(1)->andReturn($centre)->once();
 
         // Test !
@@ -136,8 +139,9 @@ class PompierServiceTest extends PHPUnit_Framework_TestCase
 
         // Prepare ..
         $data = array('centre' => 2, 'type' => 'pompier', 'name' => 'Kelly', 'matricule' => '00002');
-        $centre1 = new Core\Entity\Centre('CIS Arras');
-        $centre2 = new Core\Entity\Centre('CIS Bethune');
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre1 = new Core\Entity\Centre($commune, 'CIS Arras');
+        $centre2 = new Core\Entity\Centre($commune, 'CIS Bethune');
         $pompier_updated = new Core\Entity\Pompier('Kevin', '00001', $centre1);
         $pompier_expected = new Core\Entity\Pompier('Kelly', '00002', $centre2);
         $repository_centre->shouldReceive('find')->with(2)->andReturn($centre2)->once();

@@ -64,7 +64,7 @@ class GardeServiceTest extends PHPUnit_Framework_TestCase
 
         // Prepare ..
         $data = array('debut' => new Datetime('2015-11-01 15:00'), 'fin' => new Datetime('2015-12-01 15:00'));
-        $pompier = new Core\Entity\Pompier('Kevin', '00001', new Core\Entity\Centre('CIS Arras'));
+        $pompier = new Core\Entity\Pompier('Kevin', '00001', new Core\Entity\Centre(new Core\Entity\Commune('Arras', '62001'), 'CIS Arras'));
         $garde_expected = new Core\Entity\Garde($pompier, '01-11-2015 15:00', '01-12-2015 15:00');
         $repository_garde->shouldReceive('save')->once();
         $repository_pompier->shouldReceive('find')->with(1)->andReturn($pompier)->once();

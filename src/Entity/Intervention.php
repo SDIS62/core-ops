@@ -88,11 +88,11 @@ class Intervention
     protected $address;
 
     /**
-     * Numéro INSEE de la commune ou se trouve l'intervention
+     * Commune ou se place l'intervention
      *
-     * @var string
+     * @var SDIS62\Core\Ops\Entity\Commune
      */
-    protected $numinsee;
+    protected $commune;
 
     /**
      * Création d'une intervention
@@ -392,26 +392,27 @@ class Intervention
     }
 
     /**
-     * Get the value of Numéro INSEE de la commune ou se trouve l'intervention
+     * Get the value of Commune ou se place l'intervention
      *
-     * @return string
+     * @return SDIS62\Core\Ops\Entity\Commune
      */
-    public function getNuminsee()
+    public function getCommune()
     {
-        return $this->numinsee;
+        return $this->commune;
     }
 
     /**
-     * Set the value of Numéro INSEE de la commune ou se trouve l'intervention
+     * Set the value of Commune ou se place l'intervention
      *
-     * @param string numinsee
+     * @param SDIS62\Core\Ops\Entity\Commune commune
      *
      * @return self
      */
-    public function setNuminsee($numinsee)
+    public function setCommune(Commune $commune)
     {
-        $this->numinsee = $numinsee;
+        $this->commune = $commune;
 
         return $this;
     }
+
 }

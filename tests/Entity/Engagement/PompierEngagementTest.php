@@ -13,7 +13,8 @@ class PompierEngagementTest extends PHPUnit_Framework_TestCase
     {
         $sinistre = new Core\Entity\Sinistre("Feu de");
         $intervention = new Core\Entity\Intervention($sinistre);
-        $centre = new Core\Entity\Centre("CIS Arras");
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, "CIS Arras");
         $materiel = new Core\Entity\Materiel($centre, "VSAV1");
         $pompier = new Core\Entity\Pompier("DUBUC Kevin", "mat001", $centre);
 

@@ -12,7 +12,8 @@ class MaterielTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $centre = new Core\Entity\Centre("CIS Arras");
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, "CIS Arras");
         self::$object = new Core\Entity\Materiel($centre, "VSAV1");
     }
 
@@ -41,7 +42,8 @@ class MaterielTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
 
-        self::$object->setCentre(new Core\Entity\Centre("CIS Bethune"));
+        $commune = new Core\Entity\Commune('Bethune', '62002');
+        self::$object->setCentre(new Core\Entity\Centre($commune, "CIS Bethune"));
 
         $this->assertEquals('CIS Bethune', self::$object->getCentre()->getName());
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
@@ -67,7 +69,8 @@ class MaterielTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(self::$object->isEngage());
 
         $intervention = new Core\Entity\Intervention(new Core\Entity\Sinistre('Feu de'));
-        $centre = new Core\Entity\Centre('CIS Arras');
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
         $pompier = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
 
         $engagement1 = new Core\Entity\Engagement\PompierEngagement($intervention, self::$object, $pompier);

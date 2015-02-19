@@ -4,6 +4,7 @@ namespace SDIS62\Core\Ops\Service;
 
 use SDIS62\Core\Ops\Entity\Centre;
 use SDIS62\Core\Ops\Repository\CentreRepositoryInterface;
+use SDIS62\Core\Ops\Repository\CommuneRepositoryInterface;
 
 class CentreService
 {
@@ -11,10 +12,14 @@ class CentreService
      * Initialisation du service avec les repository utilisés
      *
      * @param SDIS62\Core\Ops\Repository\CentreRepositoryInterface $centre_repository
+     * @param SDIS62\Core\Ops\Repository\CommuneRepositoryInterface $commune_repository
      */
-    public function __construct(CentreRepositoryInterface $centre_repository)
+    public function __construct(CentreRepositoryInterface $centre_repository,
+                                CommuneRepositoryInterface $commune_repository
+    )
     {
         $this->centre_repository = $centre_repository;
+        $this->commune_repository = $commune_repository;
     }
 
     /**
@@ -62,7 +67,22 @@ class CentreService
      */
     public function save($data, $id_centre = null)
     {
-        $centre = empty($id_centre) ? new Centre($data['name']) : $this->centre_repository->find($id_centre);
+        if(empty($id_centre)) {
+            $commune = $this->commune_repository->find($data['commune']);
+
+            if(empty($commune)) {
+                return;
+            }
+
+            $centre = new Centre($commune, $data['name']);
+        }
+        else {
+            $centre = $this->centre_repository->find($id_centre);
+        }
+
+        if(empty($centre)) {
+            return;
+        }
 
         if (!empty($data['name'])) {
             $centre->setName($data['name']);

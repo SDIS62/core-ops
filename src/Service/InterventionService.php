@@ -3,6 +3,7 @@
 namespace SDIS62\Core\Ops\Service;
 
 use SDIS62\Core\Ops\Entity\Intervention;
+use SDIS62\Core\Ops\Repository\CommuneRepositoryInterface;
 use SDIS62\Core\Ops\Repository\SinistreRepositoryInterface;
 use SDIS62\Core\Ops\Repository\InterventionRepositoryInterface;
 
@@ -13,12 +14,15 @@ class InterventionService
      *
      * @param SDIS62\Core\Ops\Repository\InterventionRepositoryInterface $intervention_repository
      * @param SDIS62\Core\Ops\Repository\SinistreRepositoryInterface     $sinistre_repository
+     * @param SDIS62\Core\Ops\Repository\CommuneRepositoryInterface     $commune_repository
      */
     public function __construct(InterventionRepositoryInterface $intervention_repository,
-                                SinistreRepositoryInterface $sinistre_repository
+                                SinistreRepositoryInterface $sinistre_repository,
+                                CommuneRepositoryInterface $commune_repository
     ) {
         $this->intervention_repository = $intervention_repository;
         $this->sinistre_repository = $sinistre_repository;
+        $this->commune_repository = $commune_repository;
     }
 
     /**
@@ -89,12 +93,12 @@ class InterventionService
             $intervention->setAddress($data['address']);
         }
 
-        if (!empty($data['numinsee'])) {
-            $intervention->setNumInsee($data['numinsee']);
-        }
-
         if (array_key_exists('important', $data)) {
             $intervention->setImportant($data['important'] === true);
+        }
+
+        if (!empty($data['commune'])) {
+            $intervention->setCommune($this->commune_repository->find($data['commune']));
         }
 
         $this->intervention_repository->save($intervention);

@@ -24,20 +24,29 @@ class Centre
     protected $materiels;
 
     /**
-     * Nom du centre
+     * Pompiers du centre
      *
      * @var SDIS62\Core\Ops\Entity\Pompier[]
      */
     protected $pompiers;
 
     /**
+     * Commune du centre
+     *
+     * @var SDIS62\Core\Ops\Entity\Commune
+     */
+    protected $commune;
+
+    /**
      * Création d'un centre
      *
      * @param string name
      */
-    public function __construct($name)
+    public function __construct(Commune $commune, $name)
     {
         $this->name = $name;
+        $this->commune = $commune;
+        $this->commune->addCentre($this);
         $this->materiels = new ArrayCollection();
         $this->pompiers = new ArrayCollection();
     }
@@ -110,5 +119,15 @@ class Centre
         $this->pompiers[] = $pompier;
 
         return $this;
+    }
+
+    /**
+     * Get the value of commune du centre
+     *
+     * @return SDIS62\Core\Ops\Entity\Commune
+     */
+    public function getCommune()
+    {
+        return $this->commune;
     }
 }

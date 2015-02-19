@@ -11,7 +11,8 @@ class SpecialistePompierTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $centre = new Core\Entity\Centre("CIS Arras");
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, "CIS Arras");
         self::$object = new Core\Entity\Pompier\SpecialistePompier("DUBUC Kevin", "mat001", $centre);
     }
 

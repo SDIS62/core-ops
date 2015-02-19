@@ -12,7 +12,8 @@ class PompierTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $centre = new Core\Entity\Centre("CIS Arras");
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, "CIS Arras");
         self::$object = new Core\Entity\Pompier("DUBUC Kevin", "mat001", $centre);
     }
 
@@ -44,7 +45,8 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
 
         $ancien_centre = self::$object->getCentre();
-        $nouveau_centre = new Core\Entity\Centre("CIS Bethune");
+        $commune = new Core\Entity\Commune('Bethune', '62002');
+        $nouveau_centre = new Core\Entity\Centre($commune, "CIS Bethune");
 
         self::$object->setCentre($nouveau_centre);
 
@@ -68,7 +70,8 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(self::$object->isEngage());
 
         $intervention = new Core\Entity\Intervention(new Core\Entity\Sinistre('Feu de'));
-        $centre = new Core\Entity\Centre('CIS Arras');
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
         $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
 
         $engagement1 = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, self::$object);

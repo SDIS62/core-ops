@@ -9,6 +9,20 @@ use PHPUnit_Framework_TestCase;
 
 class GardeServiceTest extends PHPUnit_Framework_TestCase
 {
+    public function test_if_it_get_all_current()
+    {
+        // Init ..
+        $repository_garde = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
+        $repository_pompier = Mockery::mock('SDIS62\Core\Ops\Repository\PompierRepositoryInterface')->makePartial();
+        $service = new Core\Service\GardeService($repository_garde, $repository_pompier);
+
+        // Prepare ..
+        $repository_garde->shouldReceive('getAllCurrent')->andReturn(true)->once();
+
+        // Test!
+        $this->assertTrue($service->getAllCurrent());
+    }
+
     public function test_if_it_find_all_by_month()
     {
         // Init ..

@@ -7,6 +7,14 @@ use SDIS62\Core\Ops\Entity\Garde;
 interface GardeRepositoryInterface
 {
     /**
+     * Retourne un ensemble de gardes en cours.
+     *
+     *
+     * @return SDIS62\Core\User\Entity\Garde[]
+     */
+    public function getAllCurrent();
+
+    /**
      * Retourne un ensemble de gardes sur un mois.
      *
      * @param int $month

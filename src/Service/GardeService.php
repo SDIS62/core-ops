@@ -22,6 +22,17 @@ class GardeService
     }
 
     /**
+     * Retourne un ensemble de gardes en cours.
+     *
+     *
+     * @return SDIS62\Core\User\Entity\Garde[]
+     */
+    public function getAllCurrent()
+    {
+        return $this->garde_repository->getAllCurrent();
+    }
+
+    /**
      * Retourne un ensemble de gardes sur un mois.
      *
      * @param int $month

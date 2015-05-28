@@ -38,6 +38,13 @@ class Materiel
     protected $engagements;
 
     /**
+     * Coordonnées du matériel ([x,y]).
+     *
+     * @var array
+     */
+    protected $coordinates;
+
+    /**
      * Ajout d'un materiel à un centre.
      *
      * @param SDIS62\Core\Ops\Entity\Centre $centre
@@ -161,5 +168,33 @@ class Materiel
         }
 
         return false;
+    }
+
+    /**
+     * Get the value of Coordonnées du matériel ([x,y]).
+     *
+     * @return array
+     */
+    public function getCoordinates()
+    {
+        return $this->coordinates;
+    }
+
+    /**
+     * Set the value of Coordonnées du matériel ([x,y]).
+     *
+     * @param array coordinates
+     *
+     * @return self
+     */
+    public function setCoordinates(array $coordinates)
+    {
+        if (count($coordinates) != 2) {
+            return;
+        }
+
+        $this->coordinates = $coordinates;
+
+        return $this;
     }
 }

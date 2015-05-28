@@ -83,4 +83,13 @@ class MaterielTest extends PHPUnit_Framework_TestCase
 
         $this->assertFalse(self::$object->isEngage());
     }
+
+    public function test_if_it_have_a_coordinates()
+    {
+        self::$object->setCoordinates(array('X', 'Y'));
+        $this->assertEquals(array('X', 'Y'), self::$object->getCoordinates());
+
+        self::$object->setCoordinates(array('X', 'Y', 'Z'));
+        $this->assertEquals(array('X', 'Y'), self::$object->getCoordinates());
+    }
 }

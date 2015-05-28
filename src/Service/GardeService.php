@@ -72,7 +72,7 @@ class GardeService
             return;
         }
 
-        $garde = new Garde($pompier, $data['debut'], $data['fin']);
+        $garde = new Garde($pompier, $data['start'], $data['end']);
 
         $this->garde_repository->save($garde);
 

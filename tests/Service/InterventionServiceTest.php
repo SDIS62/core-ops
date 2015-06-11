@@ -26,6 +26,15 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->service->find(1));
     }
 
+    public function test_if_it_find_all_by_distance()
+    {
+        // Prepare ..
+        $this->repository_intervention->shouldReceive('findAllByDistance')->with(50.2, 2.0, 500)->andReturn(true)->once();
+
+        // Test!
+        $this->assertTrue($this->service->findAllByDistance(50.2, 2.0));
+    }
+
     public function test_if_it_get_all()
     {
         // Prepare ..

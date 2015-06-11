@@ -26,6 +26,17 @@ interface InterventionRepositoryInterface
     public function find($id_intervention);
 
     /**
+     * Retourne les interventions se trouvant dans un rayon de 500m (par défaut) des coordonnées.
+     *
+     * @param float $lat
+     * @param float $lon
+     * @param int $distance
+     *
+     * @return SDIS62\Core\Ops\Entity\Intervention[]
+     */
+    public function findAllByDistance($lat, $lon, $distance = 500);
+
+    /**
      * Sauvegarde d'une intervention.
      *
      * @param  SDIS62\Core\Ops\Entity\Intervention

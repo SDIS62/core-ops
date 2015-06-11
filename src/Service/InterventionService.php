@@ -55,7 +55,7 @@ class InterventionService
      *
      * @param float $lat
      * @param float $lon
-     * @param int $distance
+     * @param int   $distance
      *
      * @return SDIS62\Core\Ops\Entity\Intervention[]
      */

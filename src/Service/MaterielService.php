@@ -34,20 +34,6 @@ class MaterielService
     }
 
     /**
-     * Retourne les matériels se trouvant dans un rayon de 500m (par défaut) des coordonnées.
-     *
-     * @param float $lat
-     * @param float $lon
-     * @param int $distance
-     *
-     * @return SDIS62\Core\Ops\Entity\Materiel[]
-     */
-    public function findAllByDistance($lat, $lon, $distance = 500)
-    {
-        return $this->materiel_repository->findAllByDistance($lat, $lon, $distance);
-    }
-
-    /**
      * Sauvegarde d'un matériel.
      *
      * @param array $data

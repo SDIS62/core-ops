@@ -22,20 +22,6 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($service->find(1));
     }
 
-    public function test_if_it_find_all_by_distance()
-    {
-        // Init ..
-        $repository_materiel = Mockery::mock('SDIS62\Core\Ops\Repository\MaterielRepositoryInterface')->makePartial();
-        $repository_centre   = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
-        $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
-
-        // Prepare ..
-        $repository_materiel->shouldReceive('findAllByDistance')->with(50.2, 2.0, 500)->andReturn(true)->once();
-
-        // Test!
-        $this->assertTrue($service->findAllByDistance(50.2, 2.0));
-    }
-
     public function test_if_it_delete()
     {
         // Init ..

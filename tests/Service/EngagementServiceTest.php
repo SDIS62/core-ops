@@ -24,6 +24,22 @@ class EngagementServiceTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($service->find(1));
     }
 
+    public function test_if_it_find_all_by_distance()
+    {
+        // Init ..
+        $repository_engagement   = Mockery::mock('SDIS62\Core\Ops\Repository\EngagementRepositoryInterface')->makePartial();
+        $repository_materiel     = Mockery::mock('SDIS62\Core\Ops\Repository\MaterielRepositoryInterface')->makePartial();
+        $repository_intervention = Mockery::mock('SDIS62\Core\Ops\Repository\InterventionRepositoryInterface')->makePartial();
+        $repository_pompier      = Mockery::mock('SDIS62\Core\Ops\Repository\PompierRepositoryInterface')->makePartial();
+        $service                 = new Core\Service\EngagementService($repository_engagement, $repository_materiel, $repository_intervention, $repository_pompier);
+
+        // Prepare ..
+        $repository_engagement->shouldReceive('findAllByDistance')->with(50.2, 2.0, 500)->andReturn(true)->once();
+
+        // Test!
+        $this->assertTrue($service->findAllByDistance(50.2, 2.0));
+    }
+
     public function test_if_it_delete()
     {
         // Init ..

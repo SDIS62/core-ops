@@ -43,6 +43,20 @@ class EngagementService
     }
 
     /**
+     * Retourne les engagements se trouvant dans un rayon de 500m (par défaut) des coordonnées.
+     *
+     * @param float $lat
+     * @param float $lon
+     * @param int   $distance
+     *
+     * @return SDIS62\Core\Ops\Entity\Engagement[]
+     */
+    public function findAllByDistance($lat, $lon, $distance = 500)
+    {
+        return $this->engagement_repository->findAllByDistance($lat, $lon, $distance);
+    }
+
+    /**
      * Sauvegarde d'un engagement.
      *
      * @param array $data

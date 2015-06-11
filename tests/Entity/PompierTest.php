@@ -27,6 +27,13 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('string', self::$object->getName());
     }
 
+    public function test_if_it_have_a_grade()
+    {
+        self::$object->setGrade('colonel');
+        $this->assertEquals('colonel', self::$object->getGrade());
+        $this->assertInternalType('string', self::$object->getGrade());
+    }
+
     public function test_if_it_have_a_matricule()
     {
         $this->assertEquals('mat001', self::$object->getMatricule());

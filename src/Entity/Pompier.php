@@ -43,6 +43,13 @@ class Pompier
     protected $engagements;
 
     /**
+     * Grade.
+     *
+     * @var string
+     */
+    protected $grade;
+
+    /**
      * Nom du pompier.
      *
      * @var string
@@ -148,6 +155,30 @@ class Pompier
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Grade du pompier.
+     *
+     * @return string
+     */
+    public function getGrade()
+    {
+        return $this->grade;
+    }
+
+    /**
+     * Set the value of Grade du pompier.
+     *
+     * @param string grade
+     *
+     * @return self
+     */
+    public function setGrade($grade)
+    {
+        $this->grade = $grade;
 
         return $this;
     }

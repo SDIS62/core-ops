@@ -12,9 +12,9 @@ class MaterielTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre = new Core\Entity\Centre($commune, "CIS Arras");
-        self::$object = new Core\Entity\Materiel($centre, "VSAV1");
+        $commune      = new Core\Entity\Commune('Arras', '62001');
+        $centre       = new Core\Entity\Centre($commune, 'CIS Arras');
+        self::$object = new Core\Entity\Materiel($centre, 'VSAV1');
     }
 
     public function test_if_it_have_an_id()
@@ -43,7 +43,7 @@ class MaterielTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
 
         $commune = new Core\Entity\Commune('Bethune', '62002');
-        self::$object->setCentre(new Core\Entity\Centre($commune, "CIS Bethune"));
+        self::$object->setCentre(new Core\Entity\Centre($commune, 'CIS Bethune'));
 
         $this->assertEquals('CIS Bethune', self::$object->getCentre()->getName());
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
@@ -69,9 +69,9 @@ class MaterielTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(self::$object->isEngage());
 
         $intervention = new Core\Entity\Intervention(new Core\Entity\Sinistre('Feu de'));
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
-        $pompier = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
+        $commune      = new Core\Entity\Commune('Arras', '62001');
+        $centre       = new Core\Entity\Centre($commune, 'CIS Arras');
+        $pompier      = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
 
         $engagement1 = new Core\Entity\Engagement\PompierEngagement($intervention, self::$object, $pompier);
         $engagement2 = new Core\Entity\Engagement\PompierEngagement($intervention, self::$object, $pompier);
@@ -86,10 +86,10 @@ class MaterielTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_have_a_coordinates()
     {
-        self::$object->setCoordinates(array('X', 'Y'));
-        $this->assertEquals(array('X', 'Y'), self::$object->getCoordinates());
+        self::$object->setCoordinates(['X', 'Y']);
+        $this->assertEquals(['X', 'Y'], self::$object->getCoordinates());
 
-        self::$object->setCoordinates(array('X', 'Y', 'Z'));
-        $this->assertEquals(array('X', 'Y'), self::$object->getCoordinates());
+        self::$object->setCoordinates(['X', 'Y', 'Z']);
+        $this->assertEquals(['X', 'Y'], self::$object->getCoordinates());
     }
 }

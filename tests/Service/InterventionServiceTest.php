@@ -12,9 +12,9 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $this->repository_intervention = Mockery::mock('SDIS62\Core\Ops\Repository\InterventionRepositoryInterface')->makePartial();
-        $this->repository_sinistre = Mockery::mock('SDIS62\Core\Ops\Repository\SinistreRepositoryInterface')->makePartial();
-        $this->repository_commune = Mockery::mock('SDIS62\Core\Ops\Repository\CommuneRepositoryInterface')->makePartial();
-        $this->service = new Core\Service\InterventionService($this->repository_intervention, $this->repository_sinistre, $this->repository_commune);
+        $this->repository_sinistre     = Mockery::mock('SDIS62\Core\Ops\Repository\SinistreRepositoryInterface')->makePartial();
+        $this->repository_commune      = Mockery::mock('SDIS62\Core\Ops\Repository\CommuneRepositoryInterface')->makePartial();
+        $this->service                 = new Core\Service\InterventionService($this->repository_intervention, $this->repository_sinistre, $this->repository_commune);
     }
 
     public function test_if_it_find()
@@ -51,23 +51,23 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create()
     {
         // Prepare ..
-        $data = array(
-            'sinistre' => 1,
-            'precision' => 'medicamenteuse',
+        $data = [
+            'sinistre'     => 1,
+            'precision'    => 'medicamenteuse',
             'observations' => 'TAMED sur Arras',
-            'updated' => '15-01-2050 15:00',
-            'coordinates' => array('X', 'Y'),
-            'address' => '11 rue des acacias 62000 Arras',
-            'commune' => '62001',
-            'important' => true,
-        );
-        $sinistre = new Core\Entity\Sinistre('TA');
-        $commune = new Core\Entity\Commune('Arras', '62001');
+            'updated'      => '15-01-2050 15:00',
+            'coordinates'  => ['X', 'Y'],
+            'address'      => '11 rue des acacias 62000 Arras',
+            'commune'      => '62001',
+            'important'    => true,
+        ];
+        $sinistre              = new Core\Entity\Sinistre('TA');
+        $commune               = new Core\Entity\Commune('Arras', '62001');
         $intervention_expected = new Core\Entity\Intervention($sinistre);
         $intervention_expected->setPrecision('medicamenteuse');
         $intervention_expected->setObservations('TAMED sur Arras');
         $intervention_expected->setUpdated('15-01-2050 15:00');
-        $intervention_expected->setCoordinates(array('X', 'Y'));
+        $intervention_expected->setCoordinates(['X', 'Y']);
         $intervention_expected->setAddress('11 rue des acacias 62000 Arras');
         $intervention_expected->setCommune($commune);
         $intervention_expected->setImportant();
@@ -82,35 +82,35 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_update()
     {
         // Prepare ..
-        $data = array(
-            'sinistre' => 2,
-            'precision' => 'medic',
+        $data = [
+            'sinistre'     => 2,
+            'precision'    => 'medic',
             'observations' => 'TAMED sur 62000',
-            'updated' => '15-01-2060 15:00',
-            'ended' => '15-01-2061 15:00',
-            'coordinates' => array('X2', 'Y2'),
-            'address' => '85 rue des acacias 62000 Bethune',
-            'commune' => '62002',
-            'important' => false,
-        );
-        $sinistre1 = new Core\Entity\Sinistre('TA');
-        $commune1 = new Core\Entity\Commune('Arras', '62001');
+            'updated'      => '15-01-2060 15:00',
+            'ended'        => '15-01-2061 15:00',
+            'coordinates'  => ['X2', 'Y2'],
+            'address'      => '85 rue des acacias 62000 Bethune',
+            'commune'      => '62002',
+            'important'    => false,
+        ];
+        $sinistre1            = new Core\Entity\Sinistre('TA');
+        $commune1             = new Core\Entity\Commune('Arras', '62001');
         $intervention_updated = new Core\Entity\Intervention($sinistre1);
         $intervention_updated->setPrecision('medicamenteuse');
         $intervention_updated->setObservations('TAMED sur Arras');
         $intervention_updated->setUpdated('15-01-2050 15:00');
-        $intervention_updated->setCoordinates(array('X', 'Y'));
+        $intervention_updated->setCoordinates(['X', 'Y']);
         $intervention_updated->setAddress('11 rue des acacias 62000 Arras');
         $intervention_updated->setCommune($commune1);
         $intervention_updated->setImportant();
-        $sinistre2 = new Core\Entity\Sinistre('Feu de');
-        $commune2 = new Core\Entity\Commune('Bethune', '62002');
+        $sinistre2             = new Core\Entity\Sinistre('Feu de');
+        $commune2              = new Core\Entity\Commune('Bethune', '62002');
         $intervention_expected = new Core\Entity\Intervention($sinistre2);
         $intervention_expected->setPrecision('medic');
         $intervention_expected->setObservations('TAMED sur 62000');
         $intervention_expected->setUpdated('15-01-2060 15:00');
         $intervention_expected->setEnded('15-01-2061 15:00');
-        $intervention_expected->setCoordinates(array('X2', 'Y2'));
+        $intervention_expected->setCoordinates(['X2', 'Y2']);
         $intervention_expected->setAddress('85 rue des acacias 62000 Bethune');
         $intervention_expected->setCommune($commune2);
         $intervention_expected->setImportant(false);
@@ -122,7 +122,7 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
 
         // Test!
         $this->assertEquals($intervention_expected, $this->service->save($data, 15));
-        $this->assertNull($this->service->save(array('sinistre' => 3), 15));
+        $this->assertNull($this->service->save(['sinistre' => 3], 15));
     }
 
     public function tearDown()

@@ -30,12 +30,12 @@ interface SinistreRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Sinistre
      */
-    public function save(Sinistre & $sinistre);
+    public function save(Sinistre &$sinistre);
 
     /**
      * Suppression d'un sinistre.
      *
      * @param  SDIS62\Core\Ops\Entity\Sinistre
      */
-    public function delete(Sinistre & $sinistre);
+    public function delete(Sinistre &$sinistre);
 }

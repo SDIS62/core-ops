@@ -14,10 +14,10 @@ class EngagementTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $sinistre = new Core\Entity\Sinistre("Feu de");
+        $sinistre     = new Core\Entity\Sinistre('Feu de');
         $intervention = new Core\Entity\Intervention($sinistre);
 
-        self::$object = Mockery::mock('SDIS62\Core\Ops\Entity\Engagement', array($intervention))->makePartial();
+        self::$object = Mockery::mock('SDIS62\Core\Ops\Entity\Engagement', [$intervention])->makePartial();
     }
 
     public function test_if_it_have_an_id()

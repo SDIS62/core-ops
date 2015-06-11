@@ -31,12 +31,12 @@ interface PompierRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Pompier
      */
-    public function save(Pompier & $pompier);
+    public function save(Pompier &$pompier);
 
     /**
      * Suppression d'un pompier.
      *
      * @param  SDIS62\Core\Ops\Entity\Pompier
      */
-    public function delete(Pompier & $pompier);
+    public function delete(Pompier &$pompier);
 }

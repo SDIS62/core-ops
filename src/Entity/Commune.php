@@ -35,9 +35,9 @@ class Commune
      */
     public function __construct($name, $numinsee)
     {
-        $this->name = $name;
+        $this->name     = $name;
         $this->numinsee = $numinsee;
-        $this->centres = new ArrayCollection();
+        $this->centres  = new ArrayCollection();
     }
 
     /**

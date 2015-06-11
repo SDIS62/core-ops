@@ -11,9 +11,9 @@ class SpecialistePompierTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre = new Core\Entity\Centre($commune, "CIS Arras");
-        self::$object = new Core\Entity\Pompier\SpecialistePompier("DUBUC Kevin", "mat001", $centre);
+        $commune      = new Core\Entity\Commune('Arras', '62001');
+        $centre       = new Core\Entity\Centre($commune, 'CIS Arras');
+        self::$object = new Core\Entity\Pompier\SpecialistePompier('DUBUC Kevin', 'mat001', $centre);
     }
 
     public function test_if_it_is_initializable()
@@ -26,7 +26,7 @@ class SpecialistePompierTest extends PHPUnit_Framework_TestCase
     {
         $this->assertCount(0, self::$object->getSpecialites());
 
-        self::$object->setSpecialites(array('CDC', 'CDG'));
+        self::$object->setSpecialites(['CDC', 'CDG']);
 
         $this->assertCount(2, self::$object->getSpecialites());
     }

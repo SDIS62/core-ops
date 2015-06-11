@@ -12,9 +12,9 @@ class GardeServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_get_all_current()
     {
         // Init ..
-        $repository_garde = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
+        $repository_garde   = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
         $repository_pompier = Mockery::mock('SDIS62\Core\Ops\Repository\PompierRepositoryInterface')->makePartial();
-        $service = new Core\Service\GardeService($repository_garde, $repository_pompier);
+        $service            = new Core\Service\GardeService($repository_garde, $repository_pompier);
 
         // Prepare ..
         $repository_garde->shouldReceive('getAllCurrent')->andReturn(true)->once();
@@ -26,9 +26,9 @@ class GardeServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_find_all_by_month()
     {
         // Init ..
-        $repository_garde = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
+        $repository_garde   = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
         $repository_pompier = Mockery::mock('SDIS62\Core\Ops\Repository\PompierRepositoryInterface')->makePartial();
-        $service = new Core\Service\GardeService($repository_garde, $repository_pompier);
+        $service            = new Core\Service\GardeService($repository_garde, $repository_pompier);
 
         // Prepare ..
         $repository_garde->shouldReceive('findAllByMonth')->with(12)->andReturn(true)->once();
@@ -40,9 +40,9 @@ class GardeServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_find()
     {
         // Init ..
-        $repository_garde = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
+        $repository_garde   = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
         $repository_pompier = Mockery::mock('SDIS62\Core\Ops\Repository\PompierRepositoryInterface')->makePartial();
-        $service = new Core\Service\GardeService($repository_garde, $repository_pompier);
+        $service            = new Core\Service\GardeService($repository_garde, $repository_pompier);
 
         // Prepare ..
         $repository_garde->shouldReceive('find')->with(1)->andReturn(true)->once();
@@ -54,9 +54,9 @@ class GardeServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_delete()
     {
         // Init ..
-        $repository_garde = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
+        $repository_garde   = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
         $repository_pompier = Mockery::mock('SDIS62\Core\Ops\Repository\PompierRepositoryInterface')->makePartial();
-        $service = new Core\Service\GardeService($repository_garde, $repository_pompier);
+        $service            = new Core\Service\GardeService($repository_garde, $repository_pompier);
 
         // Prepare ..
         $garde = Mockery::mock('SDIS62\Core\Ops\Entity\Garde');
@@ -72,13 +72,13 @@ class GardeServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create()
     {
         // Init ..
-        $repository_garde = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
+        $repository_garde   = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
         $repository_pompier = Mockery::mock('SDIS62\Core\Ops\Repository\PompierRepositoryInterface')->makePartial();
-        $service = new Core\Service\GardeService($repository_garde, $repository_pompier);
+        $service            = new Core\Service\GardeService($repository_garde, $repository_pompier);
 
         // Prepare ..
-        $data = array('start' => new Datetime('2015-11-01 15:00'), 'end' => new Datetime('2015-12-01 15:00'));
-        $pompier = new Core\Entity\Pompier('Kevin', '00001', new Core\Entity\Centre(new Core\Entity\Commune('Arras', '62001'), 'CIS Arras'));
+        $data           = ['start' => new Datetime('2015-11-01 15:00'), 'end' => new Datetime('2015-12-01 15:00')];
+        $pompier        = new Core\Entity\Pompier('Kevin', '00001', new Core\Entity\Centre(new Core\Entity\Commune('Arras', '62001'), 'CIS Arras'));
         $garde_expected = new Core\Entity\Garde($pompier, '01-11-2015 15:00', '01-12-2015 15:00');
         $repository_garde->shouldReceive('save')->once();
         $repository_pompier->shouldReceive('find')->with(1)->andReturn($pompier)->once();

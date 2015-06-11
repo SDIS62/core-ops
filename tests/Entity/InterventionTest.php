@@ -13,7 +13,7 @@ class InterventionTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $sinistre = new Core\Entity\Sinistre("Feu de");
+        $sinistre     = new Core\Entity\Sinistre('Feu de');
         self::$object = new Core\Entity\Intervention($sinistre);
     }
 
@@ -89,10 +89,10 @@ class InterventionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertFalse(self::$object->isEnded());
 
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
+        $commune  = new Core\Entity\Commune('Arras', '62001');
+        $centre   = new Core\Entity\Centre($commune, 'CIS Arras');
         $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
-        $pompier = new Core\Entity\Pompier('Kevin', '0001', $centre);
+        $pompier  = new Core\Entity\Pompier('Kevin', '0001', $centre);
 
         $engagement1 = new Core\Entity\Engagement\PompierEngagement(self::$object, $materiel, $pompier);
         $engagement2 = new Core\Entity\Engagement\PompierEngagement(self::$object, $materiel, $pompier);
@@ -127,10 +127,10 @@ class InterventionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertCount(0, self::$object->getEngagements());
 
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
+        $commune  = new Core\Entity\Commune('Arras', '62001');
+        $centre   = new Core\Entity\Centre($commune, 'CIS Arras');
         $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
-        $pompier = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
+        $pompier  = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
 
         $engagement1 = new Core\Entity\Engagement\PompierEngagement(self::$object, $materiel, $pompier);
         $engagement2 = new Core\Entity\Engagement\PompierEngagement(self::$object, $materiel, $pompier);
@@ -167,10 +167,10 @@ class InterventionTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_have_a_coordinates()
     {
-        self::$object->setCoordinates(array('X', 'Y'));
-        $this->assertEquals(array('X', 'Y'), self::$object->getCoordinates());
+        self::$object->setCoordinates(['X', 'Y']);
+        $this->assertEquals(['X', 'Y'], self::$object->getCoordinates());
 
-        self::$object->setCoordinates(array('X', 'Y', 'Z'));
-        $this->assertEquals(array('X', 'Y'), self::$object->getCoordinates());
+        self::$object->setCoordinates(['X', 'Y', 'Z']);
+        $this->assertEquals(['X', 'Y'], self::$object->getCoordinates());
     }
 }

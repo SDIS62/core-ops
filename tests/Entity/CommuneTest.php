@@ -11,12 +11,12 @@ class CommuneTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        self::$object = new Core\Entity\Commune("Arras", "62001");
+        self::$object = new Core\Entity\Commune('Arras', '62001');
     }
 
     public function test_if_it_have_an_numinsee()
     {
-        $this->assertEquals("62001", self::$object->getNumInsee());
+        $this->assertEquals('62001', self::$object->getNumInsee());
     }
 
     public function test_if_it_is_initializable()

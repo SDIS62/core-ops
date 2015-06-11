@@ -11,7 +11,7 @@ class SinistreTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        self::$object = new Core\Entity\Sinistre("Feu de");
+        self::$object = new Core\Entity\Sinistre('Feu de');
     }
 
     public function test_if_it_have_an_id()

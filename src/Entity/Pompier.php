@@ -179,7 +179,7 @@ class Pompier
     /**
      * Le matériel est il actuellement engagé ?
      *
-     * @return boolean
+     * @return bool
      */
     public function isEngage()
     {

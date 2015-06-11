@@ -11,9 +11,9 @@ class CentreServiceTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         // Init ..
-        $this->repository_centre = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
+        $this->repository_centre  = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
         $this->repository_commune = Mockery::mock('SDIS62\Core\Ops\Repository\CommuneRepositoryInterface')->makePartial();
-        $this->service = new Core\Service\CentreService($this->repository_centre, $this->repository_commune);
+        $this->service            = new Core\Service\CentreService($this->repository_centre, $this->repository_commune);
     }
 
     public function test_if_it_get_all()
@@ -59,8 +59,8 @@ class CentreServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create()
     {
         // Prepare ..
-        $data = array('name' => 'CIS Arras', 'commune' => '62001');
-        $commune = new Core\Entity\Commune('Arras', '62001');
+        $data            = ['name' => 'CIS Arras', 'commune' => '62001'];
+        $commune         = new Core\Entity\Commune('Arras', '62001');
         $centre_expected = new Core\Entity\Centre($commune, 'CIS Arras');
         $this->repository_commune->shouldReceive('find')->with('62001')->andReturn($commune)->once();
         $this->repository_commune->shouldReceive('find')->with('62002')->andReturn(null)->once();
@@ -68,15 +68,15 @@ class CentreServiceTest extends PHPUnit_Framework_TestCase
 
         // Test!
         $this->assertEquals($centre_expected, $this->service->save($data));
-        $this->assertNull($this->service->save(array('name' => 'CIS Arras', 'commune' => '62002')));
+        $this->assertNull($this->service->save(['name' => 'CIS Arras', 'commune' => '62002']));
     }
 
     public function test_if_it_update()
     {
         // Prepare ..
-        $data = array('name' => 'CIS Bethune');
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre_updated = new Core\Entity\Centre($commune, 'CIS Arras');
+        $data            = ['name' => 'CIS Bethune'];
+        $commune         = new Core\Entity\Commune('Arras', '62001');
+        $centre_updated  = new Core\Entity\Centre($commune, 'CIS Arras');
         $centre_expected = new Core\Entity\Centre($commune, 'CIS Bethune');
         $this->repository_centre->shouldReceive('find')->with(1)->andReturn($centre_updated)->once();
         $this->repository_centre->shouldReceive('find')->with(2)->andReturn(null)->once();

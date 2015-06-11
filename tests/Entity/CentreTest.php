@@ -11,8 +11,8 @@ class CentreTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        self::$object = new Core\Entity\Centre($commune, "CIS Arras");
+        $commune      = new Core\Entity\Commune('Arras', '62001');
+        self::$object = new Core\Entity\Centre($commune, 'CIS Arras');
     }
 
     public function test_if_it_have_an_id()
@@ -38,8 +38,8 @@ class CentreTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_have_materiels()
     {
-        $materiel1 = new Core\Entity\Materiel(self::$object, "VSAV1");
-        $materiel2 = new Core\Entity\Materiel(self::$object, "VSAV2");
+        $materiel1 = new Core\Entity\Materiel(self::$object, 'VSAV1');
+        $materiel2 = new Core\Entity\Materiel(self::$object, 'VSAV2');
 
         $this->assertCount(2, self::$object->getMateriels());
     }

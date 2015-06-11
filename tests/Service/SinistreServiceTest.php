@@ -12,7 +12,7 @@ class SinistreServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_sinistre = Mockery::mock('SDIS62\Core\Ops\Repository\SinistreRepositoryInterface')->makePartial();
-        $service = new Core\Service\SinistreService($repository_sinistre);
+        $service             = new Core\Service\SinistreService($repository_sinistre);
 
         // Prepare ..
         $repository_sinistre->shouldReceive('getAll')->with(20, 1)->andReturn(true)->once();
@@ -25,7 +25,7 @@ class SinistreServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_sinistre = Mockery::mock('SDIS62\Core\Ops\Repository\SinistreRepositoryInterface')->makePartial();
-        $service = new Core\Service\SinistreService($repository_sinistre);
+        $service             = new Core\Service\SinistreService($repository_sinistre);
 
         // Prepare ..
         $repository_sinistre->shouldReceive('find')->with(1)->andReturn(true)->once();
@@ -38,7 +38,7 @@ class SinistreServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_sinistre = Mockery::mock('SDIS62\Core\Ops\Repository\SinistreRepositoryInterface')->makePartial();
-        $service = new Core\Service\SinistreService($repository_sinistre);
+        $service             = new Core\Service\SinistreService($repository_sinistre);
 
         // Prepare ..
         $sinistre = Mockery::mock('SDIS62\Core\Ops\Entity\Sinistre');
@@ -55,10 +55,10 @@ class SinistreServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_sinistre = Mockery::mock('SDIS62\Core\Ops\Repository\SinistreRepositoryInterface')->makePartial();
-        $service = new Core\Service\SinistreService($repository_sinistre);
+        $service             = new Core\Service\SinistreService($repository_sinistre);
 
         // Prepare ..
-        $data = array('name' => 'Feu de');
+        $data              = ['name' => 'Feu de'];
         $sinistre_expected = new Core\Entity\Sinistre('Feu de');
         $repository_sinistre->shouldReceive('save')->once();
 
@@ -70,11 +70,11 @@ class SinistreServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_sinistre = Mockery::mock('SDIS62\Core\Ops\Repository\SinistreRepositoryInterface')->makePartial();
-        $service = new Core\Service\SinistreService($repository_sinistre);
+        $service             = new Core\Service\SinistreService($repository_sinistre);
 
         // Prepare ..
-        $data = array('name' => 'TA');
-        $sinistre_updated = new Core\Entity\Sinistre('Feu de');
+        $data              = ['name' => 'TA'];
+        $sinistre_updated  = new Core\Entity\Sinistre('Feu de');
         $sinistre_expected = new Core\Entity\Sinistre('TA');
         $repository_sinistre->shouldReceive('find')->with(1)->andReturn($sinistre_updated)->once();
         $repository_sinistre->shouldReceive('save')->once();

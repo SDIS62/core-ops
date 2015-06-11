@@ -20,12 +20,12 @@ interface EvenementRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Evenement
      */
-    public function save(Evenement & $evenement);
+    public function save(Evenement &$evenement);
 
     /**
      * Suppression d'un évenement.
      *
      * @param  SDIS62\Core\Ops\Entity\Evenement
      */
-    public function delete(Evenement & $evenement);
+    public function delete(Evenement &$evenement);
 }

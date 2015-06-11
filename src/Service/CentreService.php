@@ -17,7 +17,7 @@ class CentreService
     public function __construct(CentreRepositoryInterface $centre_repository,
                                 CommuneRepositoryInterface $commune_repository
     ) {
-        $this->centre_repository = $centre_repository;
+        $this->centre_repository  = $centre_repository;
         $this->commune_repository = $commune_repository;
     }
 

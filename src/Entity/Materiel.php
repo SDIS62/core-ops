@@ -19,7 +19,7 @@ class Materiel
     /**
      * Le matériel est il actif ?
      *
-     * @var boolean
+     * @var bool
      */
     protected $actif;
 
@@ -52,7 +52,7 @@ class Materiel
      */
     public function __construct(Centre $centre, $name)
     {
-        $this->name = $name;
+        $this->name   = $name;
         $this->centre = $centre;
         $this->centre->addMateriel($this);
         $this->engagements = new ArrayCollection();
@@ -95,7 +95,7 @@ class Materiel
     /**
      * Set the value of Actif.
      *
-     * @param boolean actif
+     * @param bool actif
      *
      * @return self
      */
@@ -157,7 +157,7 @@ class Materiel
     /**
      * Le matériel est il actuellement engagé ?
      *
-     * @return boolean
+     * @return bool
      */
     public function isEngage()
     {

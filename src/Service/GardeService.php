@@ -17,7 +17,7 @@ class GardeService
     public function __construct(GardeRepositoryInterface $garde_repository,
                                 PompierRepositoryInterface $pompier_repository
     ) {
-        $this->garde_repository = $garde_repository;
+        $this->garde_repository   = $garde_repository;
         $this->pompier_repository = $pompier_repository;
     }
 

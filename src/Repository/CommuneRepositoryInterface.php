@@ -30,12 +30,12 @@ interface CommuneRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Commune
      */
-    public function save(Commune & $commune);
+    public function save(Commune &$commune);
 
     /**
      * Suppression d'une commune.
      *
      * @param  SDIS62\Core\Ops\Entity\Commune
      */
-    public function delete(Commune & $commune);
+    public function delete(Commune &$commune);
 }

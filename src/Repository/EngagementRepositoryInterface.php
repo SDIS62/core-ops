@@ -20,12 +20,12 @@ interface EngagementRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Engagement
      */
-    public function save(Engagement & $engagement);
+    public function save(Engagement &$engagement);
 
     /**
      * Suppression d'un engagement.
      *
      * @param  SDIS62\Core\Ops\Entity\Engagement
      */
-    public function delete(Engagement & $engagement);
+    public function delete(Engagement &$engagement);
 }

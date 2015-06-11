@@ -24,10 +24,10 @@ class EngagementService
                                 InterventionRepositoryInterface $intervention_repository,
                                 PompierRepositoryInterface $pompier_repository
     ) {
-        $this->engagement_repository = $engagement_repository;
-        $this->materiel_repository = $materiel_repository;
+        $this->engagement_repository   = $engagement_repository;
+        $this->materiel_repository     = $materiel_repository;
         $this->intervention_repository = $intervention_repository;
-        $this->pompier_repository = $pompier_repository;
+        $this->pompier_repository      = $pompier_repository;
     }
 
     /**
@@ -57,8 +57,8 @@ class EngagementService
 
             switch ($data['type']) {
                 case 'pompier' :
-                    $materiel = $this->materiel_repository->find($data['materiel']);
-                    $pompier = $this->pompier_repository->find($data['pompier']);
+                    $materiel   = $this->materiel_repository->find($data['materiel']);
+                    $pompier    = $this->pompier_repository->find($data['pompier']);
                     $engagement = new Engagement\PompierEngagement($intervention, $materiel, $pompier);
                     break;
                 default:

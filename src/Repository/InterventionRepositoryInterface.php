@@ -30,12 +30,12 @@ interface InterventionRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Intervention
      */
-    public function save(Intervention & $intervention);
+    public function save(Intervention &$intervention);
 
     /**
      * Suppression d'une intervention.
      *
      * @param  SDIS62\Core\Ops\Entity\Intervention
      */
-    public function delete(Intervention & $intervention);
+    public function delete(Intervention &$intervention);
 }

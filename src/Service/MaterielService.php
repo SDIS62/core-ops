@@ -18,7 +18,7 @@ class MaterielService
                                 CentreRepositoryInterface $centre_repository
     ) {
         $this->materiel_repository = $materiel_repository;
-        $this->centre_repository = $centre_repository;
+        $this->centre_repository   = $centre_repository;
     }
 
     /**

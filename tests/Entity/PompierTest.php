@@ -12,9 +12,9 @@ class PompierTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre = new Core\Entity\Centre($commune, "CIS Arras");
-        self::$object = new Core\Entity\Pompier("DUBUC Kevin", "mat001", $centre);
+        $commune      = new Core\Entity\Commune('Arras', '62001');
+        $centre       = new Core\Entity\Centre($commune, 'CIS Arras');
+        self::$object = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', $centre);
     }
     public function test_if_it_is_initializable()
     {
@@ -37,9 +37,9 @@ class PompierTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
 
-        $ancien_centre = self::$object->getCentre();
-        $commune = new Core\Entity\Commune('Bethune', '62002');
-        $nouveau_centre = new Core\Entity\Centre($commune, "CIS Bethune");
+        $ancien_centre  = self::$object->getCentre();
+        $commune        = new Core\Entity\Commune('Bethune', '62002');
+        $nouveau_centre = new Core\Entity\Centre($commune, 'CIS Bethune');
 
         self::$object->setCentre($nouveau_centre);
 
@@ -63,9 +63,9 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(self::$object->isEngage());
 
         $intervention = new Core\Entity\Intervention(new Core\Entity\Sinistre('Feu de'));
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
-        $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
+        $commune      = new Core\Entity\Commune('Arras', '62001');
+        $centre       = new Core\Entity\Centre($commune, 'CIS Arras');
+        $materiel     = new Core\Entity\Materiel($centre, 'VSAV1');
 
         $engagement1 = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, self::$object);
         $engagement2 = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, self::$object);

@@ -12,7 +12,7 @@ class CommuneServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $this->repository_commune = Mockery::mock('SDIS62\Core\Ops\Repository\CommuneRepositoryInterface')->makePartial();
-        $this->service = new Core\Service\CommuneService($this->repository_commune);
+        $this->service            = new Core\Service\CommuneService($this->repository_commune);
     }
 
     public function test_if_it_get_all()
@@ -49,7 +49,7 @@ class CommuneServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create()
     {
         // Prepare ..
-        $data = array('name' => 'Arras', 'numinsee' => '62001');
+        $data             = ['name' => 'Arras', 'numinsee' => '62001'];
         $commune_expected = new Core\Entity\Commune('Arras', '62001');
         $this->repository_commune->shouldReceive('find')->with('62001')->andReturn(null)->once();
         $this->repository_commune->shouldReceive('save')->once();
@@ -61,8 +61,8 @@ class CommuneServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_update()
     {
         // Prepare ..
-        $data = array('name' => 'Arras', 'numinsee' => '62001');
-        $commune_updated = new Core\Entity\Commune('Bethune', '62002');
+        $data             = ['name' => 'Arras', 'numinsee' => '62001'];
+        $commune_updated  = new Core\Entity\Commune('Bethune', '62002');
         $commune_expected = new Core\Entity\Commune('Arras', '62002');
         $this->repository_commune->shouldReceive('find')->with('62001')->andReturn($commune_updated)->once();
         $this->repository_commune->shouldReceive('save')->once();

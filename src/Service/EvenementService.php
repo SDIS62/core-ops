@@ -19,9 +19,9 @@ class EvenementService
                                 InterventionRepositoryInterface $intervention_repository,
                                 EngagementRepositoryInterface $engagement_repository
     ) {
-        $this->evenement_repository = $evenement_repository;
+        $this->evenement_repository    = $evenement_repository;
         $this->intervention_repository = $intervention_repository;
-        $this->engagement_repository = $engagement_repository;
+        $this->engagement_repository   = $engagement_repository;
     }
 
     /**

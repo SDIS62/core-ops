@@ -100,8 +100,8 @@ class Intervention
     public function __construct(Sinistre $sinistre)
     {
         $this->setSinistre($sinistre);
-        $this->created = new Datetime('NOW');
-        $this->evenements = new ArrayCollection();
+        $this->created     = new Datetime('NOW');
+        $this->evenements  = new ArrayCollection();
         $this->engagements = new ArrayCollection();
     }
 
@@ -251,7 +251,7 @@ class Intervention
     /**
      * Retourne vrai si l'intervention est terminée.
      *
-     * @return boolean
+     * @return bool
      */
     public function isEnded()
     {
@@ -314,7 +314,7 @@ class Intervention
     public function getEvenements()
     {
         if (count($this->evenements) == 0) {
-            return array();
+            return [];
         }
 
         $evenements = $this->evenements->toArray();

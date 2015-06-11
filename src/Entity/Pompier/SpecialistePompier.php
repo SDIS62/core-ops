@@ -27,7 +27,7 @@ class SpecialistePompier extends Pompier
      */
     public function getSpecialites()
     {
-        return empty($this->specialites) ? array() : $this->specialites;
+        return empty($this->specialites) ? [] : $this->specialites;
     }
 
     /**

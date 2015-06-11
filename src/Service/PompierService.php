@@ -19,7 +19,7 @@ class PompierService
                                 CentreRepositoryInterface $centre_repository
     ) {
         $this->pompier_repository = $pompier_repository;
-        $this->centre_repository = $centre_repository;
+        $this->centre_repository  = $centre_repository;
     }
 
     /**
@@ -58,7 +58,7 @@ class PompierService
      */
     public function save($data)
     {
-        if(!empty($data['matricule'])) {
+        if (!empty($data['matricule'])) {
             $pompier = $this->pompier_repository->find($data['matricule']);
         }
 

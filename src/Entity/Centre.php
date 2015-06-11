@@ -44,11 +44,11 @@ class Centre
      */
     public function __construct(Commune $commune, $name)
     {
-        $this->name = $name;
+        $this->name    = $name;
         $this->commune = $commune;
         $this->commune->addCentre($this);
         $this->materiels = new ArrayCollection();
-        $this->pompiers = new ArrayCollection();
+        $this->pompiers  = new ArrayCollection();
     }
 
     /**

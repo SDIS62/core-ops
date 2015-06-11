@@ -20,12 +20,12 @@ interface MaterielRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Materiel
      */
-    public function save(Materiel & $materiel);
+    public function save(Materiel &$materiel);
 
     /**
      * Suppression d'une matériel.
      *
      * @param  SDIS62\Core\Ops\Entity\Materiel
      */
-    public function delete(Materiel & $materiel);
+    public function delete(Materiel &$materiel);
 }

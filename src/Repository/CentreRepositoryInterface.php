@@ -41,12 +41,12 @@ interface CentreRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Centre
      */
-    public function save(Centre & $centre);
+    public function save(Centre &$centre);
 
     /**
      * Suppression d'un centre.
      *
      * @param  SDIS62\Core\Ops\Entity\Centre
      */
-    public function delete(Centre & $centre);
+    public function delete(Centre &$centre);
 }

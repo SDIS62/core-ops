@@ -37,12 +37,12 @@ interface GardeRepositoryInterface
      *
      * @param  SDIS62\Core\Ops\Entity\Garde
      */
-    public function save(Garde & $garde);
+    public function save(Garde &$garde);
 
     /**
      * Suppression d'une garde.
      *
      * @param  SDIS62\Core\Ops\Entity\Garde
      */
-    public function delete(Garde & $garde);
+    public function delete(Garde &$garde);
 }

@@ -21,8 +21,8 @@ class InterventionService
                                 CommuneRepositoryInterface $commune_repository
     ) {
         $this->intervention_repository = $intervention_repository;
-        $this->sinistre_repository = $sinistre_repository;
-        $this->commune_repository = $commune_repository;
+        $this->sinistre_repository     = $sinistre_repository;
+        $this->commune_repository      = $commune_repository;
     }
 
     /**

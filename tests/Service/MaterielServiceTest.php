@@ -12,8 +12,8 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_materiel = Mockery::mock('SDIS62\Core\Ops\Repository\MaterielRepositoryInterface')->makePartial();
-        $repository_centre = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
-        $service = new Core\Service\MaterielService($repository_materiel, $repository_centre);
+        $repository_centre   = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
+        $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
         $repository_materiel->shouldReceive('find')->with(1)->andReturn(true)->once();
@@ -26,8 +26,8 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_materiel = Mockery::mock('SDIS62\Core\Ops\Repository\MaterielRepositoryInterface')->makePartial();
-        $repository_centre = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
-        $service = new Core\Service\MaterielService($repository_materiel, $repository_centre);
+        $repository_centre   = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
+        $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
         $materiel = Mockery::mock('SDIS62\Core\Ops\Entity\Materiel');
@@ -44,13 +44,13 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_materiel = Mockery::mock('SDIS62\Core\Ops\Repository\MaterielRepositoryInterface')->makePartial();
-        $repository_centre = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
-        $service = new Core\Service\MaterielService($repository_materiel, $repository_centre);
+        $repository_centre   = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
+        $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data = array('name' => 'VSAV1', 'actif' => true, 'centre' => 1);
-        $commune = new Core\Entity\Commune('Arras', '62001');
-        $centre = new Core\Entity\Centre($commune, 'CIS Arras');
+        $data              = ['name' => 'VSAV1', 'actif' => true, 'centre' => 1];
+        $commune           = new Core\Entity\Commune('Arras', '62001');
+        $centre            = new Core\Entity\Centre($commune, 'CIS Arras');
         $materiel_expected = new Core\Entity\Materiel($centre, 'VSAV1');
         $materiel_expected->setActif();
         $repository_centre->shouldReceive('find')->with(1)->andReturn($centre)->once();
@@ -64,17 +64,17 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
     {
         // Init ..
         $repository_materiel = Mockery::mock('SDIS62\Core\Ops\Repository\MaterielRepositoryInterface')->makePartial();
-        $repository_centre = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
-        $service = new Core\Service\MaterielService($repository_materiel, $repository_centre);
+        $repository_centre   = Mockery::mock('SDIS62\Core\Ops\Repository\CentreRepositoryInterface')->makePartial();
+        $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data = array('name' => 'VSAV2', 'actif' => false, 'centre' => 2);
-        $commune1 = new Core\Entity\Commune('Arras', '62001');
-        $centre1 = new Core\Entity\Centre($commune1, 'CIS Arras');
+        $data             = ['name' => 'VSAV2', 'actif' => false, 'centre' => 2];
+        $commune1         = new Core\Entity\Commune('Arras', '62001');
+        $centre1          = new Core\Entity\Centre($commune1, 'CIS Arras');
         $materiel_updated = new Core\Entity\Materiel($centre1, 'VSAV1');
         $materiel_updated->setActif();
-        $commune2 = new Core\Entity\Commune('Bethune', '62002');
-        $centre2 = new Core\Entity\Centre($commune2, 'CIS Bethune');
+        $commune2          = new Core\Entity\Commune('Bethune', '62002');
+        $centre2           = new Core\Entity\Centre($commune2, 'CIS Bethune');
         $materiel_expected = new Core\Entity\Materiel($centre2, 'VSAV2');
         $materiel_expected->setActif(false);
         $repository_centre->shouldReceive('find')->with(2)->andReturn($centre2)->once();
@@ -84,7 +84,7 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
 
         // Test!
         $this->assertEquals($materiel_expected, $service->save($data, 15));
-        $this->assertNull($service->save(array('centre' => 3), 15));
+        $this->assertNull($service->save(['centre' => 3], 15));
     }
 
     public function tearDown()

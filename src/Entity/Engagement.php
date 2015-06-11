@@ -109,7 +109,7 @@ abstract class Engagement
     /**
      * Retourne vrai si l'engagement est terminée.
      *
-     * @return boolean
+     * @return bool
      */
     public function isEnded()
     {
@@ -124,7 +124,7 @@ abstract class Engagement
     public function getEvenements()
     {
         if (count($this->evenements) == 0) {
-            return array();
+            return [];
         }
 
         $evenements = $this->evenements->toArray();

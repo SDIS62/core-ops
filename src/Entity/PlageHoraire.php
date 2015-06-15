@@ -3,45 +3,35 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use Datetime;
+use Exception;
 use SDIS62\Core\Common\Entity\IdentityTrait;
 
-class Garde
+class PlageHoraire
 {
     use IdentityTrait;
 
     /**
-     * Pompier concerné.
-     *
-     * @var SDIS62\Core\Ops\Entity\Pompier
-     */
-    protected $pompier;
-
-    /**
-     * Début de la garde.
+     * Début de la plage horaire.
      *
      * @var Datetime
      */
     protected $start;
 
     /**
-     * Fin de la garde.
+     * Fin de la plage horaire.
      *
      * @var Datetime
      */
     protected $end;
 
     /**
-     * Ajout d'une garde à un spécialiste.
+     * Ajout d'une plage horaire.
      *
-     * @param SDIS62\Core\Ops\Entity\Pompier $pompier
      * @param Datetime                       $start   Le format peut être d-m-Y H:i
      * @param Datetime                       $end     Le format peut être d-m-Y H:i
      */
-    public function __construct(Pompier $pompier, $start, $end)
+    public function __construct($start, $end)
     {
-        $this->pompier = $pompier;
-        $this->pompier->addGarde($this);
-
         if ($start instanceof Datetime) {
             $this->start = $start;
         } else {
@@ -52,6 +42,10 @@ class Garde
             $this->end = $end;
         } else {
             $this->end = DateTime::createFromFormat('d-m-Y H:i', (string) $end);
+        }
+
+        if ($this->start->diff($this->end)->invert == 1) {
+            throw new Exception('Events usually start before they end');
         }
     }
 
@@ -76,12 +70,36 @@ class Garde
     }
 
     /**
-     * Get the value of Pompier concerné.
+     * Check si le Datetime est contenu dans la plage horaire
      *
-     * @return SDIS62\Core\Ops\Entity\Pompier
+     * @param DateTime $date
+     *
+     * @return bool
      */
-    public function getPompier()
+    public function contains(DateTime $date)
     {
-        return $this->pompier;
+        return $this->start <= $date && $date < $this->end;
+    }
+
+    /**
+     * Retourne vrai si la plage horaire est contenu dans la place horaire actuelle
+     *
+     * @param PlageHoraire $plage
+     * @param bool            $strict
+     *
+     * @return bool
+     */
+    public function includes(PlageHoraire $plage, $strict = true)
+    {
+        if (true === $strict) {
+            return $this->getStart() <= $plage->getStart() && $this->getEnd() >= $plage->getEnd();
+        }
+
+        return
+            $this->includes($plage, true) ||
+            $plage->includes($this, true) ||
+            $this->contains($plage->getStart()) ||
+            $this->contains($plage->getEnd())
+        ;
     }
 }

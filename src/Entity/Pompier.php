@@ -22,6 +22,13 @@ class Pompier
     protected $gardes;
 
     /**
+     * Disponibilités du pompier.
+     *
+     * @var SDIS62\Core\Ops\Entity\Dispo[]
+     */
+    protected $dispos;
+
+    /**
      * Centre dans lequel le pompier est affecté.
      *
      * @var SDIS62\Core\Ops\Entity\Centre
@@ -69,6 +76,8 @@ class Pompier
         $this->setName($name);
         $this->setCentre($centre);
         $this->engagements = new ArrayCollection();
+        $this->gardes = new ArrayCollection();
+        $this->dispos = new ArrayCollection();
     }
 
     /**
@@ -91,6 +100,30 @@ class Pompier
     public function addGarde(Garde $garde)
     {
         $this->gardes[] = $garde;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Dispos du pompier.
+     *
+     * @return SDIS62\Core\Ops\Entity\Dispo[]
+     */
+    public function getDispos()
+    {
+        return $this->dispos;
+    }
+
+    /**
+     * Ajoute une dispo au pompier.
+     *
+     * @param SDIS62\Core\Ops\Entity\Dispo $dispo
+     *
+     * @return self
+     */
+    public function addDispo(Dispo $dispo)
+    {
+        $this->dispos[] = $dispo;
 
         return $this;
     }

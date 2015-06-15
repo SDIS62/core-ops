@@ -62,7 +62,7 @@ class GardeService
      * @param array $data
      * @param array $id_pompier
      *
-     * @return SDIS62\Core\Ops\Entity\Centre
+     * @return SDIS62\Core\Ops\Entity\Garde
      */
     public function create($data, $id_pompier)
     {

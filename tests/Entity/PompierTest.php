@@ -64,6 +64,14 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $this->assertCount(2, self::$object->getGardes());
     }
 
+    public function test_if_it_have_dispos()
+    {
+        $dispo1 = new Core\Entity\Dispo(self::$object, '14-02-2015 15:00', '14-02-2015 18:00');
+        $dispo2 = new Core\Entity\Dispo(self::$object, '15-02-2015 15:00', '15-02-2015 18:00');
+
+        $this->assertCount(2, self::$object->getDispos());
+    }
+
     public function test_if_it_have_engagements()
     {
         $this->assertCount(0, self::$object->getEngagements());

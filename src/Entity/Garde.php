@@ -25,20 +25,20 @@ class Garde extends PlageHoraire
         parent::__construct($start, $end);
 
         // Contrôles des gardes existantes (une dispo ne peut pas être ajoutée sur une garde)
-        foreach($pompier->getGardes() as $garde) {
+        foreach ($pompier->getGardes() as $garde) {
             if ($garde->includes($this, false)) {
-                throw new Exception("Une garde existe aux dates de la garde à ajouter");
+                throw new Exception('Une garde existe aux dates de la garde à ajouter');
             }
         }
 
         // Contrôles des dispo existantes (si une garde est posé sur une dispo, on la transforme)
-        foreach($pompier->getDispos() as $dispo) {
+        foreach ($pompier->getDispos() as $dispo) {
             if ($dispo->includes($this, false)) {
                 $pompier->getDispos()->removeElement($dispo);
-                if($dispo->getStart() < $this->getStart()) {
+                if ($dispo->getStart() < $this->getStart()) {
                     new Dispo($pompier, $dispo->getStart(), $this->getStart());
                 }
-                if($dispo->getEnd() > $this->getEnd()) {
+                if ($dispo->getEnd() > $this->getEnd()) {
                     new Dispo($pompier, $this->getEnd(), $dispo->getEnd());
                 }
             }

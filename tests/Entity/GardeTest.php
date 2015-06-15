@@ -14,9 +14,9 @@ class GardeTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $commune      = new Core\Entity\Commune('Arras', '62001');
-        $centre       = new Core\Entity\Centre($commune, 'CIS');
-        $pompier      = new Core\Entity\Pompier('Kevin', '0001', $centre);
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre  = new Core\Entity\Centre($commune, 'CIS');
+        $pompier = new Core\Entity\Pompier('Kevin', '0001', $centre);
 
         new Core\Entity\Dispo($pompier, '15-02-2015 16:00', '15-02-2015 17:00');
 
@@ -81,7 +81,6 @@ class GardeTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_throw_an_exception_if_garde_is_in_another_garde()
     {
-
         try {
             $dispo = new Core\Entity\Garde(self::$object->getPompier(), '15-02-2015 14:00', '15-02-2015 16:00');
         } catch (Exception $e) {

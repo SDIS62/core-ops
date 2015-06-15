@@ -27,8 +27,8 @@ class PlageHoraire
     /**
      * Ajout d'une plage horaire.
      *
-     * @param Datetime                       $start   Le format peut être d-m-Y H:i
-     * @param Datetime                       $end     Le format peut être d-m-Y H:i
+     * @param Datetime $start Le format peut être d-m-Y H:i
+     * @param Datetime $end   Le format peut être d-m-Y H:i
      */
     public function __construct($start, $end)
     {
@@ -70,7 +70,7 @@ class PlageHoraire
     }
 
     /**
-     * Check si le Datetime est contenu dans la plage horaire
+     * Check si le Datetime est contenu dans la plage horaire.
      *
      * @param DateTime $date
      *
@@ -82,10 +82,10 @@ class PlageHoraire
     }
 
     /**
-     * Retourne vrai si la plage horaire est contenu dans la place horaire actuelle
+     * Retourne vrai si la plage horaire est contenu dans la place horaire actuelle.
      *
      * @param PlageHoraire $plage
-     * @param bool            $strict
+     * @param bool         $strict
      *
      * @return bool
      */

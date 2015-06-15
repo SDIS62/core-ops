@@ -76,8 +76,8 @@ class Pompier
         $this->setName($name);
         $this->setCentre($centre);
         $this->engagements = new ArrayCollection();
-        $this->gardes = new ArrayCollection();
-        $this->dispos = new ArrayCollection();
+        $this->gardes      = new ArrayCollection();
+        $this->dispos      = new ArrayCollection();
     }
 
     /**

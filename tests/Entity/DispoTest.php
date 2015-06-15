@@ -2,7 +2,6 @@
 
 namespace SDIS62\Core\Ops\Test\Entity;
 
-use Datetime;
 use DateInterval;
 use Exception;
 use SDIS62\Core\Ops as Core;
@@ -14,9 +13,9 @@ class DispoTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $commune      = new Core\Entity\Commune('Arras', '62001');
-        $centre       = new Core\Entity\Centre($commune, 'CIS');
-        $pompier      = new Core\Entity\Pompier('Kevin', '0001', $centre);
+        $commune = new Core\Entity\Commune('Arras', '62001');
+        $centre  = new Core\Entity\Centre($commune, 'CIS');
+        $pompier = new Core\Entity\Pompier('Kevin', '0001', $centre);
 
         new Core\Entity\Dispo($pompier, '16-02-2015 15:00', '16-02-2015 18:00');
         new Core\Entity\Garde($pompier, '20-02-2015 15:00', '20-02-2015 18:00');

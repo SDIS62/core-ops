@@ -23,7 +23,7 @@ class GardeServiceTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($service->getAllCurrent());
     }
 
-    public function test_if_it_find_all_by_month()
+    public function test_if_it_find_all_by_period()
     {
         // Init ..
         $repository_garde   = Mockery::mock('SDIS62\Core\Ops\Repository\GardeRepositoryInterface')->makePartial();
@@ -31,10 +31,11 @@ class GardeServiceTest extends PHPUnit_Framework_TestCase
         $service            = new Core\Service\GardeService($repository_garde, $repository_pompier);
 
         // Prepare ..
-        $repository_garde->shouldReceive('findAllByMonth')->with(12)->andReturn(true)->once();
+        $date = new Datetime();
+        $repository_garde->shouldReceive('findByPeriod')->with($date, $date)->andReturn(true)->once();
 
         // Test!
-        $this->assertTrue($service->findAllByMonth(12));
+        $this->assertTrue($service->findByPeriod($date, $date));
     }
 
     public function test_if_it_find()

@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Repository;
 
+use Datetime;
 use SDIS62\Core\Ops\Entity\Dispo;
 
 interface DispoRepositoryInterface
@@ -14,6 +15,16 @@ interface DispoRepositoryInterface
      * @return SDIS62\Core\Ops\Entity\Dispo
      */
     public function find($id_dispo);
+
+    /**
+     * Retourne un ensemble de dispos sur une période.
+     *
+     * @param Datetime $start
+     * @param Datetime $end
+     *
+     * @return SDIS62\Core\User\Entity\Dispo[]
+     */
+    public function findByPeriod(Datetime $start, Datetime $end);
 
     /**
      * Sauvegarde d'une dispo.

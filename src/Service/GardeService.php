@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Service;
 
+use Datetime;
 use SDIS62\Core\Ops\Entity\Garde;
 use SDIS62\Core\Ops\Repository\GardeRepositoryInterface;
 use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
@@ -33,15 +34,16 @@ class GardeService
     }
 
     /**
-     * Retourne un ensemble de gardes sur un mois.
+     * Retourne un ensemble de gardes sur une période.
      *
-     * @param int $month
+     * @param Datetime $start
+     * @param Datetime $end
      *
      * @return SDIS62\Core\User\Entity\Garde[]
      */
-    public function findAllByMonth($month)
+    public function findByPeriod(Datetime $start, Datetime $end)
     {
-        return $this->garde_repository->findAllByMonth($month);
+        return $this->garde_repository->findByPeriod($start, $end);
     }
 
     /**

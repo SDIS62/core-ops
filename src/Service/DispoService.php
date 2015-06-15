@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Service;
 
+use Datetime;
 use SDIS62\Core\Ops\Entity\Dispo;
 use SDIS62\Core\Ops\Repository\DispoRepositoryInterface;
 use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
@@ -31,6 +32,19 @@ class DispoService
     public function find($id_dispo)
     {
         return $this->dispo_repository->find($id_dispo);
+    }
+
+    /**
+     * Retourne un ensemble de dispos sur une période.
+     *
+     * @param Datetime $start
+     * @param Datetime $end
+     *
+     * @return SDIS62\Core\User\Entity\Dispo[]
+     */
+    public function findByPeriod(Datetime $start, Datetime $end)
+    {
+        return $this->dispo_repository->findByPeriod($start, $end);
     }
 
     /**

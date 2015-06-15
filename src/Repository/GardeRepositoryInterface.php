@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Repository;
 
+use Datetime;
 use SDIS62\Core\Ops\Entity\Garde;
 
 interface GardeRepositoryInterface
@@ -15,13 +16,14 @@ interface GardeRepositoryInterface
     public function getAllCurrent();
 
     /**
-     * Retourne un ensemble de gardes sur un mois.
+     * Retourne un ensemble de gardes sur une période.
      *
-     * @param int $month
+     * @param Datetime $start
+     * @param Datetime $end
      *
      * @return SDIS62\Core\User\Entity\Garde[]
      */
-    public function findAllByMonth($month);
+    public function findByPeriod(Datetime $start, Datetime $end);
 
     /**
      * Retourne une garde correspondant à l'id spécifié.

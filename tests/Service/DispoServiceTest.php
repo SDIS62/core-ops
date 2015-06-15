@@ -23,6 +23,21 @@ class DispoServiceTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($service->find(1));
     }
 
+    public function test_if_it_find_all_by_period()
+    {
+        // Init ..
+        $repository_dispo   = Mockery::mock('SDIS62\Core\Ops\Repository\DispoRepositoryInterface')->makePartial();
+        $repository_pompier = Mockery::mock('SDIS62\Core\Ops\Repository\PompierRepositoryInterface')->makePartial();
+        $service            = new Core\Service\DispoService($repository_dispo, $repository_pompier);
+
+        // Prepare ..
+        $date = new Datetime();
+        $repository_dispo->shouldReceive('findByPeriod')->with($date, $date)->andReturn(true)->once();
+
+        // Test!
+        $this->assertTrue($service->findByPeriod($date, $date));
+    }
+
     public function test_if_it_delete()
     {
         // Init ..

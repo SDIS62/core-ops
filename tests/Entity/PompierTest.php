@@ -97,4 +97,22 @@ class PompierTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals('pompier', self::$object->getType());
     }
+
+    public function test_if_it_have_a_phone_number()
+    {
+        self::$object->setPhoneNumber('0321212121');
+
+        $this->assertEquals('03 21 21 21 21', self::$object->getPhoneNumber());
+        $this->assertInternalType('string', self::$object->getPhoneNumber());
+    }
+
+    public function test_if_it_throw_an_exception_if_phone_number_is_not_valid()
+    {
+        try {
+            self::$object->setPhoneNumber('0321');
+        } catch (Core\Exception\InvalidPhoneNumberException $e) {
+            return;
+        }
+        $this->fail('Exception must be throw');
+    }
 }

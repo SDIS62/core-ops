@@ -24,7 +24,8 @@
     "require": {
         "php": "~5.4",
         "sdis62/core-common": "~0.1",
-        "doctrine/common": "~2.4"
+        "doctrine/common": "~2.4",
+        "giggsey/libphonenumber-for-php": "~7.0"
     },
 
     "require-dev": {

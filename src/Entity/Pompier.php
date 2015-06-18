@@ -2,8 +2,11 @@
 
 namespace SDIS62\Core\Ops\Entity;
 
+use libphonenumber\PhoneNumberUtil;
+use libphonenumber\PhoneNumberFormat;
 use Doctrine\Common\Collections\ArrayCollection;
 use SDIS62\Core\Ops\Entity\Engagement\PompierEngagement;
+use SDIS62\Core\Ops\Exception\InvalidPhoneNumberException;
 
 class Pompier
 {
@@ -62,6 +65,13 @@ class Pompier
      * @var string
      */
     protected $name;
+
+    /**
+     * Numéro de téléphone.
+     *
+     * @var string
+     */
+    protected $phone_number;
 
     /**
      * Ajout d'un pompier.
@@ -264,5 +274,36 @@ class Pompier
     final public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Get the value of Numéro de téléphone.
+     *
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phone_number;
+    }
+
+    /**
+     * Set the value of Numéro de téléphone.
+     *
+     * @param string|null $phone_number
+     *
+     * @throws InvalidPhoneNumberException
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        $phone_util          = PhoneNumberUtil::getInstance();
+        $phone_number_parsed = $phone_util->parse($phone_number, 'FR');
+        if (!$phone_util->isValidNumber($phone_number_parsed)) {
+            throw new InvalidPhoneNumberException('Format du numéro de téléphone professionnel incorrect.');
+        }
+        $this->phone_number = $phone_util->format($phone_number_parsed, PhoneNumberFormat::NATIONAL);
+
+        return $this;
     }
 }

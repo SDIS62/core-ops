@@ -50,10 +50,11 @@ class PompierServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create()
     {
         // Prepare ..
-        $data             = ['centre' => 1, 'type' => 'pompier', 'name' => 'Kevin', 'matricule' => '00001'];
+        $data             = ['centre' => 1, 'type' => 'pompier', 'name' => 'Kevin', 'matricule' => '00001', 'phone_number' => '0321212121'];
         $commune          = new Core\Entity\Commune('Arras', '62001');
         $centre           = new Core\Entity\Centre($commune, 'CIS Arras');
         $pompier_expected = new Core\Entity\Pompier('Kevin', '00001', $centre);
+        $pompier_expected->setPhoneNumber('0321212121');
         $this->repository_centre->shouldReceive('find')->with(1)->andReturn($centre)->twice();
         $this->repository_pompier->shouldReceive('find')->with('00001')->andReturn(null)->once();
         $this->repository_pompier->shouldReceive('save')->once();

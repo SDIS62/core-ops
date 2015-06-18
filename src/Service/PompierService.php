@@ -93,6 +93,10 @@ class PompierService
             $pompier->setSpecialites($data['specialites']);
         }
 
+        if (!empty($data['phone_number'])) {
+            $pompier->setPhoneNumber($data['phone_number']);
+        }
+
         $this->pompier_repository->save($pompier);
 
         return $pompier;

@@ -45,6 +45,13 @@ class Materiel
     protected $coordinates;
 
     /**
+     * Etat du matériel.
+     *
+     * @var SDIS62\Core\Ops\Entity\Statut
+     */
+    protected $statut;
+
+    /**
      * Ajout d'un materiel à un centre.
      *
      * @param SDIS62\Core\Ops\Entity\Centre $centre
@@ -56,6 +63,7 @@ class Materiel
         $this->centre = $centre;
         $this->centre->addMateriel($this);
         $this->engagements = new ArrayCollection();
+        $this->statut = Statut::DISPONIBLE();
     }
 
     /**
@@ -197,4 +205,29 @@ class Materiel
 
         return $this;
     }
+
+    /**
+     * Get the value of Etat du matériel.
+     *
+     * @return SDIS62\Core\Ops\Entity\Statut
+     */
+    public function getStatut()
+    {
+        return $this->statut instanceof Statut ? $this->statut : Statut::get($this->statut);
+    }
+
+    /**
+     * Set the value of Etat du matériel.
+     *
+     * @param SDIS62\Core\Ops\Entity\Statut statut
+     *
+     * @return self
+     */
+    public function setStatut(Statut $statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
 }

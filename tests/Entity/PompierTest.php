@@ -115,4 +115,18 @@ class PompierTest extends PHPUnit_Framework_TestCase
         }
         $this->fail('Exception must be throw');
     }
+
+    public function test_if_it_have_statut()
+    {
+        $this->assertEquals("DISPONIBLE", self::$object->getStatut());
+
+        self::$object->setStatut(Core\Entity\Statut::EN_ALERTE());
+        $this->assertEquals("EN_ALERTE", self::$object->getStatut());
+
+        $reflector = new \ReflectionClass(self::$object);
+        $property = $reflector->getProperty('statut');
+        $property->setAccessible(true);
+        $property->setValue(self::$object, 1);
+        $this->assertEquals("DISPONIBLE", self::$object->getStatut());
+    }
 }

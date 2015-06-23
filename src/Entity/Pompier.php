@@ -74,6 +74,13 @@ class Pompier
     protected $phone_number;
 
     /**
+     * Etat du pompier.
+     *
+     * @var SDIS62\Core\Ops\Entity\Statut
+     */
+    protected $statut;
+
+    /**
      * Ajout d'un pompier.
      *
      * @param string                        $name
@@ -88,6 +95,7 @@ class Pompier
         $this->engagements = new ArrayCollection();
         $this->gardes      = new ArrayCollection();
         $this->dispos      = new ArrayCollection();
+        $this->statut = Statut::DISPONIBLE();
     }
 
     /**
@@ -306,4 +314,29 @@ class Pompier
 
         return $this;
     }
+
+    /**
+     * Get the value of Etat du pompier.
+     *
+     * @return SDIS62\Core\Ops\Entity\Statut
+     */
+    public function getStatut()
+    {
+        return $this->statut instanceof Statut ? $this->statut : Statut::get($this->statut);
+    }
+
+    /**
+     * Set the value of Etat du pompier.
+     *
+     * @param SDIS62\Core\Ops\Entity\Statut statut
+     *
+     * @return self
+     */
+    public function setStatut(Statut $statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
 }

@@ -38,9 +38,9 @@ class Materiel
     protected $engagements;
 
     /**
-     * Coordonnées du matériel ([x,y]).
+     * Coordonnées du matériel.
      *
-     * @var array
+     * @var SDIS62\Core\Ops\Entity\Coordinates
      */
     protected $coordinates;
 
@@ -179,9 +179,9 @@ class Materiel
     }
 
     /**
-     * Get the value of Coordonnées du matériel ([x,y]).
+     * Get the value of Coordonnées du matériel.
      *
-     * @return array
+     * @return SDIS62\Core\Ops\Entity\Coordinates
      */
     public function getCoordinates()
     {
@@ -189,18 +189,14 @@ class Materiel
     }
 
     /**
-     * Set the value of Coordonnées du matériel ([x,y]).
+     * Set the value of Coordonnées du matériel.
      *
-     * @param array coordinates
+     * @param SDIS62\Core\Ops\Entity\Coordinates $coordinates
      *
      * @return self
      */
-    public function setCoordinates(array $coordinates)
+    public function setCoordinates($coordinates)
     {
-        if (count($coordinates) != 2) {
-            return;
-        }
-
         $this->coordinates = $coordinates;
 
         return $this;

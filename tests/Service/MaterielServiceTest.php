@@ -69,7 +69,7 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data             = ['name' => 'VSAV2', 'actif' => false, 'centre' => 2];
+        $data             = ['name' => 'VSAV2', 'actif' => false, 'centre' => 2, 'coordinates' => ['X', 'Y']];
         $commune1         = new Core\Entity\Commune('Arras', '62001');
         $centre1          = new Core\Entity\Centre($commune1, 'CIS Arras');
         $materiel_updated = new Core\Entity\Materiel($centre1, 'VSAV1');
@@ -78,6 +78,7 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $centre2           = new Core\Entity\Centre($commune2, 'CIS Bethune');
         $materiel_expected = new Core\Entity\Materiel($centre2, 'VSAV2');
         $materiel_expected->setActif(false);
+        $materiel_expected->setCoordinates(new Core\Entity\Coordinates('X', 'Y'));
         $repository_centre->shouldReceive('find')->with(2)->andReturn($centre2)->once();
         $repository_centre->shouldReceive('find')->with(3)->andReturn(null)->once();
         $repository_materiel->shouldReceive('find')->with(15)->andReturn($materiel_updated)->once();

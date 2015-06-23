@@ -138,4 +138,13 @@ class PompierTest extends PHPUnit_Framework_TestCase
         self::$object->setPro();
         $this->assertTrue(self::$object->isPro());
     }
+
+    public function test_if_it_have_a_coordinates()
+    {
+        $this->assertNull(self::$object->getCoordinates());
+
+        $coord = new Core\Entity\Coordinates('x', 'y');
+        self::$object->setCoordinates($coord);
+        $this->assertEquals($coord, self::$object->getCoordinates());
+    }
 }

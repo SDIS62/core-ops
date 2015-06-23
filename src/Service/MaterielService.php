@@ -4,6 +4,7 @@ namespace SDIS62\Core\Ops\Service;
 
 use SDIS62\Core\Ops\Entity\Statut;
 use SDIS62\Core\Ops\Entity\Materiel;
+use SDIS62\Core\Ops\Entity\Coordinates;
 use SDIS62\Core\Ops\Repository\CentreRepositoryInterface;
 use SDIS62\Core\Ops\Repository\MaterielRepositoryInterface;
 
@@ -66,6 +67,10 @@ class MaterielService
 
         if (!empty($data['statut'])) {
             $materiel->setStatut(Statut::getByName($data['statut']));
+        }
+
+        if (!empty($data['coordinates']) && is_array($data['coordinates']) && count($data['coordinates']) == 2) {
+            $materiel->setCoordinates(new Coordinates($data['coordinates'][0], $data['coordinates'][1]));
         }
 
         $this->materiel_repository->save($materiel);

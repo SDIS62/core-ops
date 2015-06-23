@@ -76,7 +76,7 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         $intervention_expected->setPrecision('medicamenteuse');
         $intervention_expected->setObservations('TAMED sur Arras');
         $intervention_expected->setUpdated('15-01-2050 15:00');
-        $intervention_expected->setCoordinates(['X', 'Y']);
+        $intervention_expected->setCoordinates(new Core\Entity\Coordinates('X', 'Y'));
         $intervention_expected->setAddress('11 rue des acacias 62000 Arras');
         $intervention_expected->setCommune($commune);
         $intervention_expected->setImportant();
@@ -119,7 +119,7 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         $intervention_expected->setObservations('TAMED sur 62000');
         $intervention_expected->setUpdated('15-01-2060 15:00');
         $intervention_expected->setEnded('15-01-2061 15:00');
-        $intervention_expected->setCoordinates(['X2', 'Y2']);
+        $intervention_expected->setCoordinates(new Core\Entity\Coordinates('X2', 'Y2'));
         $intervention_expected->setAddress('85 rue des acacias 62000 Bethune');
         $intervention_expected->setCommune($commune2);
         $intervention_expected->setImportant(false);

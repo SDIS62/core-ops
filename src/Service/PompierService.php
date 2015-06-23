@@ -4,6 +4,7 @@ namespace SDIS62\Core\Ops\Service;
 
 use SDIS62\Core\Ops\Entity\Pompier;
 use SDIS62\Core\Ops\Entity\Statut;
+use SDIS62\Core\Ops\Entity\Coordinates;
 use SDIS62\Core\Ops\Exception\InvalidPompierException;
 use SDIS62\Core\Ops\Repository\CentreRepositoryInterface;
 use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
@@ -104,6 +105,10 @@ class PompierService
 
         if (array_key_exists('pro', $data)) {
             $pompier->setPro($data['pro'] === true);
+        }
+
+        if (!empty($data['coordinates']) && is_array($data['coordinates']) && count($data['coordinates']) == 2) {
+            $pompier->setCoordinates(new Coordinates($data['coordinates'][0], $data['coordinates'][1]));
         }
 
         $this->pompier_repository->save($pompier);

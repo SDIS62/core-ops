@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Service;
 
+use SDIS62\Core\Ops\Entity\Coordinates;
 use SDIS62\Core\Ops\Entity\Intervention;
 use SDIS62\Core\Ops\Repository\CommuneRepositoryInterface;
 use SDIS62\Core\Ops\Repository\SinistreRepositoryInterface;
@@ -102,8 +103,8 @@ class InterventionService
             $intervention->setSinistre($sinistre);
         }
 
-        if (!empty($data['coordinates'])) {
-            $intervention->setCoordinates($data['coordinates']);
+        if (!empty($data['coordinates']) && is_array($data['coordinates']) && count($data['coordinates']) == 2) {
+            $intervention->setCoordinates(new Coordinates($data['coordinates'][0], $data['coordinates'][1]));
         }
 
         if (!empty($data['address'])) {

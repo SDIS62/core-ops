@@ -74,9 +74,9 @@ class Intervention
     protected $evenements;
 
     /**
-     * Coordonnées de l'intervention ([x,y]).
+     * Coordonnées de l'intervention.
      *
-     * @var array
+     * @var SDIS62\Core\Ops\Entity\Coordinates
      */
     protected $coordinates;
 
@@ -341,9 +341,9 @@ class Intervention
     }
 
     /**
-     * Get the value of Coordonnées de l'intervention ([x,y]).
+     * Get the value of Coordonnées de l'intervention.
      *
-     * @return array
+     * @return SDIS62\Core\Ops\Entity\Coordinates
      */
     public function getCoordinates()
     {
@@ -351,18 +351,14 @@ class Intervention
     }
 
     /**
-     * Set the value of Coordonnées de l'intervention ([x,y]).
+     * Set the value of Coordonnées de l'intervention.
      *
-     * @param array coordinates
+     * @param SDIS62\Core\Ops\Entity\Coordinates $coordinates
      *
      * @return self
      */
-    public function setCoordinates(array $coordinates)
+    public function setCoordinates($coordinates)
     {
-        if (count($coordinates) != 2) {
-            return;
-        }
-
         $this->coordinates = $coordinates;
 
         return $this;

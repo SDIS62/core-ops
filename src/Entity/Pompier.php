@@ -88,6 +88,13 @@ class Pompier
     protected $is_pro;
 
     /**
+     * Coordonnées du pompier.
+     *
+     * @var SDIS62\Core\Ops\Entity\Coordinates
+     */
+    protected $coordinates;
+
+    /**
      * Ajout d'un pompier.
      *
      * @param string                        $name
@@ -356,7 +363,7 @@ class Pompier
     {
         return $this->is_pro == true;
     }
-    
+
     /**
      * Set the value of Pro ou volontaire ?
      *
@@ -367,6 +374,30 @@ class Pompier
     public function setPro($value = true)
     {
         $this->is_pro = $value == true;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Coordonnées du pompier.
+     *
+     * @return SDIS62\Core\Ops\Entity\Coordinates
+     */
+    public function getCoordinates()
+    {
+        return $this->coordinates;
+    }
+
+    /**
+     * Set the value of Coordonnées du pompier.
+     *
+     * @param SDIS62\Core\Ops\Entity\Coordinates $coordinates
+     *
+     * @return self
+     */
+    public function setCoordinates($coordinates)
+    {
+        $this->coordinates = $coordinates;
 
         return $this;
     }

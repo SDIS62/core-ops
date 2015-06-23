@@ -90,6 +90,10 @@ class CentreService
             $centre->setName($data['name']);
         }
 
+        if (!empty($data['classement'])) {
+            $centre->setClassement($data['classement']);
+        }
+
         $this->centre_repository->save($centre);
 
         return $centre;

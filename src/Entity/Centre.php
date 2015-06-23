@@ -17,6 +17,13 @@ class Centre
     protected $name;
 
     /**
+     * Classement du centre.
+     *
+     * @var string
+     */
+    protected $classement;
+
+    /**
      * Matériels du centre.
      *
      * @var SDIS62\Core\Ops\Entity\Materiel[]
@@ -42,9 +49,10 @@ class Centre
      *
      * @param string name
      */
-    public function __construct(Commune $commune, $name)
+    public function __construct(Commune $commune, $name, $classement = 'CSP')
     {
         $this->name    = $name;
+        $this->classement = $classement;
         $this->commune = $commune;
         $this->commune->addCentre($this);
         $this->materiels = new ArrayCollection();
@@ -132,4 +140,29 @@ class Centre
     {
         return $this->commune;
     }
+
+    /**
+     * Get the value of Classement du centre.
+     *
+     * @return string
+     */
+    public function getClassement()
+    {
+        return $this->classement;
+    }
+
+    /**
+     * Set the value of Classement du centre.
+     *
+     * @param string classement
+     *
+     * @return self
+     */
+    public function setClassement($classement)
+    {
+        $this->classement = $classement;
+
+        return $this;
+    }
+
 }

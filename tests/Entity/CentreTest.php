@@ -48,4 +48,14 @@ class CentreTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Commune', self::$object->getCommune());
     }
+
+    public function test_if_it_have_classement()
+    {
+        $this->assertEquals('CSP', self::$object->getClassement());
+
+        self::$object->setClassement('CPI');
+
+        $this->assertEquals('CPI', self::$object->getClassement());
+        $this->assertInternalType('string', self::$object->getClassement());
+    }
 }

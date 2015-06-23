@@ -59,9 +59,9 @@ class CentreServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create()
     {
         // Prepare ..
-        $data            = ['name' => 'CIS Arras', 'commune' => '62001'];
+        $data            = ['name' => 'CIS Arras', 'commune' => '62001', 'classement' => 'CPI'];
         $commune         = new Core\Entity\Commune('Arras', '62001');
-        $centre_expected = new Core\Entity\Centre($commune, 'CIS Arras');
+        $centre_expected = new Core\Entity\Centre($commune, 'CIS Arras', 'CPI');
         $this->repository_commune->shouldReceive('find')->with('62001')->andReturn($commune)->once();
         $this->repository_commune->shouldReceive('find')->with('62002')->andReturn(null)->once();
         $this->repository_centre->shouldReceive('save')->once();

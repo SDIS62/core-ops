@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Service;
 
+use SDIS62\Core\Ops\Entity\Statut;
 use SDIS62\Core\Ops\Entity\Materiel;
 use SDIS62\Core\Ops\Repository\CentreRepositoryInterface;
 use SDIS62\Core\Ops\Repository\MaterielRepositoryInterface;
@@ -61,6 +62,10 @@ class MaterielService
 
         if (!empty($data['centre'])) {
             $materiel->setCentre($centre);
+        }
+
+        if (!empty($data['statut'])) {
+            $materiel->setStatut(Statut::getByName($data['statut']));
         }
 
         $this->materiel_repository->save($materiel);

@@ -3,6 +3,7 @@
 namespace SDIS62\Core\Ops\Service;
 
 use SDIS62\Core\Ops\Entity\Pompier;
+use SDIS62\Core\Ops\Entity\Statut;
 use SDIS62\Core\Ops\Exception\InvalidPompierException;
 use SDIS62\Core\Ops\Repository\CentreRepositoryInterface;
 use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
@@ -95,6 +96,14 @@ class PompierService
 
         if (!empty($data['phone_number'])) {
             $pompier->setPhoneNumber($data['phone_number']);
+        }
+
+        if (!empty($data['statut'])) {
+            $pompier->setStatut(Statut::getByName($data['statut']));
+        }
+
+        if (array_key_exists('pro', $data)) {
+            $pompier->setPro($data['pro'] === true);
         }
 
         $this->pompier_repository->save($pompier);

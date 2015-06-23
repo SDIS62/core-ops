@@ -81,6 +81,13 @@ class Pompier
     protected $statut;
 
     /**
+     * Profesionnel ?
+     *
+     * @var bool
+     */
+    protected $is_pro;
+
+    /**
      * Ajout d'un pompier.
      *
      * @param string                        $name
@@ -96,6 +103,7 @@ class Pompier
         $this->gardes      = new ArrayCollection();
         $this->dispos      = new ArrayCollection();
         $this->statut = Statut::DISPONIBLE();
+        $this->is_pro = true;
     }
 
     /**
@@ -335,6 +343,30 @@ class Pompier
     public function setStatut(Statut $statut)
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Pro ou volontaire ?
+     *
+     * @return bool
+     */
+    public function isPro()
+    {
+        return $this->is_pro == true;
+    }
+    
+    /**
+     * Set the value of Pro ou volontaire ?
+     *
+     * @param bool is_pro
+     *
+     * @return self
+     */
+    public function setPro($value = true)
+    {
+        $this->is_pro = $value == true;
 
         return $this;
     }

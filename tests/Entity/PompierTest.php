@@ -129,4 +129,13 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $property->setValue(self::$object, 1);
         $this->assertEquals("DISPONIBLE", self::$object->getStatut());
     }
+
+    public function test_if_it_have_a_pro_flag()
+    {
+        $this->assertTrue(self::$object->isPro());
+        self::$object->setPro(false);
+        $this->assertFalse(self::$object->isPro());
+        self::$object->setPro();
+        $this->assertTrue(self::$object->isPro());
+    }
 }

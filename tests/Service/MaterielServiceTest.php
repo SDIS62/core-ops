@@ -48,11 +48,12 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data              = ['name' => 'VSAV1', 'actif' => true, 'centre' => 1];
+        $data              = ['name' => 'VSAV1', 'actif' => true, 'centre' => 1, 'statut' => 'EN_ALERTE'];
         $commune           = new Core\Entity\Commune('Arras', '62001');
         $centre            = new Core\Entity\Centre($commune, 'CIS Arras');
         $materiel_expected = new Core\Entity\Materiel($centre, 'VSAV1');
         $materiel_expected->setActif();
+        $materiel_expected->setStatut(Core\Entity\Statut::get(Core\Entity\Statut::EN_ALERTE));
         $repository_centre->shouldReceive('find')->with(1)->andReturn($centre)->once();
         $repository_materiel->shouldReceive('save')->once();
 

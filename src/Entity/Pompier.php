@@ -18,18 +18,11 @@ class Pompier
     protected $type = 'pompier';
 
     /**
-     * Gardes du pompier.
+     * Inscription dans les plannings du pompier.
      *
-     * @var SDIS62\Core\Ops\Entity\Garde[]
+     * @var SDIS62\Core\Ops\Entity\PlageHoraire[]
      */
-    protected $gardes;
-
-    /**
-     * Disponibilités du pompier.
-     *
-     * @var SDIS62\Core\Ops\Entity\Dispo[]
-     */
-    protected $dispos;
+    protected $plages_horaires;
 
     /**
      * Centre dans lequel le pompier est affecté.
@@ -107,56 +100,85 @@ class Pompier
         $this->setName($name);
         $this->setCentre($centre);
         $this->engagements = new ArrayCollection();
-        $this->gardes      = new ArrayCollection();
-        $this->dispos      = new ArrayCollection();
+        $this->plages_horaires = new ArrayCollection();
         $this->statut = Statut::DISPONIBLE();
         $this->is_pro = true;
     }
 
     /**
-     * Get the value of Gardes du pompier.
+     * Get the value of Plannings du pompier.
      *
-     * @return SDIS62\Core\Ops\Entity\Garde[]
+     * @return SDIS62\Core\Ops\Entity\Planning[]
+     */
+    public function getPlannings()
+    {
+        $plannings = [];
+
+        foreach($this->plages_horaires as $plage_horaire) {
+            if(!in_array($plage_horaire->getPlanning(), $plannings)) {
+                $plannings[] = $plage_horaire->getPlanning();
+            }
+        }
+
+        return $plannings;
+    }
+
+    /**
+     * Get the value of Plages horaires
+     *
+     * @return SDIS62\Core\Ops\Entity\PlageHoraire[]
+     */
+    public function getPlagesHoraires()
+    {
+        return $this->plages_horaires;
+    }
+
+    /**
+     * Get the value of Gardes
+     *
+     * @return SDIS62\Core\Ops\Entity\PlageHoraire\Garde[]
      */
     public function getGardes()
     {
-        return $this->gardes;
+        $gardes = [];
+
+        foreach($this->plages_horaires as $plage_horaire) {
+            if($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
+                $gardes[] = $plage_horaire;
+            }
+        }
+
+        return $gardes;
     }
 
     /**
-     * Ajoute une garde au pompier.
+     * Get the value of Dispos
      *
-     * @param SDIS62\Core\Ops\Entity\Garde $garde
-     *
-     * @return self
-     */
-    public function addGarde(Garde $garde)
-    {
-        $this->gardes[] = $garde;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Dispos du pompier.
-     *
-     * @return SDIS62\Core\Ops\Entity\Dispo[]
+     * @return SDIS62\Core\Ops\Entity\PlageHoraire\Dispo[]
      */
     public function getDispos()
     {
-        return $this->dispos;
+        $dispos = [];
+
+        foreach($this->plages_horaires as $plage_horaire) {
+            if($plage_horaire instanceof PlageHoraire\DispoPlageHoraire) {
+                $dispos[] = $plage_horaire;
+            }
+        }
+
+        return $dispos;
     }
 
     /**
-     * Ajoute une dispo au pompier.
+     * Ajout d'une plage horaire.
      *
-     * @param SDIS62\Core\Ops\Entity\Dispo $dispo
-     *
+     * @param SDIS62\Core\Ops\Entity\PlageHoraire $plage_horaire
      * @return self
+     *
      */
-    public function addDispo(Dispo $dispo)
+    public function addPlageHoraire(PlageHoraire $plage_horaire)
     {
-        $this->dispos[] = $dispo;
+        $this->plages_horaires->add($plage_horaire);
 
         return $this;
     }

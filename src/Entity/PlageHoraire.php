@@ -3,10 +3,11 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use Datetime;
-use Exception;
 use SDIS62\Core\Common\Entity\IdentityTrait;
+use SDIS62\Core\Ops\Exception\InvalidDateException;
+use SDIS62\Core\Ops\Exception\InvalidPlageHoraireTypeException;
 
-class PlageHoraire
+abstract class PlageHoraire
 {
     use IdentityTrait;
 
@@ -25,28 +26,41 @@ class PlageHoraire
     protected $end;
 
     /**
+     * Planning.
+     *
+     * @var SDIS62\Core\Ops\Entity\Planning
+     */
+    protected $planning;
+
+    /**
+     * Pompier concerné.
+     *
+     * @var SDIS62\Core\Ops\Entity\Pompier
+     */
+    protected $pompier;
+
+    /**
      * Ajout d'une plage horaire.
      *
-     * @param Datetime $start Le format peut être d-m-Y H:i
-     * @param Datetime $end   Le format peut être d-m-Y H:i
+     * @param SDIS62\Core\Ops\Entity\Planning $planning
+     * @param SDIS62\Core\Ops\Entity\Pompier $pompier
+     * @param Datetime $start
+     * @param Datetime $end
      */
-    public function __construct($start, $end)
+    public function __construct(Planning $planning, Pompier $pompier, Datetime $start, Datetime $end)
     {
-        if ($start instanceof Datetime) {
-            $this->start = $start;
-        } else {
-            $this->start = DateTime::createFromFormat('d-m-Y H:i', (string) $start);
-        }
-
-        if ($end instanceof Datetime) {
-            $this->end = $end;
-        } else {
-            $this->end = DateTime::createFromFormat('d-m-Y H:i', (string) $end);
-        }
+        $this->start = $start;
+        $this->end = $end;
 
         if ($this->start->diff($this->end)->invert == 1) {
-            throw new Exception('Events usually start before they end');
+            throw new InvalidDateException('Events usually start before they end');
         }
+
+        $this->planning = $planning;
+        $this->pompier = $pompier;
+
+        $this->planning->addPlageHoraire($this);
+        $this->pompier->addPlageHoraire($this);
     }
 
     /**
@@ -102,4 +116,39 @@ class PlageHoraire
             $this->contains($plage->getEnd())
         ;
     }
+
+    /**
+     * Get the value of Type.
+     *
+     * @return string
+     */
+    final public function getType()
+    {
+        if (empty($this->type)) {
+            throw new InvalidPlageHoraireTypeException(get_class($this).' doit avoir un $type');
+        }
+
+        return $this->type;
+    }
+
+    /**
+     * Get the value of Pompier concerné.
+     *
+     * @return SDIS62\Core\Ops\Entity\Pompier
+     */
+    public function getPompier()
+    {
+        return $this->pompier;
+    }
+
+    /**
+     * Get the value of Planning.
+     *
+     * @return SDIS62\Core\Ops\Entity\Planning
+     */
+    public function getPlanning()
+    {
+        return $this->planning;
+    }
+
 }

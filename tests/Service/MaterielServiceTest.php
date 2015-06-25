@@ -48,11 +48,10 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data              = ['name' => 'VSAV1', 'actif' => true, 'centre' => 1, 'statut' => 'EN_ALERTE'];
+        $data              = ['name' => 'VSAV1', 'centre' => 1, 'statut' => 'EN_ALERTE'];
         $commune           = new Core\Entity\Commune('Arras', '62001');
         $centre            = new Core\Entity\Centre($commune, 'CIS Arras');
         $materiel_expected = new Core\Entity\Materiel($centre, 'VSAV1');
-        $materiel_expected->setActif();
         $materiel_expected->setStatut(Core\Entity\Statut::get(Core\Entity\Statut::EN_ALERTE));
         $repository_centre->shouldReceive('find')->with(1)->andReturn($centre)->once();
         $repository_materiel->shouldReceive('save')->once();
@@ -69,15 +68,13 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data             = ['name' => 'VSAV2', 'actif' => false, 'centre' => 2, 'coordinates' => ['X', 'Y']];
+        $data             = ['name' => 'VSAV2', 'centre' => 2, 'coordinates' => ['X', 'Y']];
         $commune1         = new Core\Entity\Commune('Arras', '62001');
         $centre1          = new Core\Entity\Centre($commune1, 'CIS Arras');
         $materiel_updated = new Core\Entity\Materiel($centre1, 'VSAV1');
-        $materiel_updated->setActif();
         $commune2          = new Core\Entity\Commune('Bethune', '62002');
         $centre2           = new Core\Entity\Centre($commune2, 'CIS Bethune');
         $materiel_expected = new Core\Entity\Materiel($centre2, 'VSAV2');
-        $materiel_expected->setActif(false);
         $materiel_expected->setCoordinates(new Core\Entity\Coordinates('X', 'Y'));
         $repository_centre->shouldReceive('find')->with(2)->andReturn($centre2)->once();
         $repository_centre->shouldReceive('find')->with(3)->andReturn(null)->once();

@@ -56,20 +56,25 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
     }
 
-    public function test_if_it_have_gardes()
+    public function test_if_it_have_plannings()
     {
-        $garde1 = new Core\Entity\Garde(self::$object, '14-02-2015 15:00', '14-02-2015 18:00');
-        $garde2 = new Core\Entity\Garde(self::$object, '15-02-2015 15:00', '15-02-2015 18:00');
+        $planning = new Core\Entity\Planning('Planning');
 
-        $this->assertCount(2, self::$object->getGardes());
-    }
+        $garde = new Core\Entity\PlageHoraire\GardePlageHoraire(
+            $planning,
+            self::$object,
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-11 00:00:00'),
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-12 00:00:00')
+        );
 
-    public function test_if_it_have_dispos()
-    {
-        $dispo1 = new Core\Entity\Dispo(self::$object, '14-02-2015 15:00', '14-02-2015 18:00');
-        $dispo2 = new Core\Entity\Dispo(self::$object, '15-02-2015 15:00', '15-02-2015 18:00');
+        $garde = new Core\Entity\PlageHoraire\GardePlageHoraire(
+            $planning,
+            self::$object,
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-14 00:00:00'),
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-17 00:00:00')
+        );
 
-        $this->assertCount(2, self::$object->getDispos());
+        $this->assertCount(1, self::$object->getPlannings());
     }
 
     public function test_if_it_have_engagements()

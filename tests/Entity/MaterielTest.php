@@ -49,20 +49,6 @@ class MaterielTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('SDIS62\Core\Ops\Entity\Centre', self::$object->getCentre());
     }
 
-    public function test_if_it_have_a_active_status()
-    {
-        $this->assertFalse(self::$object->isActif());
-
-        self::$object->setActif(false);
-
-        $this->assertFalse(self::$object->isActif());
-
-        self::$object->setActif();
-
-        $this->assertTrue(self::$object->isActif());
-        $this->assertInternalType('bool', self::$object->isActif());
-    }
-
     public function test_if_it_have_engagements()
     {
         $this->assertCount(0, self::$object->getEngagements());

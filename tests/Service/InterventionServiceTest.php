@@ -108,7 +108,7 @@ class InterventionServiceTest extends PHPUnit_Framework_TestCase
         $intervention_updated->setPrecision('medicamenteuse');
         $intervention_updated->setObservations('TAMED sur Arras');
         $intervention_updated->setUpdated('15-01-2050 15:00');
-        $intervention_updated->setCoordinates(['X', 'Y']);
+        $intervention_updated->setCoordinates(new Core\Entity\Coordinates('X2', 'Y2'));
         $intervention_updated->setAddress('11 rue des acacias 62000 Arras');
         $intervention_updated->setCommune($commune1);
         $intervention_updated->setImportant();

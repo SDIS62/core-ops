@@ -357,7 +357,7 @@ class Intervention
      *
      * @return self
      */
-    public function setCoordinates($coordinates)
+    public function setCoordinates(Coordinates $coordinates)
     {
         $this->coordinates = $coordinates;
 

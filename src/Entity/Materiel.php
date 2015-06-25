@@ -17,13 +17,6 @@ class Materiel
     protected $name;
 
     /**
-     * Le matériel est il actif ?
-     *
-     * @var bool
-     */
-    protected $actif;
-
-    /**
      * Centre dans lequel le matériel est affecté.
      *
      * @var SDIS62\Core\Ops\Entity\Centre
@@ -86,30 +79,6 @@ class Materiel
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Actif.
-     *
-     * @return string
-     */
-    public function isActif()
-    {
-        return $this->actif === true;
-    }
-
-    /**
-     * Set the value of Actif.
-     *
-     * @param bool actif
-     *
-     * @return self
-     */
-    public function setActif($value = true)
-    {
-        $this->actif = $value === true;
 
         return $this;
     }
@@ -195,7 +164,7 @@ class Materiel
      *
      * @return self
      */
-    public function setCoordinates($coordinates)
+    public function setCoordinates(Coordinates $coordinates)
     {
         $this->coordinates = $coordinates;
 

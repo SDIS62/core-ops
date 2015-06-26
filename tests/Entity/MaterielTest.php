@@ -89,7 +89,8 @@ class MaterielTest extends PHPUnit_Framework_TestCase
         $reflector = new \ReflectionClass(self::$object);
         $property = $reflector->getProperty('statut');
         $property->setAccessible(true);
-        $property->setValue(self::$object, 1);
+        $property->setValue(self::$object, "DISPONIBLE");
+        $this->assertInstanceOf("SDIS62\Core\Ops\Entity\Statut", self::$object->getStatut());
         $this->assertEquals("DISPONIBLE", self::$object->getStatut());
     }
 }

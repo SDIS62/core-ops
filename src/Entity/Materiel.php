@@ -178,7 +178,7 @@ class Materiel
      */
     public function getStatut()
     {
-        return $this->statut instanceof Statut ? $this->statut : Statut::get($this->statut);
+        return $this->statut instanceof Statut ? $this->statut : Statut::getByName($this->statut);
     }
 
     /**

@@ -320,7 +320,7 @@ class Intervention
         $evenements = $this->evenements->toArray();
 
         @usort($evenements, function ($a, $b) {
-            return $a->getDate()->format('U') < $b->getDate()->format('U') ? -1 : 1;
+            return $a->getDate()->format('U') > $b->getDate()->format('U') ? -1 : 1;
         });
 
         return $evenements;

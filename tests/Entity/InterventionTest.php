@@ -147,9 +147,9 @@ class InterventionTest extends PHPUnit_Framework_TestCase
         self::$object->addEvenement(new Core\Entity\Evenement('Secours', new Datetime('tomorrow')));
 
         $this->assertCount(3, self::$object->getEvenements());
-        $this->assertEquals('Arrive sur les lieux', self::$object->getEvenements()[0]->getDescription());
+        $this->assertEquals('Arrive sur les lieux', self::$object->getEvenements()[2]->getDescription());
         $this->assertEquals('Secours', self::$object->getEvenements()[1]->getDescription());
-        $this->assertEquals('Intervention terminee', self::$object->getEvenements()[2]->getDescription());
+        $this->assertEquals('Intervention terminee', self::$object->getEvenements()[0]->getDescription());
     }
 
     public function test_if_it_have_a_commune()
@@ -168,7 +168,7 @@ class InterventionTest extends PHPUnit_Framework_TestCase
     public function test_if_it_have_a_coordinates()
     {
         $this->assertNull(self::$object->getCoordinates());
-        
+
         $coord = new Core\Entity\Coordinates('x', 'y');
         self::$object->setCoordinates($coord);
         $this->assertEquals($coord, self::$object->getCoordinates());

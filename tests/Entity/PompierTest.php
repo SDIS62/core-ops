@@ -123,17 +123,17 @@ class PompierTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_have_statut()
     {
-        $this->assertEquals("DISPONIBLE", self::$object->getStatut());
+        $this->assertEquals('DISPONIBLE', self::$object->getStatut());
 
         self::$object->setStatut(Core\Entity\Statut::EN_ALERTE());
-        $this->assertEquals("EN_ALERTE", self::$object->getStatut());
+        $this->assertEquals('EN_ALERTE', self::$object->getStatut());
 
         $reflector = new \ReflectionClass(self::$object);
-        $property = $reflector->getProperty('statut');
+        $property  = $reflector->getProperty('statut');
         $property->setAccessible(true);
-        $property->setValue(self::$object, "DISPONIBLE");
+        $property->setValue(self::$object, 'DISPONIBLE');
         $this->assertInstanceOf("SDIS62\Core\Ops\Entity\Statut", self::$object->getStatut());
-        $this->assertEquals("DISPONIBLE", self::$object->getStatut());
+        $this->assertEquals('DISPONIBLE', self::$object->getStatut());
     }
 
     public function test_if_it_have_a_pro_flag()

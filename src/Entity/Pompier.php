@@ -99,10 +99,10 @@ class Pompier
         $this->matricule = $matricule;
         $this->setName($name);
         $this->setCentre($centre);
-        $this->engagements = new ArrayCollection();
+        $this->engagements     = new ArrayCollection();
         $this->plages_horaires = new ArrayCollection();
-        $this->statut = Statut::DISPONIBLE();
-        $this->is_pro = true;
+        $this->statut          = Statut::DISPONIBLE();
+        $this->is_pro          = true;
     }
 
     /**
@@ -114,8 +114,8 @@ class Pompier
     {
         $plannings = [];
 
-        foreach($this->plages_horaires as $plage_horaire) {
-            if(!in_array($plage_horaire->getPlanning(), $plannings)) {
+        foreach ($this->plages_horaires as $plage_horaire) {
+            if (!in_array($plage_horaire->getPlanning(), $plannings)) {
                 $plannings[] = $plage_horaire->getPlanning();
             }
         }
@@ -124,7 +124,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Plages horaires
+     * Get the value of Plages horaires.
      *
      * @return SDIS62\Core\Ops\Entity\PlageHoraire[]
      */
@@ -134,7 +134,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Gardes
+     * Get the value of Gardes.
      *
      * @return SDIS62\Core\Ops\Entity\PlageHoraire\Garde[]
      */
@@ -142,8 +142,8 @@ class Pompier
     {
         $gardes = [];
 
-        foreach($this->plages_horaires as $plage_horaire) {
-            if($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
+        foreach ($this->plages_horaires as $plage_horaire) {
+            if ($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
                 $gardes[] = $plage_horaire;
             }
         }
@@ -152,7 +152,7 @@ class Pompier
     }
 
     /**
-     * Get the value of Dispos
+     * Get the value of Dispos.
      *
      * @return SDIS62\Core\Ops\Entity\PlageHoraire\Dispo[]
      */
@@ -160,8 +160,8 @@ class Pompier
     {
         $dispos = [];
 
-        foreach($this->plages_horaires as $plage_horaire) {
-            if($plage_horaire instanceof PlageHoraire\DispoPlageHoraire) {
+        foreach ($this->plages_horaires as $plage_horaire) {
+            if ($plage_horaire instanceof PlageHoraire\DispoPlageHoraire) {
                 $dispos[] = $plage_horaire;
             }
         }
@@ -173,8 +173,8 @@ class Pompier
      * Ajout d'une plage horaire.
      *
      * @param SDIS62\Core\Ops\Entity\PlageHoraire $plage_horaire
-     * @return self
      *
+     * @return self
      */
     public function addPlageHoraire(PlageHoraire $plage_horaire)
     {
@@ -423,5 +423,4 @@ class Pompier
 
         return $this;
     }
-
 }

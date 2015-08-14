@@ -56,7 +56,7 @@ class Materiel
         $this->centre = $centre;
         $this->centre->addMateriel($this);
         $this->engagements = new ArrayCollection();
-        $this->statut = Statut::DISPONIBLE();
+        $this->statut      = Statut::DISPONIBLE();
     }
 
     /**
@@ -194,5 +194,4 @@ class Materiel
 
         return $this;
     }
-
 }

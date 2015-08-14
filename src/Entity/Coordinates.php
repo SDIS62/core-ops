@@ -9,14 +9,14 @@ class Coordinates
     /**
      * Latitude.
      *
-     * @var double
+     * @var float
      */
     protected $latitude;
 
     /**
      * Longitude.
      *
-     * @var double
+     * @var float
      */
     protected $longitude;
 
@@ -30,8 +30,8 @@ class Coordinates
     /**
      * Création d'une coordonnée.
      *
-     * @param float $x
-     * @param float $y
+     * @param float    $x
+     * @param float    $y
      * @param Datetime $date
      */
     public function __construct($latitude, $longitude, Datetime $date = null)
@@ -42,17 +42,17 @@ class Coordinates
     /**
      * Set the value of Point Y.
      *
-     * @param float $x
-     * @param float $y
+     * @param float    $x
+     * @param float    $y
      * @param Datetime $date
      *
      * @return self
      */
     public function setCoordinates($latitude, $longitude, Datetime $date = null)
     {
-        $this->latitude = $latitude;
+        $this->latitude  = $latitude;
         $this->longitude = $longitude;
-        $this->date = empty($date) ? new Datetime() : $date;
+        $this->date      = empty($date) ? new Datetime() : $date;
 
         return $this;
     }
@@ -86,5 +86,4 @@ class Coordinates
     {
         return $this->date;
     }
-
 }

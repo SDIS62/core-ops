@@ -14,17 +14,17 @@ class PlageHoraireService
     /**
      * Initialisation du service avec les repository utilisés.
      *
-     * @param SDIS62\Core\Ops\Repository\PlageHoraireRepositoryInterface   $plagehoraire_repository
-     * @param SDIS62\Core\Ops\Repository\PompierRepositoryInterface $pompier_repository
-     * @param SDIS62\Core\Ops\Repository\PlanningRepositoryInterface $planning_repository
+     * @param SDIS62\Core\Ops\Repository\PlageHoraireRepositoryInterface $plagehoraire_repository
+     * @param SDIS62\Core\Ops\Repository\PompierRepositoryInterface      $pompier_repository
+     * @param SDIS62\Core\Ops\Repository\PlanningRepositoryInterface     $planning_repository
      */
     public function __construct(PlageHoraireRepositoryInterface $plagehoraire_repository,
                                 PompierRepositoryInterface $pompier_repository,
                                 PlanningRepositoryInterface $planning_repository
     ) {
-        $this->plagehoraire_repository   = $plagehoraire_repository;
-        $this->pompier_repository = $pompier_repository;
-        $this->planning_repository = $planning_repository;
+        $this->plagehoraire_repository = $plagehoraire_repository;
+        $this->pompier_repository      = $pompier_repository;
+        $this->planning_repository     = $planning_repository;
     }
 
     /**
@@ -43,14 +43,15 @@ class PlageHoraireService
      * Sauvegarde d'une plage horaire.
      *
      * @param array $data
+     *
      * @return SDIS62\Core\Ops\Entity\PlageHoraire
      */
     public function save(array $data)
     {
         $planning = $this->planning_repository->find($data['planning']);
-        $pompier = $this->pompier_repository->find($data['pompier']);
-        $start = DateTime::createFromFormat('d-m-Y H:i', (string) $data['start']);
-        $end = DateTime::createFromFormat('d-m-Y H:i', (string) $data['end']);
+        $pompier  = $this->pompier_repository->find($data['pompier']);
+        $start    = DateTime::createFromFormat('d-m-Y H:i', (string) $data['start']);
+        $end      = DateTime::createFromFormat('d-m-Y H:i', (string) $data['end']);
 
         switch ($data['type']) {
             case 'garde' :

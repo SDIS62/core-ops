@@ -2,7 +2,6 @@
 
 namespace SDIS62\Core\Ops\Repository;
 
-use Datetime;
 use SDIS62\Core\Ops\Entity\PlageHoraire;
 
 interface PlageHoraireRepositoryInterface

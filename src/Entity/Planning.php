@@ -31,7 +31,7 @@ class Planning
      */
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->name            = $name;
         $this->plages_horaires = new ArrayCollection();
     }
 
@@ -39,13 +39,13 @@ class Planning
      * Ajout d'une plage horaire.
      *
      * @param SDIS62\Core\Ops\Entity\PlageHoraire $plage_horaire
-     * @return self
      *
+     * @return self
      */
     public function addPlageHoraire(PlageHoraire $plage_horaire)
     {
         // Règles d'ajout
-        if($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
+        if ($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
             // Contrôles des gardes existantes (une dispo ne peut pas être ajoutée sur une garde)
             foreach ($plage_horaire->getPompier()->getGardes() as $garde) {
                 if ($garde->includes($plage_horaire, false)) {
@@ -64,8 +64,7 @@ class Planning
                     }
                 }
             }
-        }
-        elseif($plage_horaire instanceof PlageHoraire\DispoPlageHoraire) {
+        } elseif ($plage_horaire instanceof PlageHoraire\DispoPlageHoraire) {
             // Contrôles des gardes existantes (une dispo ne peut pas être ajoutée sur une garde)
             foreach ($plage_horaire->getPompier()->getGardes() as $garde) {
                 if ($garde->includes($plage_horaire, false)) {
@@ -96,7 +95,7 @@ class Planning
     }
 
     /**
-     * Get the value of Gardes
+     * Get the value of Gardes.
      *
      * @return SDIS62\Core\Ops\Entity\PlageHoraire\Garde[]
      */
@@ -104,8 +103,8 @@ class Planning
     {
         $gardes = [];
 
-        foreach($this->plages_horaires as $plage_horaire) {
-            if($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
+        foreach ($this->plages_horaires as $plage_horaire) {
+            if ($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
                 $gardes[] = $plage_horaire;
             }
         }
@@ -114,7 +113,7 @@ class Planning
     }
 
     /**
-     * Get the value of Dispos
+     * Get the value of Dispos.
      *
      * @return SDIS62\Core\Ops\Entity\PlageHoraire\Dispo[]
      */
@@ -122,8 +121,8 @@ class Planning
     {
         $dispos = [];
 
-        foreach($this->plages_horaires as $plage_horaire) {
-            if($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
+        foreach ($this->plages_horaires as $plage_horaire) {
+            if ($plage_horaire instanceof PlageHoraire\GardePlageHoraire) {
                 $dispos[] = $plage_horaire;
             }
         }
@@ -154,5 +153,4 @@ class Planning
 
         return $this;
     }
-
 }

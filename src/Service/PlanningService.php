@@ -13,8 +13,9 @@ class PlanningService
      *
      * @param SDIS62\Core\Ops\Repository\PlanningRepositoryInterface $planning_repository
      */
-    public function __construct(PlanningRepositoryInterface $planning_repository) {
-        $this->planning_repository   = $planning_repository;
+    public function __construct(PlanningRepositoryInterface $planning_repository)
+    {
+        $this->planning_repository = $planning_repository;
     }
 
     /**
@@ -32,7 +33,7 @@ class PlanningService
     /**
      * Retourne le planning entre les dates données.
      *
-     * @param mixed $id_planning
+     * @param mixed    $id_planning
      * @param Datetime $start
      * @param Datetime $end
      *

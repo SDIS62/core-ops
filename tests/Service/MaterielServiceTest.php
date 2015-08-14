@@ -68,10 +68,10 @@ class MaterielServiceTest extends PHPUnit_Framework_TestCase
         $service             = new Core\Service\MaterielService($repository_materiel, $repository_centre);
 
         // Prepare ..
-        $data             = ['name' => 'VSAV2', 'centre' => 2, 'coordinates' => ['X', 'Y']];
-        $commune1         = new Core\Entity\Commune('Arras', '62001');
-        $centre1          = new Core\Entity\Centre($commune1, 'CIS Arras');
-        $materiel_updated = new Core\Entity\Materiel($centre1, 'VSAV1');
+        $data              = ['name' => 'VSAV2', 'centre' => 2, 'coordinates' => ['X', 'Y']];
+        $commune1          = new Core\Entity\Commune('Arras', '62001');
+        $centre1           = new Core\Entity\Centre($commune1, 'CIS Arras');
+        $materiel_updated  = new Core\Entity\Materiel($centre1, 'VSAV1');
         $commune2          = new Core\Entity\Commune('Bethune', '62002');
         $centre2           = new Core\Entity\Centre($commune2, 'CIS Bethune');
         $materiel_expected = new Core\Entity\Materiel($centre2, 'VSAV2');

@@ -43,11 +43,11 @@ class PlageHoraireServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create_garde()
     {
         // Prepare ..
-        $data    = ['type' => 'garde', 'planning' => 1, 'pompier' => 2, 'start' => '14-08-1988 15:00', 'end' => '14-08-1988 16:00'];
+        $data     = ['type' => 'garde', 'planning' => 1, 'pompier' => 2, 'start' => '14-08-1988 15:00', 'end' => '14-08-1988 16:00'];
         $planning = new Core\Entity\Planning('Planning');
-        $pompier = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
-        $start = Datetime::createFromFormat('d-m-Y H:i', '14-08-1988 15:00');
-        $end = Datetime::createFromFormat('d-m-Y H:i', '14-08-1988 16:00');
+        $pompier  = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $start    = Datetime::createFromFormat('d-m-Y H:i', '14-08-1988 15:00');
+        $end      = Datetime::createFromFormat('d-m-Y H:i', '14-08-1988 16:00');
         $this->repository_planning->shouldReceive('find')->with(1)->andReturn($planning)->once();
         $this->repository_pompier->shouldReceive('find')->with(2)->andReturn($pompier)->once();
         $this->repository_plagehoraire->shouldReceive('save')->once();
@@ -63,11 +63,11 @@ class PlageHoraireServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create_dispo()
     {
         // Prepare ..
-        $data    = ['type' => 'dispo', 'planning' => 1, 'pompier' => 2, 'start' => '14-08-1988 15:00', 'end' => '14-08-1988 16:00'];
+        $data     = ['type' => 'dispo', 'planning' => 1, 'pompier' => 2, 'start' => '14-08-1988 15:00', 'end' => '14-08-1988 16:00'];
         $planning = new Core\Entity\Planning('Planning');
-        $pompier = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
-        $start = Datetime::createFromFormat('d-m-Y H:i', '14-08-1988 15:00');
-        $end = Datetime::createFromFormat('d-m-Y H:i', '14-08-1988 16:00');
+        $pompier  = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $start    = Datetime::createFromFormat('d-m-Y H:i', '14-08-1988 15:00');
+        $end      = Datetime::createFromFormat('d-m-Y H:i', '14-08-1988 16:00');
         $this->repository_planning->shouldReceive('find')->with(1)->andReturn($planning)->once();
         $this->repository_pompier->shouldReceive('find')->with(2)->andReturn($pompier)->once();
         $this->repository_plagehoraire->shouldReceive('save')->once();
@@ -83,7 +83,7 @@ class PlageHoraireServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_create_invalid_plage_horaire()
     {
         // Prepare ..
-        $data    = ['type' => 'alo', 'planning' => 1, 'pompier' => 2, 'start' => '14-08-1988 15:00', 'end' => '14-08-1988 16:00'];
+        $data = ['type' => 'alo', 'planning' => 1, 'pompier' => 2, 'start' => '14-08-1988 15:00', 'end' => '14-08-1988 16:00'];
         $this->repository_planning->shouldReceive('find')->with(1)->andReturn(null)->once();
         $this->repository_pompier->shouldReceive('find')->with(2)->andReturn(null)->once();
 

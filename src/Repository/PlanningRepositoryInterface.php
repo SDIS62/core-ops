@@ -19,7 +19,7 @@ interface PlanningRepositoryInterface
     /**
      * Retourne le planning entre les dates données.
      *
-     * @param mixed $id_planning
+     * @param mixed    $id_planning
      * @param Datetime $start
      * @param Datetime $end
      *

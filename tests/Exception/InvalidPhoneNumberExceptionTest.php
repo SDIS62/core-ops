@@ -3,7 +3,6 @@
 namespace SDIS62\Core\Ops\Test\Exception;
 
 use SDIS62\Core\Ops as Core;
-use PHPUnit_Framework_TestCase;
 
 class InvalidPhoneNumberExceptionTest
 {

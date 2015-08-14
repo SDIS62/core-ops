@@ -43,21 +43,21 @@ abstract class PlageHoraire
      * Ajout d'une plage horaire.
      *
      * @param SDIS62\Core\Ops\Entity\Planning $planning
-     * @param SDIS62\Core\Ops\Entity\Pompier $pompier
-     * @param Datetime $start
-     * @param Datetime $end
+     * @param SDIS62\Core\Ops\Entity\Pompier  $pompier
+     * @param Datetime                        $start
+     * @param Datetime                        $end
      */
     public function __construct(Planning $planning, Pompier $pompier, Datetime $start, Datetime $end)
     {
         $this->start = $start;
-        $this->end = $end;
+        $this->end   = $end;
 
         if ($this->start->diff($this->end)->invert == 1) {
             throw new InvalidDateException('Events usually start before they end');
         }
 
         $this->planning = $planning;
-        $this->pompier = $pompier;
+        $this->pompier  = $pompier;
 
         $this->planning->addPlageHoraire($this);
         $this->pompier->addPlageHoraire($this);
@@ -150,5 +150,4 @@ abstract class PlageHoraire
     {
         return $this->planning;
     }
-
 }

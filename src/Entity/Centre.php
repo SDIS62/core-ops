@@ -51,9 +51,9 @@ class Centre
      */
     public function __construct(Commune $commune, $name, $classement = 'CSP')
     {
-        $this->name    = $name;
+        $this->name       = $name;
         $this->classement = $classement;
-        $this->commune = $commune;
+        $this->commune    = $commune;
         $this->commune->addCentre($this);
         $this->materiels = new ArrayCollection();
         $this->pompiers  = new ArrayCollection();
@@ -164,5 +164,4 @@ class Centre
 
         return $this;
     }
-
 }

@@ -13,10 +13,10 @@ class GardePlageHoraireTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $planning     = new Core\Entity\Planning('Planning OPS');
-        $pompier      = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
-        $start = new Datetime('yesterday');
-        $end = new Datetime();
+        $planning = new Core\Entity\Planning('Planning OPS');
+        $pompier  = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $start    = new Datetime('yesterday');
+        $end      = new Datetime();
 
         self::$object = new Core\Entity\PlageHoraire\GardePlageHoraire($planning, $pompier, $start, $end);
     }

@@ -3,7 +3,6 @@
 namespace SDIS62\Core\Ops\Test\Entity;
 
 use Datetime;
-use DateInterval;
 use Exception;
 use Mockery;
 use SDIS62\Core\Ops as Core;
@@ -15,10 +14,10 @@ class PlageHoraireTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $planning     = new Core\Entity\Planning('Planning OPS');
-        $pompier      = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
-        $start = Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-14 00:00:00');
-        $end = Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-16 00:00:00');
+        $planning = new Core\Entity\Planning('Planning OPS');
+        $pompier  = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $start    = Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-14 00:00:00');
+        $end      = Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-16 00:00:00');
 
         self::$object = Mockery::mock('SDIS62\Core\Ops\Entity\PlageHoraire', [$planning, $pompier, $start, $end])->makePartial();
     }
@@ -57,7 +56,7 @@ class PlageHoraireTest extends PHPUnit_Framework_TestCase
             new Core\Entity\Planning('Planning OPS'),
             new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial()),
             Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-14 00:00:00'),
-            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-17 00:00:00')
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-17 00:00:00'),
         ])->makePartial();
 
         $this->assertTrue(self::$object->includes($plage, false));
@@ -66,7 +65,7 @@ class PlageHoraireTest extends PHPUnit_Framework_TestCase
             new Core\Entity\Planning('Planning OPS'),
             new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial()),
             Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-12 00:00:00'),
-            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-13 23:59:59')
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-13 23:59:59'),
         ])->makePartial();
 
         $this->assertFalse(self::$object->includes($plage, false));
@@ -90,10 +89,10 @@ class PlageHoraireTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_throw_an_exception_if_dates_are_invalids()
     {
-        $planning     = new Core\Entity\Planning('Planning OPS');
-        $pompier      = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
-        $end = new Datetime('yesterday');
-        $start = new Datetime();
+        $planning = new Core\Entity\Planning('Planning OPS');
+        $pompier  = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $end      = new Datetime('yesterday');
+        $start    = new Datetime();
 
         try {
             self::$object = Mockery::mock('SDIS62\Core\Ops\Entity\PlageHoraire', [$planning, $pompier, $start, $end])->makePartial();

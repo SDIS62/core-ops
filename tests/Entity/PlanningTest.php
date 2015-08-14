@@ -58,7 +58,7 @@ class PlanningTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_throw_an_exception_if_dispo_is_in_another_dispo()
     {
-        $pompier = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $pompier         = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
         $another_pompier = new Core\Entity\Pompier('BILLET Kelly', 'mat002', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
 
         $dispo = new Core\Entity\PlageHoraire\DispoPlageHoraire(
@@ -91,7 +91,7 @@ class PlanningTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_throw_an_exception_if_dispo_is_in_garde()
     {
-        $pompier = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $pompier         = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
         $another_pompier = new Core\Entity\Pompier('BILLET Kelly', 'mat002', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
 
         $garde = new Core\Entity\PlageHoraire\GardePlageHoraire(
@@ -172,7 +172,7 @@ class PlanningTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_throw_an_exception_if_garde_is_in_another_garde()
     {
-        $pompier = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $pompier         = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
         $another_pompier = new Core\Entity\Pompier('BILLET Kelly', 'mat002', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
 
         $garde = new Core\Entity\PlageHoraire\GardePlageHoraire(
@@ -202,5 +202,4 @@ class PlanningTest extends PHPUnit_Framework_TestCase
 
         $this->fail('Exception must be throw');
     }
-
 }

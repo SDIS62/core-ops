@@ -31,19 +31,29 @@ class PompierEngagement extends Engagement
     protected $materiel;
 
     /**
+     * Spécialités engagées.
+     *
+     * @var array
+     */
+    protected $specialites_engagees;
+
+    /**
      * Ajout d'un engagement de type pompier à une intervention.
      *
      * @param SDIS62\Core\Ops\Entity\Intervention $intervention
      * @param SDIS62\Core\Ops\Entity\Materiel     $materiel
      * @param SDIS62\Core\Ops\Entity\Pompier      $pompier
+     * @param array                               $specialites_engagees
      */
-    public function __construct(Intervention $intervention, Materiel $materiel, Pompier $pompier)
+    public function __construct(Intervention $intervention, Materiel $materiel, Pompier $pompier, array $specialites_engagees = [])
     {
         $this->pompier = $pompier;
         $this->pompier->addEngagement($this);
 
         $this->materiel = $materiel;
         $this->materiel->addEngagement($this);
+
+        $this->specialites_engagees = $specialites_engagees;
 
         parent::__construct($intervention, $materiel);
     }
@@ -56,6 +66,20 @@ class PompierEngagement extends Engagement
     public function getPompier()
     {
         return $this->pompier;
+    }
+
+    /**
+     * Spécialitées engagées.
+     *
+     * @return array
+     */
+    public function getSpecialitesEngagees()
+    {
+        if (!($this->getPompier() instanceof Pompier\SpecialistePompier)) {
+            return [];
+        }
+
+        return array_intersect($this->getPompier()->getSpecialites(), $this->specialites_engagees);
     }
 
     /**

@@ -73,7 +73,7 @@ class EngagementService
                 case 'pompier' :
                     $materiel   = $this->materiel_repository->find($data['materiel']);
                     $pompier    = $this->pompier_repository->find($data['pompier']);
-                    $engagement = new Engagement\PompierEngagement($intervention, $materiel, $pompier);
+                    $engagement = new Engagement\PompierEngagement($intervention, $materiel, $pompier, empty($data['specialites_engagees']) ? [] : $data['specialites_engagees']);
                     break;
                 default:
                     throw new InvalidEngagementException();

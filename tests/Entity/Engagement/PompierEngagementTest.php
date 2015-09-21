@@ -40,4 +40,28 @@ class PompierEngagementTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals('pompier', self::$object->getType());
     }
+
+    public function test_if_it_have_a_specialites_engagees()
+    {
+        $sinistre     = new Core\Entity\Sinistre('Feu de');
+        $intervention = new Core\Entity\Intervention($sinistre);
+        $commune      = new Core\Entity\Commune('Arras', '62001');
+        $centre       = new Core\Entity\Centre($commune, 'CIS Arras');
+        $materiel     = new Core\Entity\Materiel($centre, 'VSAV1');
+
+        $engagement = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, new Core\Entity\Pompier('DUBUC Kevin', 'mat001', $centre));
+        $this->assertCount(0, $engagement->getSpecialitesEngagees());
+
+        $engagement = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, new Core\Entity\Pompier\SpecialistePompier('DUBUC Kevin', 'mat001', $centre));
+        $this->assertCount(0, $engagement->getSpecialitesEngagees());
+
+        $engagement = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, new Core\Entity\Pompier\SpecialistePompier('DUBUC Kevin', 'mat001', $centre), ['urt']);
+        $this->assertCount(0, $engagement->getSpecialitesEngagees());
+
+        $specialiste = new Core\Entity\Pompier\SpecialistePompier('DUBUC Kevin', 'mat001', $centre);
+        $specialiste->setSpecialites(['urt', 'grimp']);
+        $engagement = new Core\Entity\Engagement\PompierEngagement($intervention, $materiel, $specialiste, ['urt']);
+        $this->assertCount(1, $engagement->getSpecialitesEngagees());
+        $this->assertEquals('urt', $engagement->getSpecialitesEngagees()[0]);
+    }
 }

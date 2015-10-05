@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Entity;
 
+use Datetime;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\PhoneNumberFormat;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -312,6 +313,28 @@ class Pompier
     }
 
     /**
+     * Retourne vrai si le pompier est en garde.
+     *
+     * @return bool
+     */
+    public function isEnGarde()
+    {
+        $date   = new Datetime();
+        $date   = $date->getTimestamp();
+        $gardes = $this->getGardes();
+
+        foreach ($gardes as $garde) {
+            $from = $garde->getStart()->getTimestamp();
+            $to   = $garde->getEnd()->getTimestamp();
+            if (($date > $from) && ($date < $to)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Get the value of Type de pompier.
      *
      * @return string
@@ -419,7 +442,9 @@ class Pompier
      */
     public function setCoordinates(Coordinates $coordinates)
     {
-        $this->coordinates = $coordinates;
+        if (empty($this->getCoordinates()) || $coordinates->getDate() > $this->getCoordinates()->getDate()) {
+            $this->coordinates = $coordinates;
+        }
 
         return $this;
     }

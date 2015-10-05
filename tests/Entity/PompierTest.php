@@ -77,6 +77,36 @@ class PompierTest extends PHPUnit_Framework_TestCase
         $this->assertCount(1, self::$object->getPlannings());
     }
 
+    public function test_check_garde_active()
+    {
+        $planning = new Core\Entity\Planning('Planning');
+
+        $garde = new Core\Entity\PlageHoraire\GardePlageHoraire(
+            $planning,
+            self::$object,
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-11 00:00:00'),
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-12 00:00:00')
+        );
+
+        $garde = new Core\Entity\PlageHoraire\GardePlageHoraire(
+            $planning,
+            self::$object,
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-14 00:00:00'),
+            Datetime::createFromFormat('Y-m-d H:i:s', '2015-08-17 00:00:00')
+        );
+
+        $this->assertFalse(self::$object->isEnGarde());
+
+        $garde = new Core\Entity\PlageHoraire\GardePlageHoraire(
+            $planning,
+            self::$object,
+            new Datetime('-1 day'),
+            new Datetime('+1 day')
+        );
+
+        $this->assertTrue(self::$object->isEnGarde());
+    }
+
     public function test_if_it_have_engagements()
     {
         $this->assertCount(0, self::$object->getEngagements());
@@ -151,6 +181,10 @@ class PompierTest extends PHPUnit_Framework_TestCase
 
         $coord = new Core\Entity\Coordinates('x', 'y');
         self::$object->setCoordinates($coord);
+        $this->assertEquals($coord, self::$object->getCoordinates());
+
+        $old_coord = new Core\Entity\Coordinates('x2', 'y2', new Datetime('-2 days'));
+        self::$object->setCoordinates($old_coord);
         $this->assertEquals($coord, self::$object->getCoordinates());
     }
 }

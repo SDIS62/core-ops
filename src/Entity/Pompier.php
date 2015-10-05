@@ -442,7 +442,9 @@ class Pompier
      */
     public function setCoordinates(Coordinates $coordinates)
     {
-        if (empty($this->getCoordinates()) || $coordinates->getDate() > $this->getCoordinates()->getDate()) {
+        $current_coords = $this->getCoordinates();
+
+        if (empty($current_coordinates) || $coordinates->getDate() > $current_coordinates->getDate()) {
             $this->coordinates = $coordinates;
         }
 

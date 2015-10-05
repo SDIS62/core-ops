@@ -107,8 +107,12 @@ class PompierService
             $pompier->setPro($data['pro'] === true);
         }
 
-        if (!empty($data['coordinates']) && is_array($data['coordinates']) && count($data['coordinates']) == 2) {
-            $pompier->setCoordinates(new Coordinates($data['coordinates'][0], $data['coordinates'][1]));
+        if (!empty($data['coordinates']) && is_array($data['coordinates']) && count($data['coordinates']) >= 2) {
+            $pompier->setCoordinates(new Coordinates(
+                $data['coordinates'][0],
+                $data['coordinates'][1],
+                array_key_exists(2, $data['coordinates']) ? $data['coordinates'][2] : null
+            ));
         }
 
         $this->pompier_repository->save($pompier);

@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Entity\Service;
 
+use Datetime;
 use Mockery;
 use SDIS62\Core\Ops as Core;
 use PHPUnit_Framework_TestCase;
@@ -112,13 +113,13 @@ class PompierServiceTest extends PHPUnit_Framework_TestCase
     public function test_if_it_update()
     {
         // Prepare ..
-        $data             = ['centre' => 2, 'type' => 'pompier', 'name' => 'Kelly', 'matricule' => '00001', 'coordinates' => ['X', 'Y']];
+        $data             = ['centre' => 2, 'type' => 'pompier', 'name' => 'Kelly', 'matricule' => '00001', 'coordinates' => ['X', 'Y', new Datetime('+1 day')]];
         $commune          = new Core\Entity\Commune('Arras', '62001');
         $centre1          = new Core\Entity\Centre($commune, 'CIS Arras');
         $centre2          = new Core\Entity\Centre($commune, 'CIS Bethune');
         $pompier_updated  = new Core\Entity\Pompier('Kevin', '00001', $centre1);
         $pompier_expected = new Core\Entity\Pompier('Kelly', '00001', $centre2);
-        $pompier_expected->setCoordinates(new Core\Entity\Coordinates('X', 'Y'));
+        $pompier_expected->setCoordinates(new Core\Entity\Coordinates('X', 'Y', new Datetime('+1 day')));
         $this->repository_centre->shouldReceive('find')->with(2)->andReturn($centre2)->once();
         $this->repository_pompier->shouldReceive('find')->with('00001')->andReturn($pompier_updated)->once();
         $this->repository_pompier->shouldReceive('save')->once();

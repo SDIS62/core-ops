@@ -19,6 +19,13 @@ abstract class Engagement
     protected $created;
 
     /**
+     * Date de mise à jour.
+     *
+     * @var Datetime
+     */
+    protected $updated;
+
+    /**
      * Fin de l'engagement.
      *
      * @var Datetime
@@ -79,6 +86,38 @@ abstract class Engagement
     }
 
     /**
+     * Get the value of Date de mise à jour.
+     *
+     * @return Datetime|null
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set the value of Date de mise à jour (la date doit être supérieure à la date de création).
+     *
+     * @param Datetime|string updated Format d-m-Y H:i:s
+     *
+     * @return self
+     */
+    public function setUpdated($updated = null)
+    {
+        if (empty($updated)) {
+            $this->setUpdated(new Datetime());
+        } else {
+            $updated = $updated instanceof Datetime ? $updated : DateTime::createFromFormat('d-m-Y H:i:s', (string) $updated);
+        }
+
+        if ($updated > $this->created) {
+            $this->updated = $updated;
+        }
+
+        return $this;
+    }
+
+    /**
      * Get the value of Date de fin.
      *
      * @return Datetime|null
@@ -101,6 +140,7 @@ abstract class Engagement
 
         if ($ended > $this->created) {
             $this->ended = $ended;
+            $this->setUpdated();
         }
 
         return $this;
@@ -146,6 +186,8 @@ abstract class Engagement
     public function addEvenement(Evenement $evenement)
     {
         $this->evenements[] = $evenement;
+
+        $this->setUpdated();
 
         return $this;
     }

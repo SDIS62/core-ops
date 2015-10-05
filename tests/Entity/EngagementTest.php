@@ -38,6 +38,8 @@ class EngagementTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_have_evenements()
     {
+        self::$object->shouldReceive('setUpdated')->times(3);
+
         $this->assertCount(0, self::$object->getEvenements());
 
         self::$object->addEvenement(new Core\Entity\Evenement('Arrive sur les lieux'));
@@ -57,8 +59,32 @@ class EngagementTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($now->format('Y-m-d H:i'), self::$object->getCreated()->format('Y-m-d H:i'));
     }
 
+    public function test_if_it_have_a_update_date()
+    {
+        $this->assertNull(self::$object->getUpdated());
+
+        $created = self::$object->getCreated();
+        self::$object->setUpdated($created);
+        $this->assertNull(self::$object->getUpdated());
+
+        $old = $created->sub(new DateInterval('PT1H'));
+        self::$object->setUpdated($old);
+        $this->assertNull(self::$object->getUpdated());
+
+        $updated = new Datetime('tomorrow');
+        self::$object->setUpdated($updated);
+        $this->assertEquals($updated, self::$object->getUpdated());
+
+        self::$object->setUpdated('01-01-2050 15:00:00');
+        $this->assertEquals('01-01-2050 15:00:00', self::$object->getUpdated()->format('d-m-Y H:i:s'));
+
+        $this->assertInstanceOf('\Datetime', self::$object->getUpdated());
+    }
+
     public function test_if_it_have_a_end_date()
     {
+        self::$object->shouldReceive('setUpdated')->twice();
+
         $this->assertFalse(self::$object->isEnded());
 
         $created = self::$object->getCreated();

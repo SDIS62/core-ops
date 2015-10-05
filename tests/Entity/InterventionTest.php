@@ -2,6 +2,7 @@
 
 namespace SDIS62\Core\Ops\Test\Entity;
 
+use Mockery;
 use Datetime;
 use DateInterval;
 use SDIS62\Core\Ops as Core;
@@ -14,7 +15,7 @@ class InterventionTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $sinistre     = new Core\Entity\Sinistre('Feu de');
-        self::$object = new Core\Entity\Intervention($sinistre);
+        self::$object = Mockery::mock('SDIS62\Core\Ops\Entity\Intervention', [$sinistre])->makePartial();
     }
 
     public function test_if_it_have_an_id()
@@ -30,6 +31,7 @@ class InterventionTest extends PHPUnit_Framework_TestCase
 
     public function test_if_it_have_a_precision()
     {
+        self::$object->shouldReceive('setUpdated')->once();
         self::$object->setPrecision('Precision intervention');
         $this->assertEquals('Precision intervention', self::$object->getPrecision());
         $this->assertInternalType('string', self::$object->getPrecision());
@@ -126,16 +128,12 @@ class InterventionTest extends PHPUnit_Framework_TestCase
     public function test_if_it_have_engagements()
     {
         $this->assertCount(0, self::$object->getEngagements());
-
-        $commune  = new Core\Entity\Commune('Arras', '62001');
-        $centre   = new Core\Entity\Centre($commune, 'CIS Arras');
-        $materiel = new Core\Entity\Materiel($centre, 'VSAV1');
-        $pompier  = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
-
+        $commune     = new Core\Entity\Commune('Arras', '62001');
+        $centre      = new Core\Entity\Centre($commune, 'CIS Arras');
+        $materiel    = new Core\Entity\Materiel($centre, 'VSAV1');
+        $pompier     = new Core\Entity\Pompier('DUBUC Kévin', '0001', $centre);
         $engagement1 = new Core\Entity\Engagement\PompierEngagement(self::$object, $materiel, $pompier);
         $engagement2 = new Core\Entity\Engagement\PompierEngagement(self::$object, $materiel, $pompier);
-
-        $this->assertCount(2, self::$object->getEngagements());
     }
 
     public function test_if_it_have_evenements()

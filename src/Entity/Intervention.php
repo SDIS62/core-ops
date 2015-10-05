@@ -99,7 +99,7 @@ class Intervention
      */
     public function __construct(Sinistre $sinistre)
     {
-        $this->setSinistre($sinistre);
+        $this->sinistre    = $sinistre;
         $this->created     = new Datetime('NOW');
         $this->evenements  = new ArrayCollection();
         $this->engagements = new ArrayCollection();
@@ -126,6 +126,8 @@ class Intervention
     {
         $this->precision = $precision;
 
+        $this->setUpdated();
+
         return $this;
     }
 
@@ -150,6 +152,8 @@ class Intervention
     {
         $this->observations = $observations;
 
+        $this->setUpdated();
+
         return $this;
     }
 
@@ -173,6 +177,8 @@ class Intervention
     public function setImportant($important = true)
     {
         $this->important = $important === true;
+
+        $this->setUpdated();
 
         return $this;
     }
@@ -204,9 +210,13 @@ class Intervention
      *
      * @return self
      */
-    public function setUpdated($updated)
+    public function setUpdated($updated = null)
     {
-        $updated = $updated instanceof Datetime ? $updated : DateTime::createFromFormat('d-m-Y H:i:s', (string) $updated);
+        if (empty($updated)) {
+            $this->setUpdated(new Datetime());
+        } else {
+            $updated = $updated instanceof Datetime ? $updated : DateTime::createFromFormat('d-m-Y H:i:s', (string) $updated);
+        }
 
         if ($updated > $this->created) {
             $this->updated = $updated;
@@ -243,6 +253,8 @@ class Intervention
             foreach ($this->engagements as $engagement) {
                 $engagement->setEnded($ended);
             }
+
+            $this->setUpdated();
         }
 
         return $this;
@@ -279,6 +291,8 @@ class Intervention
     {
         $this->sinistre = $sinistre;
 
+        $this->setUpdated();
+
         return $this;
     }
 
@@ -302,6 +316,8 @@ class Intervention
     public function addEngagement(Engagement $engagement)
     {
         $this->engagements[] = $engagement;
+
+        $this->setUpdated();
 
         return $this;
     }
@@ -337,6 +353,8 @@ class Intervention
     {
         $this->evenements[] = $evenement;
 
+        $this->setUpdated();
+
         return $this;
     }
 
@@ -360,6 +378,8 @@ class Intervention
     public function setCoordinates(Coordinates $coordinates)
     {
         $this->coordinates = $coordinates;
+
+        $this->setUpdated();
 
         return $this;
     }
@@ -385,6 +405,8 @@ class Intervention
     {
         $this->address = $address;
 
+        $this->setUpdated();
+
         return $this;
     }
 
@@ -408,6 +430,8 @@ class Intervention
     public function setCommune(Commune $commune)
     {
         $this->commune = $commune;
+
+        $this->setUpdated();
 
         return $this;
     }

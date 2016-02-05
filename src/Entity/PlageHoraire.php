@@ -40,17 +40,26 @@ abstract class PlageHoraire
     protected $pompier;
 
     /**
+     * Spécialités de la plage horaire.
+     *
+     * @var array
+     */
+    protected $specialites;
+
+    /**
      * Ajout d'une plage horaire.
      *
      * @param SDIS62\Core\Ops\Entity\Planning $planning
      * @param SDIS62\Core\Ops\Entity\Pompier  $pompier
      * @param Datetime                        $start
      * @param Datetime                        $end
+     * @param array                           $specialites
      */
-    public function __construct(Planning $planning, Pompier $pompier, Datetime $start, Datetime $end)
+    public function __construct(Planning $planning, Pompier $pompier, Datetime $start, Datetime $end, array $specialites = [])
     {
-        $this->start = $start;
-        $this->end   = $end;
+        $this->start       = $start;
+        $this->end         = $end;
+        $this->specialites = $specialites;
 
         if ($this->start->diff($this->end)->invert == 1) {
             throw new InvalidDateException('Events usually start before they end');
@@ -149,5 +158,19 @@ abstract class PlageHoraire
     public function getPlanning()
     {
         return $this->planning;
+    }
+
+    /**
+     * Spécialitées de la plage horaire.
+     *
+     * @return array
+     */
+    public function getSpecialites()
+    {
+        if (!($this->getPompier() instanceof Pompier\SpecialistePompier)) {
+            return [];
+        }
+
+        return array_intersect(array_values($this->specialites), $this->getPompier()->getSpecialites());
     }
 }

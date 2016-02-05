@@ -101,4 +101,23 @@ class PlageHoraireTest extends PHPUnit_Framework_TestCase
         }
         $this->fail('Exception must be throw');
     }
+
+    public function test_if_it_have_a_specialites()
+    {
+        $planning    = new Core\Entity\Planning('Planning OPS');
+        $pompier     = new Core\Entity\Pompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $specialiste = new Core\Entity\Pompier\SpecialistePompier('DUBUC Kevin', 'mat001', Mockery::mock('SDIS62\Core\Ops\Entity\Centre')->makePartial());
+        $specialiste->setSpecialites(['urt', 'grimp']);
+        $start = new Datetime();
+        $end   = new Datetime('tomorrow');
+
+        /*
+        $plage = Mockery::mock('SDIS62\Core\Ops\Entity\PlageHoraire', [$planning, $pompier, $start, $end, ['grimp']])->makePartial();
+        $this->assertCount(0, $plage->getSpecialites());
+        */
+
+        $plage = Mockery::mock('SDIS62\Core\Ops\Entity\PlageHoraire', [$planning, $specialiste, $start, $end, ['grimp', 'test']])->makePartial();
+        $this->assertCount(1, $plage->getSpecialites());
+        $this->assertEquals('grimp', $plage->getSpecialites()[0]);
+    }
 }

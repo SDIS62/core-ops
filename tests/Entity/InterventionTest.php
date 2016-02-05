@@ -2,11 +2,11 @@
 
 namespace SDIS62\Core\Ops\Test\Entity;
 
-use Mockery;
-use Datetime;
 use DateInterval;
-use SDIS62\Core\Ops as Core;
+use Datetime;
+use Mockery;
 use PHPUnit_Framework_TestCase;
+use SDIS62\Core\Ops as Core;
 
 class InterventionTest extends PHPUnit_Framework_TestCase
 {

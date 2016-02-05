@@ -4,10 +4,10 @@ namespace SDIS62\Core\Ops\Service;
 
 use Datetime;
 use SDIS62\Core\Ops\Entity\PlageHoraire;
-use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
-use SDIS62\Core\Ops\Repository\PlanningRepositoryInterface;
-use SDIS62\Core\Ops\Repository\PlageHoraireRepositoryInterface;
 use SDIS62\Core\Ops\Exception\InvalidPlageHoraireTypeException;
+use SDIS62\Core\Ops\Repository\PlageHoraireRepositoryInterface;
+use SDIS62\Core\Ops\Repository\PlanningRepositoryInterface;
+use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
 
 class PlageHoraireService
 {

@@ -2,8 +2,8 @@
 
 namespace SDIS62\Core\Ops\Entity;
 
-use SDIS62\Core\Common\Entity\IdentityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
+use SDIS62\Core\Common\Entity\IdentityTrait;
 use SDIS62\Core\Ops\Exception\InvalidDateException;
 
 class Planning

@@ -3,9 +3,9 @@
 namespace SDIS62\Core\Ops\Entity;
 
 use Datetime;
-use libphonenumber\PhoneNumberUtil;
-use libphonenumber\PhoneNumberFormat;
 use Doctrine\Common\Collections\ArrayCollection;
+use libphonenumber\PhoneNumberFormat;
+use libphonenumber\PhoneNumberUtil;
 use SDIS62\Core\Ops\Entity\Engagement\PompierEngagement;
 use SDIS62\Core\Ops\Exception\InvalidPhoneNumberException;
 

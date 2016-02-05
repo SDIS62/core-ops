@@ -2,9 +2,9 @@
 
 namespace SDIS62\Core\Ops\Service;
 
+use SDIS62\Core\Ops\Entity\Coordinates;
 use SDIS62\Core\Ops\Entity\Pompier;
 use SDIS62\Core\Ops\Entity\Statut;
-use SDIS62\Core\Ops\Entity\Coordinates;
 use SDIS62\Core\Ops\Exception\InvalidPompierException;
 use SDIS62\Core\Ops\Repository\CentreRepositoryInterface;
 use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;

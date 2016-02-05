@@ -3,8 +3,8 @@
 namespace SDIS62\Core\Ops\Service;
 
 use SDIS62\Core\Ops\Entity\Evenement;
-use SDIS62\Core\Ops\Repository\EvenementRepositoryInterface;
 use SDIS62\Core\Ops\Repository\EngagementRepositoryInterface;
+use SDIS62\Core\Ops\Repository\EvenementRepositoryInterface;
 use SDIS62\Core\Ops\Repository\InterventionRepositoryInterface;
 
 class EvenementService

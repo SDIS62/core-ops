@@ -4,10 +4,10 @@ namespace SDIS62\Core\Ops\Service;
 
 use SDIS62\Core\Ops\Entity\Engagement;
 use SDIS62\Core\Ops\Exception\InvalidEngagementException;
-use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
-use SDIS62\Core\Ops\Repository\MaterielRepositoryInterface;
 use SDIS62\Core\Ops\Repository\EngagementRepositoryInterface;
 use SDIS62\Core\Ops\Repository\InterventionRepositoryInterface;
+use SDIS62\Core\Ops\Repository\MaterielRepositoryInterface;
+use SDIS62\Core\Ops\Repository\PompierRepositoryInterface;
 
 class EngagementService
 {

@@ -3,8 +3,8 @@
 namespace SDIS62\Core\Ops\Entity\Service;
 
 use Mockery;
-use SDIS62\Core\Ops as Core;
 use PHPUnit_Framework_TestCase;
+use SDIS62\Core\Ops as Core;
 
 class SinistreServiceTest extends PHPUnit_Framework_TestCase
 {

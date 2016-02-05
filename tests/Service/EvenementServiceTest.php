@@ -2,10 +2,10 @@
 
 namespace SDIS62\Core\Ops\Entity\Service;
 
-use Mockery;
 use Datetime;
-use SDIS62\Core\Ops as Core;
+use Mockery;
 use PHPUnit_Framework_TestCase;
+use SDIS62\Core\Ops as Core;
 
 class EvenementServiceTest extends PHPUnit_Framework_TestCase
 {

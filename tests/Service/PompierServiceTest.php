@@ -4,8 +4,8 @@ namespace SDIS62\Core\Ops\Entity\Service;
 
 use Datetime;
 use Mockery;
-use SDIS62\Core\Ops as Core;
 use PHPUnit_Framework_TestCase;
+use SDIS62\Core\Ops as Core;
 
 class PompierServiceTest extends PHPUnit_Framework_TestCase
 {

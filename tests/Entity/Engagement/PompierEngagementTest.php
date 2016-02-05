@@ -2,8 +2,8 @@
 
 namespace SDIS62\Core\Ops\Test\Entity;
 
-use SDIS62\Core\Ops as Core;
 use PHPUnit_Framework_TestCase;
+use SDIS62\Core\Ops as Core;
 
 class PompierEngagementTest extends PHPUnit_Framework_TestCase
 {

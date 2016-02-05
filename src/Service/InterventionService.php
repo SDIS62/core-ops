@@ -5,8 +5,8 @@ namespace SDIS62\Core\Ops\Service;
 use SDIS62\Core\Ops\Entity\Coordinates;
 use SDIS62\Core\Ops\Entity\Intervention;
 use SDIS62\Core\Ops\Repository\CommuneRepositoryInterface;
-use SDIS62\Core\Ops\Repository\SinistreRepositoryInterface;
 use SDIS62\Core\Ops\Repository\InterventionRepositoryInterface;
+use SDIS62\Core\Ops\Repository\SinistreRepositoryInterface;
 
 class InterventionService
 {

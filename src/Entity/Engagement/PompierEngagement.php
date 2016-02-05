@@ -2,10 +2,10 @@
 
 namespace SDIS62\Core\Ops\Entity\Engagement;
 
-use SDIS62\Core\Ops\Entity\Pompier;
-use SDIS62\Core\Ops\Entity\Materiel;
 use SDIS62\Core\Ops\Entity\Engagement;
 use SDIS62\Core\Ops\Entity\Intervention;
+use SDIS62\Core\Ops\Entity\Materiel;
+use SDIS62\Core\Ops\Entity\Pompier;
 
 class PompierEngagement extends Engagement
 {

@@ -3,8 +3,8 @@
 namespace SDIS62\Core\Ops\Test\Entity;
 
 use Datetime;
-use SDIS62\Core\Ops as Core;
 use PHPUnit_Framework_TestCase;
+use SDIS62\Core\Ops as Core;
 
 class CoordinatesTest extends PHPUnit_Framework_TestCase
 {

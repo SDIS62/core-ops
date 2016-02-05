@@ -45,5 +45,11 @@
         "psr-4": {
             "SDIS62\\Core\\Ops\\Test\\": "tests/"
         }
+    },
+
+    "scripts": {
+        "test": "phpunit",
+        "fix-cs-src": "php vendor/bin/php-cs-fixer fix src --level=symfony --fixers=align_double_arrow,align_equals,ordered_use,phpdoc_order,short_array_syntax",
+        "fix-cs-tests": "php vendor/bin/php-cs-fixer fix tests --level=symfony --fixers=align_double_arrow,align_equals,ordered_use,phpdoc_order,short_array_syntax"
     }
 }
